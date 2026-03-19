@@ -1,0 +1,101 @@
+[
+  {
+    "id": "bts-transborder-2025",
+    "name": "Transborder Freight Data Annual Report 2025",
+    "authority": "Bureau of Transportation Statistics (US DOT)",
+    "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "US-Mexico total trade value by mode of transportation"
+  },
+  {
+    "id": "bts-border-crossing-2025",
+    "name": "Border Crossing/Entry Data",
+    "authority": "Bureau of Transportation Statistics / CBP",
+    "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+  },
+  {
+    "id": "laredo-edc-2024",
+    "name": "Port Laredo International Trade Data",
+    "authority": "Laredo Economic Development Corporation",
+    "url": "https://www.laredoedc.org/site-selection/international-trade/",
+    "accessDate": "2026-03-19",
+    "dataYear": 2024,
+    "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+  },
+  {
+    "id": "pdn-uno-elpaso-2024",
+    "name": "El Paso / Juárez Border Crossing Data",
+    "authority": "PDN Uno / TxDOT",
+    "url": "https://pdnuno.com/data/crossings/cargo-trucks",
+    "accessDate": "2026-03-19",
+    "dataYear": 2024,
+    "coverage": "El Paso commercial vehicle crossings and trade value"
+  },
+  {
+    "id": "contecon-manzanillo-2025",
+    "name": "Manzanillo Port Container Volumes",
+    "authority": "Contecon Manzanillo / WorldCargo News",
+    "url": "https://www.worldcargonews.com/ports-terminals/2026/01/manzanillo-handles-almost-4m-teu-in-2025/",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Manzanillo container throughput in TEU"
+  },
+  {
+    "id": "ciit-status-2026",
+    "name": "Interoceanic Corridor (CIIT) Completion Status",
+    "authority": "BNamericas / Automotive Logistics",
+    "url": "https://www.automotivelogistics.media/supply-chain/mexicos-interoceanic-corridor-of-the-isthmus-of-tehuantepec-set-for-completion-in-2026/2586327",
+    "accessDate": "2026-03-19",
+    "dataYear": 2026,
+    "coverage": "CIIT rail/highway construction progress and completion timeline"
+  },
+  {
+    "id": "amia-auto-2024",
+    "name": "Mexico Vehicle Production Records",
+    "authority": "AMIA / Tecma",
+    "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+    "accessDate": "2026-03-19",
+    "dataYear": 2024,
+    "coverage": "Mexico national vehicle production and export volumes"
+  },
+  {
+    "id": "coproduction-bajio-2025",
+    "name": "Bajío Manufacturing Region Profile",
+    "authority": "Co-Production International",
+    "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Aerospace and automotive firms by state in Bajío region"
+  },
+  {
+    "id": "artf-rail-2024",
+    "name": "Rail Tonnage Reports",
+    "authority": "ARTF (Mexico Rail Regulator)",
+    "url": null,
+    "accessDate": "2026-03-19",
+    "dataYear": 2024,
+    "coverage": "Rail freight tonnage by corridor in Mexico"
+  },
+  {
+    "id": "sct-highway-2024",
+    "name": "Highway Traffic Counts",
+    "authority": "SCT/SICT Mexico",
+    "url": null,
+    "accessDate": "2026-03-19",
+    "dataYear": 2024,
+    "coverage": "Highway traffic volumes on major freight corridors"
+  },
+  {
+    "id": "cpkc-ferromex-2024",
+    "name": "Rail Network and Freight Volumes",
+    "authority": "Ferromex / CPKC",
+    "url": null,
+    "accessDate": "2026-03-19",
+    "dataYear": 2024,
+    "coverage": "Rail network maps and intermodal terminal locations"
+  }
+]

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Mapa Metropolitano de Comercio de México | Mexico Trade Metro Map
+    </title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #fafafa;
+        color: #1a1a1a;
+      }
+      #map {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <aside id="glossary" style="max-width:1400px;margin:1rem auto;padding:0 1rem">
+      <details>
+        <summary style="font-size:13px;color:#666;cursor:pointer">
+          Glosario / Glossary
+        </summary>
+        <dl style="font-size:12px;color:#555;columns:2;column-gap:2rem;margin-top:0.5rem;line-height:1.6">
+          <dt style="font-weight:bold">TEU</dt>
+          <dd style="margin:0 0 0.5rem">Twenty-foot Equivalent Unit — standard measure of container volume</dd>
+          <dt style="font-weight:bold">Maquiladora</dt>
+          <dd style="margin:0 0 0.5rem">Export-oriented factory operating under special customs rules near the US-Mexico border</dd>
+          <dt style="font-weight:bold">Intermodal</dt>
+          <dd style="margin:0 0 0.5rem">Freight transport using multiple modes (truck + rail) with standardized containers</dd>
+          <dt style="font-weight:bold">Breakbulk</dt>
+          <dd style="margin:0 0 0.5rem">Non-containerized cargo loaded individually (vehicles, machinery, steel)</dd>
+          <dt style="font-weight:bold">Nearshoring</dt>
+          <dd style="margin:0 0 0.5rem">Relocating manufacturing to a nearby country (e.g., from China to Mexico)</dd>
+          <dt style="font-weight:bold">USMCA</dt>
+          <dd style="margin:0 0 0.5rem">United States–Mexico–Canada Agreement (replaced NAFTA in 2020)</dd>
+        </dl>
+      </details>
+    </aside>
+    <script type="module" src="/src/interactive/app.ts"></script>
+  </body>
+</html>
