@@ -1,0 +1,171 @@
+[
+  {
+    "id": "linea-roja",
+    "nameEs": "Línea Roja",
+    "nameEn": "NAFTA Spine",
+    "color": "#E63946",
+    "lineNumber": 1,
+    "status": "active",
+    "lineStyle": "solid",
+    "lineWeight": "high",
+    "primaryMode": "truck",
+    "stationIds": [
+      "laredo-nuevo-laredo",
+      "monterrey",
+      "saltillo",
+      "san-luis-potosi"
+    ],
+    "totalTradeValue": "$339B (Laredo, 2024)",
+    "primaryCommodities": ["automotive", "electronics", "machinery", "produce"],
+    "evidence": "Laredo = $339B trade (2024), 5.8M truck crossings/yr, ~40% of all US-MX freight. Source: BTS Transborder 2025, Laredo EDC",
+    "sourceIds": ["bts-transborder-2025", "laredo-edc-2024"]
+  },
+  {
+    "id": "linea-azul",
+    "nameEs": "Línea Azul",
+    "nameEn": "Bajío Express",
+    "color": "#457B9D",
+    "lineNumber": 2,
+    "status": "active",
+    "lineStyle": "solid",
+    "lineWeight": "medium",
+    "primaryMode": "both",
+    "stationIds": [
+      "queretaro",
+      "celaya",
+      "irapuato",
+      "leon",
+      "aguascalientes"
+    ],
+    "totalTradeValue": null,
+    "primaryCommodities": ["automotive", "aerospace", "auto parts"],
+    "evidence": "Mexico's auto heartland: 3.99M vehicles produced nationally (2024, record), 87% exported. Querétaro = 80+ aerospace firms. Source: AMIA, Co-Production Intl",
+    "sourceIds": ["amia-auto-2024", "coproduction-bajio-2025"]
+  },
+  {
+    "id": "linea-verde",
+    "nameEs": "Línea Verde",
+    "nameEn": "Pacific Gateway",
+    "color": "#2A9D8F",
+    "lineNumber": 3,
+    "status": "active",
+    "lineStyle": "solid",
+    "lineWeight": "high",
+    "primaryMode": "both",
+    "stationIds": ["guadalajara", "manzanillo"],
+    "totalTradeValue": "~3.9M TEU (Manzanillo, 2025)",
+    "primaryCommodities": ["electronics", "auto parts", "consumer goods"],
+    "evidence": "Manzanillo = ~3.9M TEU (2025), Mexico's #1 container port 20+ yrs, handles 66% of import cargo. $3B expansion to 10M TEU by 2030. Source: Contecon, Mexico Business News",
+    "sourceIds": ["contecon-manzanillo-2025"]
+  },
+  {
+    "id": "linea-amarilla",
+    "nameEs": "Línea Amarilla",
+    "nameEn": "Gulf Corridor",
+    "color": "#E9C46A",
+    "lineNumber": 4,
+    "status": "active",
+    "lineStyle": "solid",
+    "lineWeight": "medium",
+    "primaryMode": "truck",
+    "stationIds": [
+      "reynosa-mcallen",
+      "matamoros-brownsville"
+    ],
+    "totalTradeValue": null,
+    "primaryCommodities": ["textiles", "electronics", "medical devices"],
+    "evidence": "Gulf Coast maquiladora belt: textiles, electronics, medical devices. Lower wait times than Laredo, rapidly expanding. Source: BTS Border Crossing Data 2025",
+    "sourceIds": ["bts-border-crossing-2025"]
+  },
+  {
+    "id": "linea-morada",
+    "nameEs": "Línea Morada",
+    "nameEn": "Interoceanic",
+    "color": "#9B5DE5",
+    "lineNumber": 5,
+    "status": "active",
+    "lineStyle": "solid",
+    "lineWeight": "low",
+    "primaryMode": "rail",
+    "stationIds": ["coatzacoalcos", "salina-cruz"],
+    "totalTradeValue": null,
+    "primaryCommodities": ["breakbulk", "automotive", "containers"],
+    "evidence": "Isthmus of Tehuantepec, 87.7% complete, full ops expected June 2026. Hyundai Glovis pilot: 900 vehicles crossed in ~9 hrs by rail. Source: BNamericas, Automotive Logistics",
+    "sourceIds": ["ciit-status-2026"]
+  },
+  {
+    "id": "linea-naranja",
+    "nameEs": "Línea Naranja",
+    "nameEn": "Western Border",
+    "color": "#F4A261",
+    "lineNumber": 6,
+    "status": "active",
+    "lineStyle": "solid",
+    "lineWeight": "medium",
+    "primaryMode": "truck",
+    "stationIds": ["tijuana", "tecate", "mexicali", "nogales"],
+    "totalTradeValue": null,
+    "primaryCommodities": ["agriculture", "electronics", "maquiladora goods"],
+    "evidence": "CA/AZ maquiladora belt. Nogales = seasonal agriculture powerhouse. Source: BTS Border Crossing Data 2025",
+    "sourceIds": ["bts-border-crossing-2025"]
+  },
+  {
+    "id": "linea-blanca",
+    "nameEs": "Línea Blanca",
+    "nameEn": "El Paso Corridor",
+    "color": "#8D99AE",
+    "lineNumber": 7,
+    "status": "active",
+    "lineStyle": "solid",
+    "lineWeight": "high",
+    "primaryMode": "truck",
+    "stationIds": [
+      "el-paso-juarez",
+      "chihuahua"
+    ],
+    "totalTradeValue": "$105.6B (2024)",
+    "primaryCommodities": ["automotive", "electronics", "machinery"],
+    "evidence": "$105.6B trade (2024), ~19% of TX cross-border commerce. 300+ maquiladoras, 300K+ workers. ~994K commercial crossings/yr. Source: PDN Uno, TxDOT",
+    "sourceIds": ["pdn-uno-elpaso-2024"]
+  },
+  {
+    "id": "linea-cafe",
+    "nameEs": "Línea Café",
+    "nameEn": "Central Spine",
+    "color": "#6B4226",
+    "lineNumber": 8,
+    "status": "active",
+    "lineStyle": "solid",
+    "lineWeight": "high",
+    "primaryMode": "both",
+    "stationIds": [
+      "cdmx",
+      "toluca",
+      "puebla",
+      "veracruz"
+    ],
+    "totalTradeValue": null,
+    "primaryCommodities": ["consumer goods", "automotive", "petrochemicals"],
+    "evidence": "National distribution hub. CPKC Puerta México intermodal (Toluca). Ferrosur rail to Gulf via Puebla-Veracruz. Source: CPKC, Ferrosur",
+    "sourceIds": ["cpkc-ferromex-2024"]
+  },
+  {
+    "id": "corredor-verde",
+    "nameEs": "Corredor Verde",
+    "nameEn": "Green Corridors Guideway",
+    "color": "#457B9D",
+    "lineNumber": 9,
+    "status": "planned",
+    "lineStyle": "dashed",
+    "lineWeight": "low",
+    "primaryMode": "rail",
+    "stationIds": [
+      "monterrey",
+      "laredo-nuevo-laredo"
+    ],
+    "totalTradeValue": null,
+    "primaryCommodities": ["freight rail"],
+    "evidence": "Under construction. Separates freight from passenger rail. Expected +40% capacity. Source: Mexico Business News",
+    "sourceIds": ["artf-rail-2024"]
+  }
+]

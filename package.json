@@ -1,0 +1,35 @@
+{
+  "name": "mexico-trade-metro-map",
+  "version": "1.0.0",
+  "description": "A subway/metro-style schematic map of Mexico's land trade corridors — think London Tube map, but for freight.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "data:transform": "npx tsx data/scripts/transform.ts",
+    "data:validate": "npx tsx data/scripts/validate.ts",
+    "export:svg": "npx tsx src/export/svg.ts",
+    "export:pdf": "npx tsx src/export/pdf.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ikana/mexico-trade-metro-map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ikana/mexico-trade-metro-map/issues"
+  },
+  "homepage": "https://github.com/Ikana/mexico-trade-metro-map#readme",
+  "dependencies": {
+    "d3": "^7.9.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "playwright": "^1.58.2",
+    "tsx": "^4.21.0"
+  }
+}

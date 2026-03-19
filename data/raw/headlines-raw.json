@@ -1,0 +1,32 @@
+[
+  {
+    "id": "total-trade-2025",
+    "text": "US-Mexico freight: $872.8B in 2025, up 3.9% YoY",
+    "value": "$872.8B",
+    "sourceId": "bts-transborder-2025"
+  },
+  {
+    "id": "truck-share-2025",
+    "text": "73.6% by truck, 10.9% by rail",
+    "value": "73.6%",
+    "sourceId": "bts-transborder-2025"
+  },
+  {
+    "id": "top-partner-2023",
+    "text": "Mexico surpassed China as #1 US trade partner in 2023",
+    "value": "#1",
+    "sourceId": "bts-transborder-2025"
+  },
+  {
+    "id": "laredo-share",
+    "text": "Laredo handles ~40% of all US-MX freight",
+    "value": "~40%",
+    "sourceId": "laredo-edc-2024"
+  },
+  {
+    "id": "vehicle-production-2024",
+    "text": "Mexico produced 3.99M vehicles in 2024, a record",
+    "value": "3.99M",
+    "sourceId": "amia-auto-2024"
+  }
+]
