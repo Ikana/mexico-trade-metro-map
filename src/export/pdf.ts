@@ -31,7 +31,7 @@ async function exportPdf() {
 
   const browser = await chromium.launch();
   const page = await browser.newPage();
-  await page.setContent(html, { waitUntil: "networkidle" });
+  await page.setContent(html, { waitUntil: "networkidle", timeout: 15000 });
 
   mkdirSync(resolve(root, "dist"), { recursive: true });
 

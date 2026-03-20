@@ -284,10 +284,10 @@ function renderGeoSilhouetteSvg(): string {
   const borderLine = "80,130 120,130 190,130 190,170 280,170 280,80 640,80 720,160 770,160";
 
   let svg = `<g class="geo-silhouette" opacity="0.12">`;
-  svg += `<polygon points="${usBorder}" fill="#C8B8A8" stroke="none"/>`;
-  svg += `<polygon points="${mainland}" fill="#A89070" stroke="none"/>`;
-  svg += `<polygon points="${baja}" fill="#A89070" stroke="none"/>`;
-  svg += `<polyline points="${borderLine}" fill="none" stroke="#8B7355" stroke-width="1.5" stroke-dasharray="4 3" opacity="1"/>`;
+  svg += `<polygon points="${usBorder}" fill="${TOKENS.colors.geoUsBorder}" stroke="none"/>`;
+  svg += `<polygon points="${mainland}" fill="${TOKENS.colors.geoMexico}" stroke="none"/>`;
+  svg += `<polygon points="${baja}" fill="${TOKENS.colors.geoMexico}" stroke="none"/>`;
+  svg += `<polyline points="${borderLine}" fill="none" stroke="${TOKENS.colors.geoBorderLine}" stroke-width="1.5" stroke-dasharray="4 3" opacity="1"/>`;
   svg += `</g>`;
   return svg;
 }

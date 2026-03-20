@@ -36,6 +36,10 @@ export const TOKENS: DesignTokens = {
     labelColor: "#1A1A1A",         // Primary text
     labelSecondary: "#666666",     // Secondary text
     legendBackground: "#F5F2ED",   // Warm legend panel
+    // Geographic silhouette fills (faint background watermark)
+    geoMexico: "#A89070",          // Mexico mainland/Baja fill
+    geoUsBorder: "#C8B8A8",        // US border states fill
+    geoBorderLine: "#8B7355",      // US-Mexico border dashed line
   },
 
   typography: {
@@ -84,22 +88,6 @@ export const TOKENS: DesignTokens = {
     dotDash: "2 4 8 4",     // Maritime routes
   },
 };
-
-/** Returns the tier-based scale multiplier for station symbol sizing. */
-export function getStationSymbol(
-  type: "city" | "port" | "border-crossing" | "terminal-region",
-  tier: "mega" | "major" | "standard",
-): { scale: number } {
-  const tierScale: Record<string, number> = {
-    mega: 1.0,
-    major: 0.7,
-    standard: 0.5,
-  };
-
-  return {
-    scale: tierScale[tier] || 0.5,
-  };
-}
 
 // =============================================================================
 // Backward-compatible aliases (for incremental migration)

@@ -9,6 +9,7 @@
  * and interior cities are on land.
  */
 import * as d3 from "d3";
+import { TOKENS } from "./styles.ts";
 
 // Mexico mainland outline (clockwise from NW border)
 const MAINLAND_POINTS: [number, number][] = [
@@ -132,21 +133,21 @@ export function renderGeoSilhouette(
   geoGroup.append("path")
     .datum(US_BORDER_POINTS)
     .attr("d", angularLine)
-    .attr("fill", "#C8B8A8")
+    .attr("fill", TOKENS.colors.geoUsBorder)
     .attr("stroke", "none");
 
   // Mexico mainland — warm earth tone
   geoGroup.append("path")
     .datum(MAINLAND_POINTS)
     .attr("d", angularLine)
-    .attr("fill", "#A89070")
+    .attr("fill", TOKENS.colors.geoMexico)
     .attr("stroke", "none");
 
   // Baja California peninsula
   geoGroup.append("path")
     .datum(BAJA_POINTS)
     .attr("d", angularLine)
-    .attr("fill", "#A89070")
+    .attr("fill", TOKENS.colors.geoMexico)
     .attr("stroke", "none");
 
   // US-Mexico border line — dashed
@@ -154,7 +155,7 @@ export function renderGeoSilhouette(
     .datum(BORDER_POINTS)
     .attr("d", openLine)
     .attr("fill", "none")
-    .attr("stroke", "#8B7355")
+    .attr("stroke", TOKENS.colors.geoBorderLine)
     .attr("stroke-width", 1.5)
     .attr("stroke-dasharray", "4 3")
     .attr("opacity", 1);

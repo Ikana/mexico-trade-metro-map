@@ -78,6 +78,9 @@ export interface DesignTokens {
     labelColor: string;
     labelSecondary: string;
     legendBackground: string;
+    geoMexico: string;
+    geoUsBorder: string;
+    geoBorderLine: string;
   };
   typography: {
     fontFamily: string;
