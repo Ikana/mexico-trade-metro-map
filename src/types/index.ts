@@ -103,6 +103,7 @@ export interface DesignTokens {
     lineThickness: Record<string, number>;
     labelOffset: number;
     interchangeRingGap: number;
+    stationStrokeWidth: number;
   };
   symbols: {
     city: string;

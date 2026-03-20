@@ -154,13 +154,23 @@ export function computeLabelPlacements(
   const placements: LabelPlacement[] = [];
   const placedBBoxes: BBox[] = [];
 
-  // Build station bboxes indexed by station ID for efficient exclusion
+  // Build station bboxes indexed by station ID for efficient exclusion.
+  // Account for actual symbol shape: terminal-region and port are wider than circles.
   const stationBBoxMap = new Map<string, BBox>();
   for (const s of stations) {
     const cx = tokens.spacing.padding.left + (s.x - minX) * gridUnit;
     const cy = tokens.spacing.padding.top + s.y * gridUnit;
     const r = tokens.spacing.stationRadius[s.tier] || 6;
-    stationBBoxMap.set(s.id, { x: cx - r, y: cy - r, width: r * 2, height: r * 2 });
+    let halfW = r;
+    let halfH = r;
+    if (s.type === "terminal-region") {
+      halfW = r * 1.2 + 2; // rect is wider with rx offset
+      halfH = r * 1.2;
+    } else if (s.type === "port" || s.type === "border-crossing") {
+      halfW = r * 1.1; // diamond extends slightly beyond r
+      halfH = r * 1.1;
+    }
+    stationBBoxMap.set(s.id, { x: cx - halfW, y: cy - halfH, width: halfW * 2, height: halfH * 2 });
   }
   const stationBBoxEntries = Array.from(stationBBoxMap.entries());
 

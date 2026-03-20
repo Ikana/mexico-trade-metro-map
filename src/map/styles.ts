@@ -26,7 +26,7 @@ export const TOKENS: DesignTokens = {
     // 4 maritime route colors — visually distinct from land corridors
     maritime: {
       "pacific-asia-express": "#006D75",   // Deep cyan
-      "transpacific-gateway": "#00695C",   // Teal
+      "transpacific-gateway": "#00796B",   // Teal (distinct from corredor-verde #00695C)
       "gulf-europe": "#1A237E",            // Navy indigo
       "gulf-us-east": "#37474F",           // Dark blue-grey
     },
@@ -63,6 +63,7 @@ export const TOKENS: DesignTokens = {
     lineThickness: { high: 8, medium: 5, low: 3 },
     labelOffset: 8,
     interchangeRingGap: 4,
+    stationStrokeWidth: 2.5,
   },
 
   // Pictogram SVG path data on 24×24 unit grid (Aicher-inspired)

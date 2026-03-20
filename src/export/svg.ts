@@ -8,7 +8,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
-import { TOKENS, getStationSymbol } from "../map/styles.ts";
+import { TOKENS } from "../map/styles.ts";
 import { computeLabelPlacements } from "../map/labels.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -120,23 +120,23 @@ for (const s of stations) {
     svgContent += `<circle cx="${cx}" cy="${cy}" r="${ringR}" fill="none" stroke="#222" stroke-width="${ringStroke}"/>`;
   }
 
-  // Station symbol by type — uses getStationSymbol for tier-based scaling
-  const symbol = getStationSymbol(s.type, s.tier);
+  // Station symbol by type — r is already tier-specific from TOKENS
+  const sw = TOKENS.spacing.stationStrokeWidth;
 
   if (s.type === "terminal-region") {
-    const sc = symbol.scale * r * 1.2;
-    svgContent += `<rect x="${cx - sc - 2}" y="${cy - sc}" width="${sc * 2 + 4}" height="${sc * 2}" rx="4" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="2.5"/>`;
-    svgContent += `<path d="M${cx + sc * 0.2},${cy - sc * 0.4} L${cx + sc * 0.7},${cy} L${cx + sc * 0.2},${cy + sc * 0.4}" fill="none" stroke="${primaryColor}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+    const sc = r * 1.2;
+    svgContent += `<rect x="${cx - sc - 2}" y="${cy - sc}" width="${sc * 2 + 4}" height="${sc * 2}" rx="4" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="${sw}"/>`;
+    svgContent += `<path d="M${cx + sc * 0.2},${cy - sc * 0.4} L${cx + sc * 0.7},${cy} L${cx + sc * 0.2},${cy + sc * 0.4}" fill="none" stroke="${primaryColor}" stroke-width="${sw * 0.6}" stroke-linecap="round" stroke-linejoin="round"/>`;
   } else if (s.type === "port") {
-    const sc = symbol.scale * r * 1.1;
-    svgContent += `<path d="M${cx},${cy - sc} L${cx + sc},${cy} L${cx},${cy + sc} L${cx - sc},${cy} Z" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="2.5" stroke-linejoin="round"/>`;
-    svgContent += `<path d="M${cx - sc * 0.4},${cy} Q${cx - sc * 0.2},${cy - sc * 0.25} ${cx},${cy} Q${cx + sc * 0.2},${cy + sc * 0.25} ${cx + sc * 0.4},${cy}" fill="none" stroke="${primaryColor}" stroke-width="1.2" stroke-linecap="round"/>`;
+    const sc = r * 1.1;
+    svgContent += `<path d="M${cx},${cy - sc} L${cx + sc},${cy} L${cx},${cy + sc} L${cx - sc},${cy} Z" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="${sw}" stroke-linejoin="round"/>`;
+    svgContent += `<path d="M${cx - sc * 0.4},${cy} Q${cx - sc * 0.2},${cy - sc * 0.25} ${cx},${cy} Q${cx + sc * 0.2},${cy + sc * 0.25} ${cx + sc * 0.4},${cy}" fill="none" stroke="${primaryColor}" stroke-width="${sw * 0.48}" stroke-linecap="round"/>`;
   } else if (s.type === "border-crossing") {
-    const sc = symbol.scale * r * 1.0;
-    svgContent += `<path d="M${cx},${cy - sc} L${cx + sc},${cy} L${cx},${cy + sc} L${cx - sc},${cy} Z" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="2.5" stroke-linejoin="miter"/>`;
-    svgContent += `<line x1="${cx - sc * 0.5}" y1="${cy}" x2="${cx + sc * 0.5}" y2="${cy}" stroke="${primaryColor}" stroke-width="1.5"/>`;
+    const sc = r;
+    svgContent += `<path d="M${cx},${cy - sc} L${cx + sc},${cy} L${cx},${cy + sc} L${cx - sc},${cy} Z" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="${sw}" stroke-linejoin="miter"/>`;
+    svgContent += `<line x1="${cx - sc * 0.5}" y1="${cy}" x2="${cx + sc * 0.5}" y2="${cy}" stroke="${primaryColor}" stroke-width="${sw * 0.6}"/>`;
   } else {
-    svgContent += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="2.5"/>`;
+    svgContent += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="${sw}"/>`;
   }
 }
 
