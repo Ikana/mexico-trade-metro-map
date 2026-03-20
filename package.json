@@ -8,6 +8,7 @@
     "build": "vite build",
     "data:transform": "npx tsx data/scripts/transform.ts",
     "data:validate": "npx tsx data/scripts/validate.ts",
+    "data:graph": "npx tsx data/scripts/export-graph.ts",
     "export:svg": "npx tsx src/export/svg.ts",
     "export:pdf": "npx tsx src/export/pdf.ts"
   },

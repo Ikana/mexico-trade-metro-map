@@ -1,0 +1,3228 @@
+{
+  "directed": false,
+  "multigraph": true,
+  "graph": {
+    "name": "Mexico Trade Metro Map",
+    "description": "Schematic metro-style network of Mexico's land trade corridors and maritime shipping routes. All data is research-backed with full provenance to authoritative sources.",
+    "version": "2.0.0",
+    "generated": "2026-03-20",
+    "stats": {
+      "totalNodes": 31,
+      "totalEdges": 39,
+      "landCorridors": 9,
+      "maritimeRoutes": 4,
+      "megaHubs": 3,
+      "majorHubs": 6,
+      "standardStations": 22,
+      "terminalRegions": 3,
+      "borderCrossings": 8,
+      "ports": 7,
+      "dataSources": 19
+    },
+    "headlines": [
+      {
+        "id": "total-trade-2025",
+        "text": "US-Mexico freight: $872.8B in 2025, up 3.9% YoY",
+        "value": "$872.8B",
+        "sourceId": "bts-transborder-2025"
+      },
+      {
+        "id": "truck-share-2025",
+        "text": "73.6% by truck, 10.9% by rail",
+        "value": "73.6%",
+        "sourceId": "bts-transborder-2025"
+      },
+      {
+        "id": "top-partner-2023",
+        "text": "Mexico surpassed China as #1 US trade partner in 2023",
+        "value": "#1",
+        "sourceId": "bts-transborder-2025"
+      },
+      {
+        "id": "laredo-share",
+        "text": "Laredo handles ~40% of all US-MX freight",
+        "value": "~40%",
+        "sourceId": "laredo-edc-2024"
+      },
+      {
+        "id": "vehicle-production-2024",
+        "text": "Mexico produced 3.99M vehicles in 2024, a record",
+        "value": "3.99M",
+        "sourceId": "amia-auto-2024"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "laredo-nuevo-laredo",
+      "nameEs": "Laredo / Nuevo Laredo",
+      "nameEn": "Laredo / Nuevo Laredo",
+      "country": "MX/US",
+      "type": "border-crossing",
+      "tier": "mega",
+      "x": 9,
+      "y": 1,
+      "tradeValueUsd": 339000000000,
+      "tradeValueYear": 2024,
+      "truckCrossingsPerYear": 5800000,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery",
+        "produce"
+      ],
+      "corridorIds": [
+        "linea-roja",
+        "corredor-verde"
+      ],
+      "sources": [
+        {
+          "id": "laredo-edc-2024",
+          "name": "Port Laredo International Trade Data",
+          "authority": "Laredo Economic Development Corporation",
+          "url": "https://www.laredoedc.org/site-selection/international-trade/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+        },
+        {
+          "id": "bts-transborder-2025",
+          "name": "Transborder Freight Data Annual Report 2025",
+          "authority": "Bureau of Transportation Statistics (US DOT)",
+          "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "US-Mexico total trade value by mode of transportation"
+        }
+      ]
+    },
+    {
+      "id": "cdmx",
+      "nameEs": "Ciudad de México",
+      "nameEn": "Mexico City",
+      "country": "MX",
+      "type": "city",
+      "tier": "mega",
+      "x": 7,
+      "y": 11,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "consumer goods",
+        "automotive",
+        "distribution"
+      ],
+      "corridorIds": [
+        "linea-cafe",
+        "linea-roja",
+        "linea-verde"
+      ],
+      "sources": [
+        {
+          "id": "cpkc-ferromex-2024",
+          "name": "Rail Network and Freight Volumes",
+          "authority": "Ferromex / CPKC",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail network maps and intermodal terminal locations"
+        }
+      ]
+    },
+    {
+      "id": "monterrey",
+      "nameEs": "Monterrey",
+      "nameEn": "Monterrey",
+      "country": "MX",
+      "type": "city",
+      "tier": "mega",
+      "x": 9,
+      "y": 4,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "steel",
+        "automotive",
+        "appliances",
+        "glass"
+      ],
+      "corridorIds": [
+        "linea-roja",
+        "linea-amarilla",
+        "corredor-verde"
+      ],
+      "sources": [
+        {
+          "id": "bts-transborder-2025",
+          "name": "Transborder Freight Data Annual Report 2025",
+          "authority": "Bureau of Transportation Statistics (US DOT)",
+          "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "US-Mexico total trade value by mode of transportation"
+        }
+      ]
+    },
+    {
+      "id": "el-paso-juarez",
+      "nameEs": "El Paso / Cd. Juárez",
+      "nameEn": "El Paso / Cd. Juárez",
+      "country": "MX/US",
+      "type": "border-crossing",
+      "tier": "major",
+      "x": 4,
+      "y": 1,
+      "tradeValueUsd": 105600000000,
+      "tradeValueYear": 2024,
+      "truckCrossingsPerYear": 994594,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery"
+      ],
+      "corridorIds": [
+        "linea-blanca"
+      ],
+      "sources": [
+        {
+          "id": "pdn-uno-elpaso-2024",
+          "name": "El Paso / Juárez Border Crossing Data",
+          "authority": "PDN Uno / TxDOT",
+          "url": "https://pdnuno.com/data/crossings/cargo-trucks",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "El Paso commercial vehicle crossings and trade value"
+        }
+      ]
+    },
+    {
+      "id": "guadalajara",
+      "nameEs": "Guadalajara",
+      "nameEn": "Guadalajara",
+      "country": "MX",
+      "type": "city",
+      "tier": "major",
+      "x": 3,
+      "y": 9,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "electronics",
+        "tech",
+        "software"
+      ],
+      "corridorIds": [
+        "linea-verde",
+        "linea-azul",
+        "linea-naranja"
+      ],
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        }
+      ]
+    },
+    {
+      "id": "queretaro",
+      "nameEs": "Querétaro",
+      "nameEn": "Querétaro",
+      "country": "MX",
+      "type": "city",
+      "tier": "major",
+      "x": 6,
+      "y": 9,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "aerospace",
+        "automotive"
+      ],
+      "corridorIds": [
+        "linea-azul",
+        "linea-roja"
+      ],
+      "sources": [
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ]
+    },
+    {
+      "id": "manzanillo",
+      "nameEs": "Manzanillo",
+      "nameEn": "Manzanillo",
+      "country": "MX",
+      "type": "port",
+      "tier": "major",
+      "x": 1,
+      "y": 10,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": 3900000,
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods"
+      ],
+      "corridorIds": [
+        "linea-verde"
+      ],
+      "sources": [
+        {
+          "id": "contecon-manzanillo-2025",
+          "name": "Manzanillo Port Container Volumes",
+          "authority": "Contecon Manzanillo / WorldCargo News",
+          "url": "https://www.worldcargonews.com/ports-terminals/2026/01/manzanillo-handles-almost-4m-teu-in-2025/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Manzanillo container throughput in TEU"
+        }
+      ]
+    },
+    {
+      "id": "matamoros-brownsville",
+      "nameEs": "Matamoros / Brownsville",
+      "nameEn": "Matamoros / Brownsville",
+      "country": "MX/US",
+      "type": "border-crossing",
+      "tier": "major",
+      "x": 11,
+      "y": 2,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "textiles",
+        "electronics",
+        "medical devices"
+      ],
+      "corridorIds": [
+        "linea-amarilla"
+      ],
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ]
+    },
+    {
+      "id": "saltillo",
+      "nameEs": "Saltillo",
+      "nameEn": "Saltillo",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 7,
+      "y": 5,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive",
+        "steel"
+      ],
+      "corridorIds": [
+        "linea-roja"
+      ],
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        }
+      ]
+    },
+    {
+      "id": "san-luis-potosi",
+      "nameEs": "San Luis Potosí",
+      "nameEn": "San Luis Potosí",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 7,
+      "y": 7,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive",
+        "mining"
+      ],
+      "corridorIds": [
+        "linea-roja"
+      ],
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        }
+      ]
+    },
+    {
+      "id": "aguascalientes",
+      "nameEs": "Aguascalientes",
+      "nameEn": "Aguascalientes",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 5,
+      "y": 7,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive assembly",
+        "auto parts"
+      ],
+      "corridorIds": [
+        "linea-azul",
+        "linea-blanca"
+      ],
+      "sources": [
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ]
+    },
+    {
+      "id": "leon",
+      "nameEs": "León",
+      "nameEn": "León",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 4,
+      "y": 8,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive",
+        "leather",
+        "footwear"
+      ],
+      "corridorIds": [
+        "linea-azul"
+      ],
+      "sources": [
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ]
+    },
+    {
+      "id": "celaya",
+      "nameEs": "Celaya",
+      "nameEn": "Celaya",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 5,
+      "y": 9,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive",
+        "agribusiness"
+      ],
+      "corridorIds": [
+        "linea-azul"
+      ],
+      "sources": [
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ]
+    },
+    {
+      "id": "irapuato",
+      "nameEs": "Irapuato",
+      "nameEn": "Irapuato",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 4,
+      "y": 9,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive",
+        "agriculture"
+      ],
+      "corridorIds": [
+        "linea-azul"
+      ],
+      "sources": [
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ]
+    },
+    {
+      "id": "nogales",
+      "nameEs": "Nogales",
+      "nameEn": "Nogales",
+      "country": "MX/US",
+      "type": "border-crossing",
+      "tier": "standard",
+      "x": 2,
+      "y": 3,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "agriculture",
+        "produce"
+      ],
+      "corridorIds": [
+        "linea-naranja"
+      ],
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ]
+    },
+    {
+      "id": "tijuana",
+      "nameEs": "Tijuana",
+      "nameEn": "Tijuana",
+      "country": "MX/US",
+      "type": "border-crossing",
+      "tier": "standard",
+      "x": 1,
+      "y": 1,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "electronics",
+        "medical devices",
+        "maquiladora"
+      ],
+      "corridorIds": [
+        "linea-naranja"
+      ],
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ]
+    },
+    {
+      "id": "mexicali",
+      "nameEs": "Mexicali",
+      "nameEn": "Mexicali",
+      "country": "MX/US",
+      "type": "border-crossing",
+      "tier": "standard",
+      "x": 2,
+      "y": 1,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "electronics",
+        "aerospace"
+      ],
+      "corridorIds": [
+        "linea-naranja"
+      ],
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ]
+    },
+    {
+      "id": "tecate",
+      "nameEs": "Tecate",
+      "nameEn": "Tecate",
+      "country": "MX/US",
+      "type": "border-crossing",
+      "tier": "standard",
+      "x": 1,
+      "y": 2,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "maquiladora"
+      ],
+      "corridorIds": [
+        "linea-naranja"
+      ],
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ]
+    },
+    {
+      "id": "reynosa-mcallen",
+      "nameEs": "Reynosa / McAllen",
+      "nameEn": "Reynosa / McAllen",
+      "country": "MX/US",
+      "type": "border-crossing",
+      "tier": "standard",
+      "x": 10,
+      "y": 2,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "electronics",
+        "medical devices"
+      ],
+      "corridorIds": [
+        "linea-amarilla"
+      ],
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ]
+    },
+    {
+      "id": "puebla",
+      "nameEs": "Puebla",
+      "nameEn": "Puebla",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 8,
+      "y": 12,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "automotive",
+        "textiles"
+      ],
+      "corridorIds": [
+        "linea-cafe"
+      ],
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        }
+      ]
+    },
+    {
+      "id": "toluca",
+      "nameEs": "Toluca",
+      "nameEn": "Toluca",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 6,
+      "y": 11,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "intermodal",
+        "logistics"
+      ],
+      "corridorIds": [
+        "linea-cafe"
+      ],
+      "sources": [
+        {
+          "id": "cpkc-ferromex-2024",
+          "name": "Rail Network and Freight Volumes",
+          "authority": "Ferromex / CPKC",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail network maps and intermodal terminal locations"
+        }
+      ]
+    },
+    {
+      "id": "veracruz",
+      "nameEs": "Veracruz",
+      "nameEn": "Veracruz",
+      "country": "MX",
+      "type": "port",
+      "tier": "standard",
+      "x": 10,
+      "y": 13,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "petrochemicals",
+        "automotive",
+        "steel"
+      ],
+      "corridorIds": [
+        "linea-cafe",
+        "linea-morada"
+      ],
+      "sources": [
+        {
+          "id": "cpkc-ferromex-2024",
+          "name": "Rail Network and Freight Volumes",
+          "authority": "Ferromex / CPKC",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail network maps and intermodal terminal locations"
+        }
+      ]
+    },
+    {
+      "id": "coatzacoalcos",
+      "nameEs": "Coatzacoalcos",
+      "nameEn": "Coatzacoalcos",
+      "country": "MX",
+      "type": "port",
+      "tier": "standard",
+      "x": 10,
+      "y": 15,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "petrochemicals",
+        "containers"
+      ],
+      "corridorIds": [
+        "linea-morada"
+      ],
+      "sources": [
+        {
+          "id": "ciit-status-2026",
+          "name": "Interoceanic Corridor (CIIT) Completion Status",
+          "authority": "BNamericas / Automotive Logistics",
+          "url": "https://www.automotivelogistics.media/supply-chain/mexicos-interoceanic-corridor-of-the-isthmus-of-tehuantepec-set-for-completion-in-2026/2586327",
+          "accessDate": "2026-03-19",
+          "dataYear": 2026,
+          "coverage": "CIIT rail/highway construction progress and completion timeline"
+        }
+      ]
+    },
+    {
+      "id": "salina-cruz",
+      "nameEs": "Salina Cruz",
+      "nameEn": "Salina Cruz",
+      "country": "MX",
+      "type": "port",
+      "tier": "standard",
+      "x": 7,
+      "y": 16,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "breakbulk",
+        "containers"
+      ],
+      "corridorIds": [
+        "linea-morada"
+      ],
+      "sources": [
+        {
+          "id": "ciit-status-2026",
+          "name": "Interoceanic Corridor (CIIT) Completion Status",
+          "authority": "BNamericas / Automotive Logistics",
+          "url": "https://www.automotivelogistics.media/supply-chain/mexicos-interoceanic-corridor-of-the-isthmus-of-tehuantepec-set-for-completion-in-2026/2586327",
+          "accessDate": "2026-03-19",
+          "dataYear": 2026,
+          "coverage": "CIIT rail/highway construction progress and completion timeline"
+        }
+      ]
+    },
+    {
+      "id": "chihuahua",
+      "nameEs": "Chihuahua",
+      "nameEn": "Chihuahua",
+      "country": "MX",
+      "type": "city",
+      "tier": "standard",
+      "x": 4,
+      "y": 3,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [
+        "mining",
+        "aerospace",
+        "automotive"
+      ],
+      "corridorIds": [
+        "linea-blanca"
+      ],
+      "sources": [
+        {
+          "id": "pdn-uno-elpaso-2024",
+          "name": "El Paso / Juárez Border Crossing Data",
+          "authority": "PDN Uno / TxDOT",
+          "url": "https://pdnuno.com/data/crossings/cargo-trucks",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "El Paso commercial vehicle crossings and trade value"
+        }
+      ]
+    },
+    {
+      "id": "lazaro-cardenas",
+      "nameEs": "Lázaro Cárdenas",
+      "nameEn": "Lázaro Cárdenas",
+      "country": "MX",
+      "type": "port",
+      "tier": "major",
+      "x": 1,
+      "y": 12,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": 2200000,
+      "primaryCommodities": [],
+      "corridorIds": [
+        "linea-verde"
+      ],
+      "sources": [
+        {
+          "id": "promexicoindustry-lazaro-2025",
+          "name": "Lázaro Cárdenas Container Growth",
+          "authority": "Pro Mexico Industry",
+          "url": "https://www.promexicoindustry.com/en/article/port-of-lzaro-crdenas-grows-13-in-container-traffic-through-may-2025",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Lázaro Cárdenas container volumes and growth rates"
+        },
+        {
+          "id": "pacificports-lazaro-2025",
+          "name": "Lázaro Cárdenas Tonnage Leadership",
+          "authority": "Pacific Ports",
+          "url": "https://pacificports.org/lazaro-cardenas-port-exceeds-24-6-million-tons-and-consolidates-its-logistics-leadership-in-2025/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Annual tonnage, logistics leadership, 27% of Mexico container cargo"
+        }
+      ]
+    },
+    {
+      "id": "altamira",
+      "nameEs": "Altamira",
+      "nameEn": "Altamira",
+      "country": "MX",
+      "type": "port",
+      "tier": "standard",
+      "x": 12,
+      "y": 4,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": 880000,
+      "primaryCommodities": [],
+      "corridorIds": [
+        "linea-amarilla"
+      ],
+      "sources": [
+        {
+          "id": "unisco-altamira-2025",
+          "name": "Altamira Port Profile",
+          "authority": "Unisco",
+          "url": "https://www.unisco.com/international-ports/altamira-mexico",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Altamira Gulf container traffic share, energy/petrochem focus"
+        }
+      ]
+    },
+    {
+      "id": "ensenada",
+      "nameEs": "Ensenada",
+      "nameEn": "Ensenada",
+      "country": "MX",
+      "type": "port",
+      "tier": "standard",
+      "x": 0,
+      "y": 0,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": 300000,
+      "primaryCommodities": [],
+      "corridorIds": [
+        "linea-naranja"
+      ],
+      "sources": [
+        {
+          "id": "freightamigo-ensenada-2025",
+          "name": "Ensenada Port Profile",
+          "authority": "Hutchison Ports / FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-ports-in-mexico-gateways-to-global-trade/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Ensenada TEU capacity, Asia services, Baja deepwater port"
+        }
+      ]
+    },
+    {
+      "id": "terminal-asia",
+      "nameEs": "→ Asia",
+      "nameEn": "→ Asia",
+      "country": "INTL",
+      "type": "terminal-region",
+      "tier": "standard",
+      "x": -2,
+      "y": 10,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [],
+      "corridorIds": [],
+      "destinationPorts": [
+        "Shanghai",
+        "Busan",
+        "Yokohama",
+        "Qingdao",
+        "Ningbo"
+      ],
+      "sources": [
+        {
+          "id": "freightwaves-asia-mexico-2025",
+          "name": "Asia-to-Mexico Shipping Routes",
+          "authority": "CMA CGM / FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+        }
+      ]
+    },
+    {
+      "id": "terminal-europe",
+      "nameEs": "→ Europa",
+      "nameEn": "→ Europe",
+      "country": "INTL",
+      "type": "terminal-region",
+      "tier": "standard",
+      "x": 14,
+      "y": 12,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [],
+      "corridorIds": [],
+      "destinationPorts": [
+        "Rotterdam",
+        "Hamburg"
+      ],
+      "sources": [
+        {
+          "id": "icontainers-mexico-2025",
+          "name": "Mexico Ocean Freight Routes",
+          "authority": "iContainers",
+          "url": "https://www.icontainers.com/ocean-freight/mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf-Europe and Gulf-US East Coast shipping routes"
+        }
+      ]
+    },
+    {
+      "id": "terminal-us-east",
+      "nameEs": "→ Costa Este EEUU",
+      "nameEn": "→ US East Coast",
+      "country": "INTL",
+      "type": "terminal-region",
+      "tier": "standard",
+      "x": 14,
+      "y": 6,
+      "tradeValueUsd": null,
+      "tradeValueYear": null,
+      "truckCrossingsPerYear": null,
+      "containerVolumeTeu": null,
+      "primaryCommodities": [],
+      "corridorIds": [],
+      "destinationPorts": [
+        "Houston",
+        "New Orleans"
+      ],
+      "sources": [
+        {
+          "id": "freightamigo-gulf-2025",
+          "name": "Top 5 Mexican Gulf Ports",
+          "authority": "FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "source": "laredo-nuevo-laredo",
+      "target": "monterrey",
+      "route": "linea-roja",
+      "routeNameEs": "Línea Roja",
+      "routeNameEn": "NAFTA Spine",
+      "color": "#E63946",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery",
+        "produce"
+      ],
+      "evidence": "Laredo = $339B trade (2024), 5.8M truck crossings/yr, ~40% of all US-MX freight. Source: BTS Transborder 2025, Laredo EDC",
+      "sources": [
+        {
+          "id": "bts-transborder-2025",
+          "name": "Transborder Freight Data Annual Report 2025",
+          "authority": "Bureau of Transportation Statistics (US DOT)",
+          "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "US-Mexico total trade value by mode of transportation"
+        },
+        {
+          "id": "laredo-edc-2024",
+          "name": "Port Laredo International Trade Data",
+          "authority": "Laredo Economic Development Corporation",
+          "url": "https://www.laredoedc.org/site-selection/international-trade/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active",
+      "totalTradeValue": "$339B (Laredo, 2024)"
+    },
+    {
+      "source": "monterrey",
+      "target": "saltillo",
+      "route": "linea-roja",
+      "routeNameEs": "Línea Roja",
+      "routeNameEn": "NAFTA Spine",
+      "color": "#E63946",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery",
+        "produce"
+      ],
+      "evidence": "Laredo = $339B trade (2024), 5.8M truck crossings/yr, ~40% of all US-MX freight. Source: BTS Transborder 2025, Laredo EDC",
+      "sources": [
+        {
+          "id": "bts-transborder-2025",
+          "name": "Transborder Freight Data Annual Report 2025",
+          "authority": "Bureau of Transportation Statistics (US DOT)",
+          "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "US-Mexico total trade value by mode of transportation"
+        },
+        {
+          "id": "laredo-edc-2024",
+          "name": "Port Laredo International Trade Data",
+          "authority": "Laredo Economic Development Corporation",
+          "url": "https://www.laredoedc.org/site-selection/international-trade/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active",
+      "totalTradeValue": "$339B (Laredo, 2024)"
+    },
+    {
+      "source": "saltillo",
+      "target": "san-luis-potosi",
+      "route": "linea-roja",
+      "routeNameEs": "Línea Roja",
+      "routeNameEn": "NAFTA Spine",
+      "color": "#E63946",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery",
+        "produce"
+      ],
+      "evidence": "Laredo = $339B trade (2024), 5.8M truck crossings/yr, ~40% of all US-MX freight. Source: BTS Transborder 2025, Laredo EDC",
+      "sources": [
+        {
+          "id": "bts-transborder-2025",
+          "name": "Transborder Freight Data Annual Report 2025",
+          "authority": "Bureau of Transportation Statistics (US DOT)",
+          "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "US-Mexico total trade value by mode of transportation"
+        },
+        {
+          "id": "laredo-edc-2024",
+          "name": "Port Laredo International Trade Data",
+          "authority": "Laredo Economic Development Corporation",
+          "url": "https://www.laredoedc.org/site-selection/international-trade/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active",
+      "totalTradeValue": "$339B (Laredo, 2024)"
+    },
+    {
+      "source": "san-luis-potosi",
+      "target": "queretaro",
+      "route": "linea-roja",
+      "routeNameEs": "Línea Roja",
+      "routeNameEn": "NAFTA Spine",
+      "color": "#E63946",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery",
+        "produce"
+      ],
+      "evidence": "Laredo = $339B trade (2024), 5.8M truck crossings/yr, ~40% of all US-MX freight. Source: BTS Transborder 2025, Laredo EDC",
+      "sources": [
+        {
+          "id": "bts-transborder-2025",
+          "name": "Transborder Freight Data Annual Report 2025",
+          "authority": "Bureau of Transportation Statistics (US DOT)",
+          "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "US-Mexico total trade value by mode of transportation"
+        },
+        {
+          "id": "laredo-edc-2024",
+          "name": "Port Laredo International Trade Data",
+          "authority": "Laredo Economic Development Corporation",
+          "url": "https://www.laredoedc.org/site-selection/international-trade/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active",
+      "totalTradeValue": "$339B (Laredo, 2024)"
+    },
+    {
+      "source": "queretaro",
+      "target": "cdmx",
+      "route": "linea-roja",
+      "routeNameEs": "Línea Roja",
+      "routeNameEn": "NAFTA Spine",
+      "color": "#E63946",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery",
+        "produce"
+      ],
+      "evidence": "Laredo = $339B trade (2024), 5.8M truck crossings/yr, ~40% of all US-MX freight. Source: BTS Transborder 2025, Laredo EDC",
+      "sources": [
+        {
+          "id": "bts-transborder-2025",
+          "name": "Transborder Freight Data Annual Report 2025",
+          "authority": "Bureau of Transportation Statistics (US DOT)",
+          "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "US-Mexico total trade value by mode of transportation"
+        },
+        {
+          "id": "laredo-edc-2024",
+          "name": "Port Laredo International Trade Data",
+          "authority": "Laredo Economic Development Corporation",
+          "url": "https://www.laredoedc.org/site-selection/international-trade/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active",
+      "totalTradeValue": "$339B (Laredo, 2024)"
+    },
+    {
+      "source": "guadalajara",
+      "target": "leon",
+      "route": "linea-azul",
+      "routeNameEs": "Línea Azul",
+      "routeNameEn": "Bajío Express",
+      "color": "#457B9D",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "aerospace",
+        "auto parts"
+      ],
+      "evidence": "Mexico's auto heartland: 3.99M vehicles produced nationally (2024, record), 87% exported. Querétaro = 80+ aerospace firms. Source: AMIA, Co-Production Intl",
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        },
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active"
+    },
+    {
+      "source": "leon",
+      "target": "irapuato",
+      "route": "linea-azul",
+      "routeNameEs": "Línea Azul",
+      "routeNameEn": "Bajío Express",
+      "color": "#457B9D",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "aerospace",
+        "auto parts"
+      ],
+      "evidence": "Mexico's auto heartland: 3.99M vehicles produced nationally (2024, record), 87% exported. Querétaro = 80+ aerospace firms. Source: AMIA, Co-Production Intl",
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        },
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active"
+    },
+    {
+      "source": "irapuato",
+      "target": "celaya",
+      "route": "linea-azul",
+      "routeNameEs": "Línea Azul",
+      "routeNameEn": "Bajío Express",
+      "color": "#457B9D",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "aerospace",
+        "auto parts"
+      ],
+      "evidence": "Mexico's auto heartland: 3.99M vehicles produced nationally (2024, record), 87% exported. Querétaro = 80+ aerospace firms. Source: AMIA, Co-Production Intl",
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        },
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active"
+    },
+    {
+      "source": "celaya",
+      "target": "queretaro",
+      "route": "linea-azul",
+      "routeNameEs": "Línea Azul",
+      "routeNameEn": "Bajío Express",
+      "color": "#457B9D",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "aerospace",
+        "auto parts"
+      ],
+      "evidence": "Mexico's auto heartland: 3.99M vehicles produced nationally (2024, record), 87% exported. Querétaro = 80+ aerospace firms. Source: AMIA, Co-Production Intl",
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        },
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active"
+    },
+    {
+      "source": "queretaro",
+      "target": "aguascalientes",
+      "route": "linea-azul",
+      "routeNameEs": "Línea Azul",
+      "routeNameEn": "Bajío Express",
+      "color": "#457B9D",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "aerospace",
+        "auto parts"
+      ],
+      "evidence": "Mexico's auto heartland: 3.99M vehicles produced nationally (2024, record), 87% exported. Querétaro = 80+ aerospace firms. Source: AMIA, Co-Production Intl",
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        },
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active"
+    },
+    {
+      "source": "cdmx",
+      "target": "guadalajara",
+      "route": "linea-verde",
+      "routeNameEs": "Línea Verde",
+      "routeNameEn": "Pacific Gateway",
+      "color": "#2A9D8F",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods"
+      ],
+      "evidence": "Manzanillo = ~3.9M TEU (2025), Mexico's #1 container port 20+ yrs, handles 66% of import cargo. $3B expansion to 10M TEU by 2030. Source: Contecon, Mexico Business News",
+      "sources": [
+        {
+          "id": "contecon-manzanillo-2025",
+          "name": "Manzanillo Port Container Volumes",
+          "authority": "Contecon Manzanillo / WorldCargo News",
+          "url": "https://www.worldcargonews.com/ports-terminals/2026/01/manzanillo-handles-almost-4m-teu-in-2025/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Manzanillo container throughput in TEU"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active",
+      "totalTradeValue": "~3.9M TEU (Manzanillo, 2025)"
+    },
+    {
+      "source": "guadalajara",
+      "target": "manzanillo",
+      "route": "linea-verde",
+      "routeNameEs": "Línea Verde",
+      "routeNameEn": "Pacific Gateway",
+      "color": "#2A9D8F",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods"
+      ],
+      "evidence": "Manzanillo = ~3.9M TEU (2025), Mexico's #1 container port 20+ yrs, handles 66% of import cargo. $3B expansion to 10M TEU by 2030. Source: Contecon, Mexico Business News",
+      "sources": [
+        {
+          "id": "contecon-manzanillo-2025",
+          "name": "Manzanillo Port Container Volumes",
+          "authority": "Contecon Manzanillo / WorldCargo News",
+          "url": "https://www.worldcargonews.com/ports-terminals/2026/01/manzanillo-handles-almost-4m-teu-in-2025/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Manzanillo container throughput in TEU"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active",
+      "totalTradeValue": "~3.9M TEU (Manzanillo, 2025)"
+    },
+    {
+      "source": "manzanillo",
+      "target": "lazaro-cardenas",
+      "route": "linea-verde",
+      "routeNameEs": "Línea Verde",
+      "routeNameEn": "Pacific Gateway",
+      "color": "#2A9D8F",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods"
+      ],
+      "evidence": "Manzanillo = ~3.9M TEU (2025), Mexico's #1 container port 20+ yrs, handles 66% of import cargo. $3B expansion to 10M TEU by 2030. Source: Contecon, Mexico Business News",
+      "sources": [
+        {
+          "id": "contecon-manzanillo-2025",
+          "name": "Manzanillo Port Container Volumes",
+          "authority": "Contecon Manzanillo / WorldCargo News",
+          "url": "https://www.worldcargonews.com/ports-terminals/2026/01/manzanillo-handles-almost-4m-teu-in-2025/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Manzanillo container throughput in TEU"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active",
+      "totalTradeValue": "~3.9M TEU (Manzanillo, 2025)"
+    },
+    {
+      "source": "monterrey",
+      "target": "reynosa-mcallen",
+      "route": "linea-amarilla",
+      "routeNameEs": "Línea Amarilla",
+      "routeNameEn": "Gulf Corridor",
+      "color": "#E9C46A",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "textiles",
+        "electronics",
+        "medical devices"
+      ],
+      "evidence": "Gulf Coast maquiladora belt: textiles, electronics, medical devices. Lower wait times than Laredo, rapidly expanding. Source: BTS Border Crossing Data 2025",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active"
+    },
+    {
+      "source": "reynosa-mcallen",
+      "target": "matamoros-brownsville",
+      "route": "linea-amarilla",
+      "routeNameEs": "Línea Amarilla",
+      "routeNameEn": "Gulf Corridor",
+      "color": "#E9C46A",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "textiles",
+        "electronics",
+        "medical devices"
+      ],
+      "evidence": "Gulf Coast maquiladora belt: textiles, electronics, medical devices. Lower wait times than Laredo, rapidly expanding. Source: BTS Border Crossing Data 2025",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active"
+    },
+    {
+      "source": "matamoros-brownsville",
+      "target": "altamira",
+      "route": "linea-amarilla",
+      "routeNameEs": "Línea Amarilla",
+      "routeNameEn": "Gulf Corridor",
+      "color": "#E9C46A",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "textiles",
+        "electronics",
+        "medical devices"
+      ],
+      "evidence": "Gulf Coast maquiladora belt: textiles, electronics, medical devices. Lower wait times than Laredo, rapidly expanding. Source: BTS Border Crossing Data 2025",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active"
+    },
+    {
+      "source": "veracruz",
+      "target": "coatzacoalcos",
+      "route": "linea-morada",
+      "routeNameEs": "Línea Morada",
+      "routeNameEn": "Interoceanic",
+      "color": "#9B5DE5",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "low",
+      "primaryCommodities": [
+        "breakbulk",
+        "automotive",
+        "containers"
+      ],
+      "evidence": "Isthmus of Tehuantepec, 87.7% complete, full ops expected June 2026. Hyundai Glovis pilot: 900 vehicles crossed in ~9 hrs by rail. Source: BNamericas, Automotive Logistics",
+      "sources": [
+        {
+          "id": "ciit-status-2026",
+          "name": "Interoceanic Corridor (CIIT) Completion Status",
+          "authority": "BNamericas / Automotive Logistics",
+          "url": "https://www.automotivelogistics.media/supply-chain/mexicos-interoceanic-corridor-of-the-isthmus-of-tehuantepec-set-for-completion-in-2026/2586327",
+          "accessDate": "2026-03-19",
+          "dataYear": 2026,
+          "coverage": "CIIT rail/highway construction progress and completion timeline"
+        }
+      ],
+      "primaryMode": "rail",
+      "status": "active"
+    },
+    {
+      "source": "coatzacoalcos",
+      "target": "salina-cruz",
+      "route": "linea-morada",
+      "routeNameEs": "Línea Morada",
+      "routeNameEn": "Interoceanic",
+      "color": "#9B5DE5",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "low",
+      "primaryCommodities": [
+        "breakbulk",
+        "automotive",
+        "containers"
+      ],
+      "evidence": "Isthmus of Tehuantepec, 87.7% complete, full ops expected June 2026. Hyundai Glovis pilot: 900 vehicles crossed in ~9 hrs by rail. Source: BNamericas, Automotive Logistics",
+      "sources": [
+        {
+          "id": "ciit-status-2026",
+          "name": "Interoceanic Corridor (CIIT) Completion Status",
+          "authority": "BNamericas / Automotive Logistics",
+          "url": "https://www.automotivelogistics.media/supply-chain/mexicos-interoceanic-corridor-of-the-isthmus-of-tehuantepec-set-for-completion-in-2026/2586327",
+          "accessDate": "2026-03-19",
+          "dataYear": 2026,
+          "coverage": "CIIT rail/highway construction progress and completion timeline"
+        }
+      ],
+      "primaryMode": "rail",
+      "status": "active"
+    },
+    {
+      "source": "ensenada",
+      "target": "tijuana",
+      "route": "linea-naranja",
+      "routeNameEs": "Línea Naranja",
+      "routeNameEn": "Western Border",
+      "color": "#F4A261",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "agriculture",
+        "electronics",
+        "maquiladora goods"
+      ],
+      "evidence": "CA/AZ maquiladora belt. Nogales = seasonal agriculture powerhouse. Source: BTS Border Crossing Data 2025",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active"
+    },
+    {
+      "source": "tijuana",
+      "target": "tecate",
+      "route": "linea-naranja",
+      "routeNameEs": "Línea Naranja",
+      "routeNameEn": "Western Border",
+      "color": "#F4A261",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "agriculture",
+        "electronics",
+        "maquiladora goods"
+      ],
+      "evidence": "CA/AZ maquiladora belt. Nogales = seasonal agriculture powerhouse. Source: BTS Border Crossing Data 2025",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active"
+    },
+    {
+      "source": "tecate",
+      "target": "mexicali",
+      "route": "linea-naranja",
+      "routeNameEs": "Línea Naranja",
+      "routeNameEn": "Western Border",
+      "color": "#F4A261",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "agriculture",
+        "electronics",
+        "maquiladora goods"
+      ],
+      "evidence": "CA/AZ maquiladora belt. Nogales = seasonal agriculture powerhouse. Source: BTS Border Crossing Data 2025",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active"
+    },
+    {
+      "source": "mexicali",
+      "target": "nogales",
+      "route": "linea-naranja",
+      "routeNameEs": "Línea Naranja",
+      "routeNameEn": "Western Border",
+      "color": "#F4A261",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "agriculture",
+        "electronics",
+        "maquiladora goods"
+      ],
+      "evidence": "CA/AZ maquiladora belt. Nogales = seasonal agriculture powerhouse. Source: BTS Border Crossing Data 2025",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active"
+    },
+    {
+      "source": "nogales",
+      "target": "guadalajara",
+      "route": "linea-naranja",
+      "routeNameEs": "Línea Naranja",
+      "routeNameEn": "Western Border",
+      "color": "#F4A261",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "agriculture",
+        "electronics",
+        "maquiladora goods"
+      ],
+      "evidence": "CA/AZ maquiladora belt. Nogales = seasonal agriculture powerhouse. Source: BTS Border Crossing Data 2025",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active"
+    },
+    {
+      "source": "el-paso-juarez",
+      "target": "chihuahua",
+      "route": "linea-blanca",
+      "routeNameEs": "Línea Blanca",
+      "routeNameEn": "El Paso Corridor",
+      "color": "#8D99AE",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery"
+      ],
+      "evidence": "$105.6B trade (2024), ~19% of TX cross-border commerce. 300+ maquiladoras, 300K+ workers. ~994K commercial crossings/yr. Source: PDN Uno, TxDOT",
+      "sources": [
+        {
+          "id": "pdn-uno-elpaso-2024",
+          "name": "El Paso / Juárez Border Crossing Data",
+          "authority": "PDN Uno / TxDOT",
+          "url": "https://pdnuno.com/data/crossings/cargo-trucks",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "El Paso commercial vehicle crossings and trade value"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active",
+      "totalTradeValue": "$105.6B (2024)"
+    },
+    {
+      "source": "chihuahua",
+      "target": "aguascalientes",
+      "route": "linea-blanca",
+      "routeNameEs": "Línea Blanca",
+      "routeNameEn": "El Paso Corridor",
+      "color": "#8D99AE",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery"
+      ],
+      "evidence": "$105.6B trade (2024), ~19% of TX cross-border commerce. 300+ maquiladoras, 300K+ workers. ~994K commercial crossings/yr. Source: PDN Uno, TxDOT",
+      "sources": [
+        {
+          "id": "pdn-uno-elpaso-2024",
+          "name": "El Paso / Juárez Border Crossing Data",
+          "authority": "PDN Uno / TxDOT",
+          "url": "https://pdnuno.com/data/crossings/cargo-trucks",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "El Paso commercial vehicle crossings and trade value"
+        }
+      ],
+      "primaryMode": "truck",
+      "status": "active",
+      "totalTradeValue": "$105.6B (2024)"
+    },
+    {
+      "source": "cdmx",
+      "target": "toluca",
+      "route": "linea-cafe",
+      "routeNameEs": "Línea Café",
+      "routeNameEn": "Central Spine",
+      "color": "#6B4226",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "consumer goods",
+        "automotive",
+        "petrochemicals"
+      ],
+      "evidence": "National distribution hub. CPKC Puerta México intermodal (Toluca). Ferrosur rail to Gulf via Puebla-Veracruz. Source: CPKC, Ferrosur",
+      "sources": [
+        {
+          "id": "cpkc-ferromex-2024",
+          "name": "Rail Network and Freight Volumes",
+          "authority": "Ferromex / CPKC",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail network maps and intermodal terminal locations"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active"
+    },
+    {
+      "source": "toluca",
+      "target": "puebla",
+      "route": "linea-cafe",
+      "routeNameEs": "Línea Café",
+      "routeNameEn": "Central Spine",
+      "color": "#6B4226",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "consumer goods",
+        "automotive",
+        "petrochemicals"
+      ],
+      "evidence": "National distribution hub. CPKC Puerta México intermodal (Toluca). Ferrosur rail to Gulf via Puebla-Veracruz. Source: CPKC, Ferrosur",
+      "sources": [
+        {
+          "id": "cpkc-ferromex-2024",
+          "name": "Rail Network and Freight Volumes",
+          "authority": "Ferromex / CPKC",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail network maps and intermodal terminal locations"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active"
+    },
+    {
+      "source": "puebla",
+      "target": "veracruz",
+      "route": "linea-cafe",
+      "routeNameEs": "Línea Café",
+      "routeNameEn": "Central Spine",
+      "color": "#6B4226",
+      "kind": "land",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryCommodities": [
+        "consumer goods",
+        "automotive",
+        "petrochemicals"
+      ],
+      "evidence": "National distribution hub. CPKC Puerta México intermodal (Toluca). Ferrosur rail to Gulf via Puebla-Veracruz. Source: CPKC, Ferrosur",
+      "sources": [
+        {
+          "id": "cpkc-ferromex-2024",
+          "name": "Rail Network and Freight Volumes",
+          "authority": "Ferromex / CPKC",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail network maps and intermodal terminal locations"
+        }
+      ],
+      "primaryMode": "both",
+      "status": "active"
+    },
+    {
+      "source": "monterrey",
+      "target": "laredo-nuevo-laredo",
+      "route": "corredor-verde",
+      "routeNameEs": "Corredor Verde",
+      "routeNameEn": "Green Corridors Guideway",
+      "color": "#457B9D",
+      "kind": "land",
+      "lineStyle": "dashed",
+      "lineWeight": "low",
+      "primaryCommodities": [
+        "freight rail"
+      ],
+      "evidence": "Under construction. Separates freight from passenger rail. Expected +40% capacity. Source: Mexico Business News",
+      "sources": [
+        {
+          "id": "artf-rail-2024",
+          "name": "Rail Tonnage Reports",
+          "authority": "ARTF (Mexico Rail Regulator)",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail freight tonnage by corridor in Mexico"
+        }
+      ],
+      "primaryMode": "rail",
+      "status": "planned"
+    },
+    {
+      "source": "ensenada",
+      "target": "manzanillo",
+      "route": "pacific-asia-express",
+      "routeNameEs": "Ruta Pacífico-Asia",
+      "routeNameEn": "Pacific-Asia Express",
+      "color": "#00BCD4",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods",
+        "containers"
+      ],
+      "evidence": "CMA CGM M2X service: Tianjin → Qingdao → Busan → Ensenada → Manzanillo → Lázaro Cárdenas. MSC loop: Qingdao → Shanghai → Busan → Manzanillo. Cosco TLP5: 15-20 day transit. Source: FreightWaves, Lading Cargo",
+      "sources": [
+        {
+          "id": "freightwaves-asia-mexico-2025",
+          "name": "Asia-to-Mexico Shipping Routes",
+          "authority": "CMA CGM / FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+        },
+        {
+          "id": "ladingcargo-cosco-2025",
+          "name": "Cosco TLP5 Asia-Mexico Route",
+          "authority": "Cosco / Lading Cargo",
+          "url": "https://ladingcargo.com/blog/shipping-giants-unveil-express-routes-linking-asia-and-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Cosco TLP5 transit times, MSC loops, Asia-Mexico carriers"
+        }
+      ],
+      "carriers": [
+        "CMA CGM (M2X)",
+        "MSC",
+        "Cosco (TLP5)"
+      ],
+      "transitTimeDays": "15-20",
+      "ocean": "pacific"
+    },
+    {
+      "source": "manzanillo",
+      "target": "lazaro-cardenas",
+      "route": "pacific-asia-express",
+      "routeNameEs": "Ruta Pacífico-Asia",
+      "routeNameEn": "Pacific-Asia Express",
+      "color": "#00BCD4",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods",
+        "containers"
+      ],
+      "evidence": "CMA CGM M2X service: Tianjin → Qingdao → Busan → Ensenada → Manzanillo → Lázaro Cárdenas. MSC loop: Qingdao → Shanghai → Busan → Manzanillo. Cosco TLP5: 15-20 day transit. Source: FreightWaves, Lading Cargo",
+      "sources": [
+        {
+          "id": "freightwaves-asia-mexico-2025",
+          "name": "Asia-to-Mexico Shipping Routes",
+          "authority": "CMA CGM / FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+        },
+        {
+          "id": "ladingcargo-cosco-2025",
+          "name": "Cosco TLP5 Asia-Mexico Route",
+          "authority": "Cosco / Lading Cargo",
+          "url": "https://ladingcargo.com/blog/shipping-giants-unveil-express-routes-linking-asia-and-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Cosco TLP5 transit times, MSC loops, Asia-Mexico carriers"
+        }
+      ],
+      "carriers": [
+        "CMA CGM (M2X)",
+        "MSC",
+        "Cosco (TLP5)"
+      ],
+      "transitTimeDays": "15-20",
+      "ocean": "pacific"
+    },
+    {
+      "source": "lazaro-cardenas",
+      "target": "terminal-asia",
+      "route": "pacific-asia-express",
+      "routeNameEs": "Ruta Pacífico-Asia",
+      "routeNameEn": "Pacific-Asia Express",
+      "color": "#00BCD4",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods",
+        "containers"
+      ],
+      "evidence": "CMA CGM M2X service: Tianjin → Qingdao → Busan → Ensenada → Manzanillo → Lázaro Cárdenas. MSC loop: Qingdao → Shanghai → Busan → Manzanillo. Cosco TLP5: 15-20 day transit. Source: FreightWaves, Lading Cargo",
+      "sources": [
+        {
+          "id": "freightwaves-asia-mexico-2025",
+          "name": "Asia-to-Mexico Shipping Routes",
+          "authority": "CMA CGM / FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+        },
+        {
+          "id": "ladingcargo-cosco-2025",
+          "name": "Cosco TLP5 Asia-Mexico Route",
+          "authority": "Cosco / Lading Cargo",
+          "url": "https://ladingcargo.com/blog/shipping-giants-unveil-express-routes-linking-asia-and-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Cosco TLP5 transit times, MSC loops, Asia-Mexico carriers"
+        }
+      ],
+      "carriers": [
+        "CMA CGM (M2X)",
+        "MSC",
+        "Cosco (TLP5)"
+      ],
+      "transitTimeDays": "15-20",
+      "ocean": "pacific"
+    },
+    {
+      "source": "lazaro-cardenas",
+      "target": "manzanillo",
+      "route": "transpacific-gateway",
+      "routeNameEs": "Ruta Transpacífica",
+      "routeNameEn": "Transpacific Gateway",
+      "color": "#009688",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "machinery",
+        "raw materials"
+      ],
+      "evidence": "Direct China-Mexico route. Import bookings from China skyrocketed 2023-2025. Chinese FDI in Mexico up 11% YoY. Source: FreightWaves",
+      "sources": [
+        {
+          "id": "freightwaves-asia-mexico-2025",
+          "name": "Asia-to-Mexico Shipping Routes",
+          "authority": "CMA CGM / FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+        }
+      ],
+      "carriers": [
+        "MSC",
+        "Cosco",
+        "Hapag-Lloyd"
+      ],
+      "transitTimeDays": "18-25",
+      "ocean": "pacific"
+    },
+    {
+      "source": "manzanillo",
+      "target": "terminal-asia",
+      "route": "transpacific-gateway",
+      "routeNameEs": "Ruta Transpacífica",
+      "routeNameEn": "Transpacific Gateway",
+      "color": "#009688",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "machinery",
+        "raw materials"
+      ],
+      "evidence": "Direct China-Mexico route. Import bookings from China skyrocketed 2023-2025. Chinese FDI in Mexico up 11% YoY. Source: FreightWaves",
+      "sources": [
+        {
+          "id": "freightwaves-asia-mexico-2025",
+          "name": "Asia-to-Mexico Shipping Routes",
+          "authority": "CMA CGM / FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+        }
+      ],
+      "carriers": [
+        "MSC",
+        "Cosco",
+        "Hapag-Lloyd"
+      ],
+      "transitTimeDays": "18-25",
+      "ocean": "pacific"
+    },
+    {
+      "source": "veracruz",
+      "target": "altamira",
+      "route": "gulf-europe",
+      "routeNameEs": "Ruta Golfo-Europa",
+      "routeNameEn": "Gulf-Europe Line",
+      "color": "#1A237E",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "auto parts",
+        "finished vehicles"
+      ],
+      "evidence": "Veracruz = primary automotive export gateway to Europe. Auto parts + finished vehicles via Hwy 150D from Puebla. Source: iContainers, FreightAmigo",
+      "sources": [
+        {
+          "id": "icontainers-mexico-2025",
+          "name": "Mexico Ocean Freight Routes",
+          "authority": "iContainers",
+          "url": "https://www.icontainers.com/ocean-freight/mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf-Europe and Gulf-US East Coast shipping routes"
+        },
+        {
+          "id": "freightamigo-gulf-2025",
+          "name": "Top 5 Mexican Gulf Ports",
+          "authority": "FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+        }
+      ],
+      "carriers": [
+        "Maersk",
+        "MSC",
+        "Hapag-Lloyd"
+      ],
+      "transitTimeDays": "12-16",
+      "ocean": "gulf-atlantic"
+    },
+    {
+      "source": "altamira",
+      "target": "terminal-europe",
+      "route": "gulf-europe",
+      "routeNameEs": "Ruta Golfo-Europa",
+      "routeNameEn": "Gulf-Europe Line",
+      "color": "#1A237E",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "automotive",
+        "auto parts",
+        "finished vehicles"
+      ],
+      "evidence": "Veracruz = primary automotive export gateway to Europe. Auto parts + finished vehicles via Hwy 150D from Puebla. Source: iContainers, FreightAmigo",
+      "sources": [
+        {
+          "id": "icontainers-mexico-2025",
+          "name": "Mexico Ocean Freight Routes",
+          "authority": "iContainers",
+          "url": "https://www.icontainers.com/ocean-freight/mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf-Europe and Gulf-US East Coast shipping routes"
+        },
+        {
+          "id": "freightamigo-gulf-2025",
+          "name": "Top 5 Mexican Gulf Ports",
+          "authority": "FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+        }
+      ],
+      "carriers": [
+        "Maersk",
+        "MSC",
+        "Hapag-Lloyd"
+      ],
+      "transitTimeDays": "12-16",
+      "ocean": "gulf-atlantic"
+    },
+    {
+      "source": "coatzacoalcos",
+      "target": "veracruz",
+      "route": "gulf-us-east",
+      "routeNameEs": "Ruta Golfo-EEUU",
+      "routeNameEn": "Gulf-US East Coast",
+      "color": "#546E7A",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "petrochemicals",
+        "energy products",
+        "containers"
+      ],
+      "evidence": "Gulf Coast energy corridor. Altamira = 37% of Mexico's Gulf container traffic. Petrochemicals and energy products. Source: Unisco, Mexico Business News",
+      "sources": [
+        {
+          "id": "unisco-altamira-2025",
+          "name": "Altamira Port Profile",
+          "authority": "Unisco",
+          "url": "https://www.unisco.com/international-ports/altamira-mexico",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Altamira Gulf container traffic share, energy/petrochem focus"
+        },
+        {
+          "id": "freightamigo-gulf-2025",
+          "name": "Top 5 Mexican Gulf Ports",
+          "authority": "FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+        }
+      ],
+      "carriers": [
+        "Maersk",
+        "CMA CGM",
+        "ZIM"
+      ],
+      "transitTimeDays": "3-7",
+      "ocean": "gulf-atlantic"
+    },
+    {
+      "source": "veracruz",
+      "target": "altamira",
+      "route": "gulf-us-east",
+      "routeNameEs": "Ruta Golfo-EEUU",
+      "routeNameEn": "Gulf-US East Coast",
+      "color": "#546E7A",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "petrochemicals",
+        "energy products",
+        "containers"
+      ],
+      "evidence": "Gulf Coast energy corridor. Altamira = 37% of Mexico's Gulf container traffic. Petrochemicals and energy products. Source: Unisco, Mexico Business News",
+      "sources": [
+        {
+          "id": "unisco-altamira-2025",
+          "name": "Altamira Port Profile",
+          "authority": "Unisco",
+          "url": "https://www.unisco.com/international-ports/altamira-mexico",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Altamira Gulf container traffic share, energy/petrochem focus"
+        },
+        {
+          "id": "freightamigo-gulf-2025",
+          "name": "Top 5 Mexican Gulf Ports",
+          "authority": "FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+        }
+      ],
+      "carriers": [
+        "Maersk",
+        "CMA CGM",
+        "ZIM"
+      ],
+      "transitTimeDays": "3-7",
+      "ocean": "gulf-atlantic"
+    },
+    {
+      "source": "altamira",
+      "target": "terminal-us-east",
+      "route": "gulf-us-east",
+      "routeNameEs": "Ruta Golfo-EEUU",
+      "routeNameEn": "Gulf-US East Coast",
+      "color": "#546E7A",
+      "kind": "maritime",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "primaryCommodities": [
+        "petrochemicals",
+        "energy products",
+        "containers"
+      ],
+      "evidence": "Gulf Coast energy corridor. Altamira = 37% of Mexico's Gulf container traffic. Petrochemicals and energy products. Source: Unisco, Mexico Business News",
+      "sources": [
+        {
+          "id": "unisco-altamira-2025",
+          "name": "Altamira Port Profile",
+          "authority": "Unisco",
+          "url": "https://www.unisco.com/international-ports/altamira-mexico",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Altamira Gulf container traffic share, energy/petrochem focus"
+        },
+        {
+          "id": "freightamigo-gulf-2025",
+          "name": "Top 5 Mexican Gulf Ports",
+          "authority": "FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+        }
+      ],
+      "carriers": [
+        "Maersk",
+        "CMA CGM",
+        "ZIM"
+      ],
+      "transitTimeDays": "3-7",
+      "ocean": "gulf-atlantic"
+    }
+  ],
+  "routes": [
+    {
+      "id": "linea-roja",
+      "nameEs": "Línea Roja",
+      "nameEn": "NAFTA Spine",
+      "color": "#E63946",
+      "lineNumber": 1,
+      "status": "active",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryMode": "truck",
+      "stationIds": [
+        "laredo-nuevo-laredo",
+        "monterrey",
+        "saltillo",
+        "san-luis-potosi",
+        "queretaro",
+        "cdmx"
+      ],
+      "totalTradeValue": "$339B (Laredo, 2024)",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery",
+        "produce"
+      ],
+      "evidence": "Laredo = $339B trade (2024), 5.8M truck crossings/yr, ~40% of all US-MX freight. Source: BTS Transborder 2025, Laredo EDC",
+      "sourceIds": [
+        "bts-transborder-2025",
+        "laredo-edc-2024"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "bts-transborder-2025",
+          "name": "Transborder Freight Data Annual Report 2025",
+          "authority": "Bureau of Transportation Statistics (US DOT)",
+          "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "US-Mexico total trade value by mode of transportation"
+        },
+        {
+          "id": "laredo-edc-2024",
+          "name": "Port Laredo International Trade Data",
+          "authority": "Laredo Economic Development Corporation",
+          "url": "https://www.laredoedc.org/site-selection/international-trade/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+        }
+      ]
+    },
+    {
+      "id": "linea-azul",
+      "nameEs": "Línea Azul",
+      "nameEn": "Bajío Express",
+      "color": "#457B9D",
+      "lineNumber": 2,
+      "status": "active",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryMode": "both",
+      "stationIds": [
+        "guadalajara",
+        "leon",
+        "irapuato",
+        "celaya",
+        "queretaro",
+        "aguascalientes"
+      ],
+      "totalTradeValue": null,
+      "primaryCommodities": [
+        "automotive",
+        "aerospace",
+        "auto parts"
+      ],
+      "evidence": "Mexico's auto heartland: 3.99M vehicles produced nationally (2024, record), 87% exported. Querétaro = 80+ aerospace firms. Source: AMIA, Co-Production Intl",
+      "sourceIds": [
+        "amia-auto-2024",
+        "coproduction-bajio-2025"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "amia-auto-2024",
+          "name": "Mexico Vehicle Production Records",
+          "authority": "AMIA / Tecma",
+          "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Mexico national vehicle production and export volumes"
+        },
+        {
+          "id": "coproduction-bajio-2025",
+          "name": "Bajío Manufacturing Region Profile",
+          "authority": "Co-Production International",
+          "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Aerospace and automotive firms by state in Bajío region"
+        }
+      ]
+    },
+    {
+      "id": "linea-verde",
+      "nameEs": "Línea Verde",
+      "nameEn": "Pacific Gateway",
+      "color": "#2A9D8F",
+      "lineNumber": 3,
+      "status": "active",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryMode": "both",
+      "stationIds": [
+        "cdmx",
+        "guadalajara",
+        "manzanillo",
+        "lazaro-cardenas"
+      ],
+      "totalTradeValue": "~3.9M TEU (Manzanillo, 2025)",
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods"
+      ],
+      "evidence": "Manzanillo = ~3.9M TEU (2025), Mexico's #1 container port 20+ yrs, handles 66% of import cargo. $3B expansion to 10M TEU by 2030. Source: Contecon, Mexico Business News",
+      "sourceIds": [
+        "contecon-manzanillo-2025"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "contecon-manzanillo-2025",
+          "name": "Manzanillo Port Container Volumes",
+          "authority": "Contecon Manzanillo / WorldCargo News",
+          "url": "https://www.worldcargonews.com/ports-terminals/2026/01/manzanillo-handles-almost-4m-teu-in-2025/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Manzanillo container throughput in TEU"
+        }
+      ]
+    },
+    {
+      "id": "linea-amarilla",
+      "nameEs": "Línea Amarilla",
+      "nameEn": "Gulf Corridor",
+      "color": "#E9C46A",
+      "lineNumber": 4,
+      "status": "active",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryMode": "truck",
+      "stationIds": [
+        "monterrey",
+        "reynosa-mcallen",
+        "matamoros-brownsville",
+        "altamira"
+      ],
+      "totalTradeValue": null,
+      "primaryCommodities": [
+        "textiles",
+        "electronics",
+        "medical devices"
+      ],
+      "evidence": "Gulf Coast maquiladora belt: textiles, electronics, medical devices. Lower wait times than Laredo, rapidly expanding. Source: BTS Border Crossing Data 2025",
+      "sourceIds": [
+        "bts-border-crossing-2025"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ]
+    },
+    {
+      "id": "linea-morada",
+      "nameEs": "Línea Morada",
+      "nameEn": "Interoceanic",
+      "color": "#9B5DE5",
+      "lineNumber": 5,
+      "status": "active",
+      "lineStyle": "solid",
+      "lineWeight": "low",
+      "primaryMode": "rail",
+      "stationIds": [
+        "veracruz",
+        "coatzacoalcos",
+        "salina-cruz"
+      ],
+      "totalTradeValue": null,
+      "primaryCommodities": [
+        "breakbulk",
+        "automotive",
+        "containers"
+      ],
+      "evidence": "Isthmus of Tehuantepec, 87.7% complete, full ops expected June 2026. Hyundai Glovis pilot: 900 vehicles crossed in ~9 hrs by rail. Source: BNamericas, Automotive Logistics",
+      "sourceIds": [
+        "ciit-status-2026"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "ciit-status-2026",
+          "name": "Interoceanic Corridor (CIIT) Completion Status",
+          "authority": "BNamericas / Automotive Logistics",
+          "url": "https://www.automotivelogistics.media/supply-chain/mexicos-interoceanic-corridor-of-the-isthmus-of-tehuantepec-set-for-completion-in-2026/2586327",
+          "accessDate": "2026-03-19",
+          "dataYear": 2026,
+          "coverage": "CIIT rail/highway construction progress and completion timeline"
+        }
+      ]
+    },
+    {
+      "id": "linea-naranja",
+      "nameEs": "Línea Naranja",
+      "nameEn": "Western Border",
+      "color": "#F4A261",
+      "lineNumber": 6,
+      "status": "active",
+      "lineStyle": "solid",
+      "lineWeight": "medium",
+      "primaryMode": "truck",
+      "stationIds": [
+        "ensenada",
+        "tijuana",
+        "tecate",
+        "mexicali",
+        "nogales",
+        "guadalajara"
+      ],
+      "totalTradeValue": null,
+      "primaryCommodities": [
+        "agriculture",
+        "electronics",
+        "maquiladora goods"
+      ],
+      "evidence": "CA/AZ maquiladora belt. Nogales = seasonal agriculture powerhouse. Source: BTS Border Crossing Data 2025",
+      "sourceIds": [
+        "bts-border-crossing-2025"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "bts-border-crossing-2025",
+          "name": "Border Crossing/Entry Data",
+          "authority": "Bureau of Transportation Statistics / CBP",
+          "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+        }
+      ]
+    },
+    {
+      "id": "linea-blanca",
+      "nameEs": "Línea Blanca",
+      "nameEn": "El Paso Corridor",
+      "color": "#8D99AE",
+      "lineNumber": 7,
+      "status": "active",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryMode": "truck",
+      "stationIds": [
+        "el-paso-juarez",
+        "chihuahua",
+        "aguascalientes"
+      ],
+      "totalTradeValue": "$105.6B (2024)",
+      "primaryCommodities": [
+        "automotive",
+        "electronics",
+        "machinery"
+      ],
+      "evidence": "$105.6B trade (2024), ~19% of TX cross-border commerce. 300+ maquiladoras, 300K+ workers. ~994K commercial crossings/yr. Source: PDN Uno, TxDOT",
+      "sourceIds": [
+        "pdn-uno-elpaso-2024"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "pdn-uno-elpaso-2024",
+          "name": "El Paso / Juárez Border Crossing Data",
+          "authority": "PDN Uno / TxDOT",
+          "url": "https://pdnuno.com/data/crossings/cargo-trucks",
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "El Paso commercial vehicle crossings and trade value"
+        }
+      ]
+    },
+    {
+      "id": "linea-cafe",
+      "nameEs": "Línea Café",
+      "nameEn": "Central Spine",
+      "color": "#6B4226",
+      "lineNumber": 8,
+      "status": "active",
+      "lineStyle": "solid",
+      "lineWeight": "high",
+      "primaryMode": "both",
+      "stationIds": [
+        "cdmx",
+        "toluca",
+        "puebla",
+        "veracruz"
+      ],
+      "totalTradeValue": null,
+      "primaryCommodities": [
+        "consumer goods",
+        "automotive",
+        "petrochemicals"
+      ],
+      "evidence": "National distribution hub. CPKC Puerta México intermodal (Toluca). Ferrosur rail to Gulf via Puebla-Veracruz. Source: CPKC, Ferrosur",
+      "sourceIds": [
+        "cpkc-ferromex-2024"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "cpkc-ferromex-2024",
+          "name": "Rail Network and Freight Volumes",
+          "authority": "Ferromex / CPKC",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail network maps and intermodal terminal locations"
+        }
+      ]
+    },
+    {
+      "id": "corredor-verde",
+      "nameEs": "Corredor Verde",
+      "nameEn": "Green Corridors Guideway",
+      "color": "#457B9D",
+      "lineNumber": 9,
+      "status": "planned",
+      "lineStyle": "dashed",
+      "lineWeight": "low",
+      "primaryMode": "rail",
+      "stationIds": [
+        "monterrey",
+        "laredo-nuevo-laredo"
+      ],
+      "totalTradeValue": null,
+      "primaryCommodities": [
+        "freight rail"
+      ],
+      "evidence": "Under construction. Separates freight from passenger rail. Expected +40% capacity. Source: Mexico Business News",
+      "sourceIds": [
+        "artf-rail-2024"
+      ],
+      "kind": "land",
+      "sources": [
+        {
+          "id": "artf-rail-2024",
+          "name": "Rail Tonnage Reports",
+          "authority": "ARTF (Mexico Rail Regulator)",
+          "url": null,
+          "accessDate": "2026-03-19",
+          "dataYear": 2024,
+          "coverage": "Rail freight tonnage by corridor in Mexico"
+        }
+      ]
+    },
+    {
+      "id": "pacific-asia-express",
+      "nameEs": "Ruta Pacífico-Asia",
+      "nameEn": "Pacific-Asia Express",
+      "color": "#00BCD4",
+      "lineNumber": 10,
+      "ocean": "pacific",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "stationIds": [
+        "ensenada",
+        "manzanillo",
+        "lazaro-cardenas",
+        "terminal-asia"
+      ],
+      "carriers": [
+        "CMA CGM (M2X)",
+        "MSC",
+        "Cosco (TLP5)"
+      ],
+      "transitTimeDays": "15-20",
+      "primaryCommodities": [
+        "electronics",
+        "auto parts",
+        "consumer goods",
+        "containers"
+      ],
+      "evidence": "CMA CGM M2X service: Tianjin → Qingdao → Busan → Ensenada → Manzanillo → Lázaro Cárdenas. MSC loop: Qingdao → Shanghai → Busan → Manzanillo. Cosco TLP5: 15-20 day transit. Source: FreightWaves, Lading Cargo",
+      "sourceIds": [
+        "freightwaves-asia-mexico-2025",
+        "ladingcargo-cosco-2025"
+      ],
+      "kind": "maritime",
+      "sources": [
+        {
+          "id": "freightwaves-asia-mexico-2025",
+          "name": "Asia-to-Mexico Shipping Routes",
+          "authority": "CMA CGM / FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+        },
+        {
+          "id": "ladingcargo-cosco-2025",
+          "name": "Cosco TLP5 Asia-Mexico Route",
+          "authority": "Cosco / Lading Cargo",
+          "url": "https://ladingcargo.com/blog/shipping-giants-unveil-express-routes-linking-asia-and-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Cosco TLP5 transit times, MSC loops, Asia-Mexico carriers"
+        }
+      ]
+    },
+    {
+      "id": "transpacific-gateway",
+      "nameEs": "Ruta Transpacífica",
+      "nameEn": "Transpacific Gateway",
+      "color": "#009688",
+      "lineNumber": 11,
+      "ocean": "pacific",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "stationIds": [
+        "lazaro-cardenas",
+        "manzanillo",
+        "terminal-asia"
+      ],
+      "carriers": [
+        "MSC",
+        "Cosco",
+        "Hapag-Lloyd"
+      ],
+      "transitTimeDays": "18-25",
+      "primaryCommodities": [
+        "automotive",
+        "machinery",
+        "raw materials"
+      ],
+      "evidence": "Direct China-Mexico route. Import bookings from China skyrocketed 2023-2025. Chinese FDI in Mexico up 11% YoY. Source: FreightWaves",
+      "sourceIds": [
+        "freightwaves-asia-mexico-2025"
+      ],
+      "kind": "maritime",
+      "sources": [
+        {
+          "id": "freightwaves-asia-mexico-2025",
+          "name": "Asia-to-Mexico Shipping Routes",
+          "authority": "CMA CGM / FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+        }
+      ]
+    },
+    {
+      "id": "gulf-europe",
+      "nameEs": "Ruta Golfo-Europa",
+      "nameEn": "Gulf-Europe Line",
+      "color": "#1A237E",
+      "lineNumber": 12,
+      "ocean": "gulf-atlantic",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "stationIds": [
+        "veracruz",
+        "altamira",
+        "terminal-europe"
+      ],
+      "carriers": [
+        "Maersk",
+        "MSC",
+        "Hapag-Lloyd"
+      ],
+      "transitTimeDays": "12-16",
+      "primaryCommodities": [
+        "automotive",
+        "auto parts",
+        "finished vehicles"
+      ],
+      "evidence": "Veracruz = primary automotive export gateway to Europe. Auto parts + finished vehicles via Hwy 150D from Puebla. Source: iContainers, FreightAmigo",
+      "sourceIds": [
+        "icontainers-mexico-2025",
+        "freightamigo-gulf-2025"
+      ],
+      "kind": "maritime",
+      "sources": [
+        {
+          "id": "icontainers-mexico-2025",
+          "name": "Mexico Ocean Freight Routes",
+          "authority": "iContainers",
+          "url": "https://www.icontainers.com/ocean-freight/mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf-Europe and Gulf-US East Coast shipping routes"
+        },
+        {
+          "id": "freightamigo-gulf-2025",
+          "name": "Top 5 Mexican Gulf Ports",
+          "authority": "FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+        }
+      ]
+    },
+    {
+      "id": "gulf-us-east",
+      "nameEs": "Ruta Golfo-EEUU",
+      "nameEn": "Gulf-US East Coast",
+      "color": "#546E7A",
+      "lineNumber": 13,
+      "ocean": "gulf-atlantic",
+      "lineStyle": "dot-dash",
+      "lineWeight": "medium",
+      "stationIds": [
+        "coatzacoalcos",
+        "veracruz",
+        "altamira",
+        "terminal-us-east"
+      ],
+      "carriers": [
+        "Maersk",
+        "CMA CGM",
+        "ZIM"
+      ],
+      "transitTimeDays": "3-7",
+      "primaryCommodities": [
+        "petrochemicals",
+        "energy products",
+        "containers"
+      ],
+      "evidence": "Gulf Coast energy corridor. Altamira = 37% of Mexico's Gulf container traffic. Petrochemicals and energy products. Source: Unisco, Mexico Business News",
+      "sourceIds": [
+        "unisco-altamira-2025",
+        "freightamigo-gulf-2025"
+      ],
+      "kind": "maritime",
+      "sources": [
+        {
+          "id": "unisco-altamira-2025",
+          "name": "Altamira Port Profile",
+          "authority": "Unisco",
+          "url": "https://www.unisco.com/international-ports/altamira-mexico",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Altamira Gulf container traffic share, energy/petrochem focus"
+        },
+        {
+          "id": "freightamigo-gulf-2025",
+          "name": "Top 5 Mexican Gulf Ports",
+          "authority": "FreightAmigo",
+          "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+          "accessDate": "2026-03-19",
+          "dataYear": 2025,
+          "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "bts-transborder-2025",
+      "name": "Transborder Freight Data Annual Report 2025",
+      "authority": "Bureau of Transportation Statistics (US DOT)",
+      "url": "https://www.bts.gov/newsroom/transborder-freight-data-annual-report-2025-0",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "US-Mexico total trade value by mode of transportation"
+    },
+    {
+      "id": "bts-border-crossing-2025",
+      "name": "Border Crossing/Entry Data",
+      "authority": "Bureau of Transportation Statistics / CBP",
+      "url": "https://data.bts.gov/stories/s/jswi-2e7b",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Port-level truck and rail container crossings at US-Mexico border"
+    },
+    {
+      "id": "laredo-edc-2024",
+      "name": "Port Laredo International Trade Data",
+      "authority": "Laredo Economic Development Corporation",
+      "url": "https://www.laredoedc.org/site-selection/international-trade/",
+      "accessDate": "2026-03-19",
+      "dataYear": 2024,
+      "coverage": "Laredo/Nuevo Laredo trade value, truck crossings, port rankings"
+    },
+    {
+      "id": "pdn-uno-elpaso-2024",
+      "name": "El Paso / Juárez Border Crossing Data",
+      "authority": "PDN Uno / TxDOT",
+      "url": "https://pdnuno.com/data/crossings/cargo-trucks",
+      "accessDate": "2026-03-19",
+      "dataYear": 2024,
+      "coverage": "El Paso commercial vehicle crossings and trade value"
+    },
+    {
+      "id": "contecon-manzanillo-2025",
+      "name": "Manzanillo Port Container Volumes",
+      "authority": "Contecon Manzanillo / WorldCargo News",
+      "url": "https://www.worldcargonews.com/ports-terminals/2026/01/manzanillo-handles-almost-4m-teu-in-2025/",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Manzanillo container throughput in TEU"
+    },
+    {
+      "id": "ciit-status-2026",
+      "name": "Interoceanic Corridor (CIIT) Completion Status",
+      "authority": "BNamericas / Automotive Logistics",
+      "url": "https://www.automotivelogistics.media/supply-chain/mexicos-interoceanic-corridor-of-the-isthmus-of-tehuantepec-set-for-completion-in-2026/2586327",
+      "accessDate": "2026-03-19",
+      "dataYear": 2026,
+      "coverage": "CIIT rail/highway construction progress and completion timeline"
+    },
+    {
+      "id": "amia-auto-2024",
+      "name": "Mexico Vehicle Production Records",
+      "authority": "AMIA / Tecma",
+      "url": "https://www.tecma.com/record-vehicle-output-highlights-strength-of-mexicos-automotive-manufacturing-regions/",
+      "accessDate": "2026-03-19",
+      "dataYear": 2024,
+      "coverage": "Mexico national vehicle production and export volumes"
+    },
+    {
+      "id": "coproduction-bajio-2025",
+      "name": "Bajío Manufacturing Region Profile",
+      "authority": "Co-Production International",
+      "url": "https://www.co-production.net/manufacturing-in-mexico/strategic-manufacturing-locations/el-bajio-mexico.html",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Aerospace and automotive firms by state in Bajío region"
+    },
+    {
+      "id": "artf-rail-2024",
+      "name": "Rail Tonnage Reports",
+      "authority": "ARTF (Mexico Rail Regulator)",
+      "url": null,
+      "accessDate": "2026-03-19",
+      "dataYear": 2024,
+      "coverage": "Rail freight tonnage by corridor in Mexico"
+    },
+    {
+      "id": "sct-highway-2024",
+      "name": "Highway Traffic Counts",
+      "authority": "SCT/SICT Mexico",
+      "url": null,
+      "accessDate": "2026-03-19",
+      "dataYear": 2024,
+      "coverage": "Highway traffic volumes on major freight corridors"
+    },
+    {
+      "id": "cpkc-ferromex-2024",
+      "name": "Rail Network and Freight Volumes",
+      "authority": "Ferromex / CPKC",
+      "url": null,
+      "accessDate": "2026-03-19",
+      "dataYear": 2024,
+      "coverage": "Rail network maps and intermodal terminal locations"
+    },
+    {
+      "id": "freightwaves-asia-mexico-2025",
+      "name": "Asia-to-Mexico Shipping Routes",
+      "authority": "CMA CGM / FreightWaves",
+      "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+    },
+    {
+      "id": "ladingcargo-cosco-2025",
+      "name": "Cosco TLP5 Asia-Mexico Route",
+      "authority": "Cosco / Lading Cargo",
+      "url": "https://ladingcargo.com/blog/shipping-giants-unveil-express-routes-linking-asia-and-mexico/",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Cosco TLP5 transit times, MSC loops, Asia-Mexico carriers"
+    },
+    {
+      "id": "promexicoindustry-lazaro-2025",
+      "name": "Lázaro Cárdenas Container Growth",
+      "authority": "Pro Mexico Industry",
+      "url": "https://www.promexicoindustry.com/en/article/port-of-lzaro-crdenas-grows-13-in-container-traffic-through-may-2025",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Lázaro Cárdenas container volumes and growth rates"
+    },
+    {
+      "id": "pacificports-lazaro-2025",
+      "name": "Lázaro Cárdenas Tonnage Leadership",
+      "authority": "Pacific Ports",
+      "url": "https://pacificports.org/lazaro-cardenas-port-exceeds-24-6-million-tons-and-consolidates-its-logistics-leadership-in-2025/",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Annual tonnage, logistics leadership, 27% of Mexico container cargo"
+    },
+    {
+      "id": "unisco-altamira-2025",
+      "name": "Altamira Port Profile",
+      "authority": "Unisco",
+      "url": "https://www.unisco.com/international-ports/altamira-mexico",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Altamira Gulf container traffic share, energy/petrochem focus"
+    },
+    {
+      "id": "freightamigo-gulf-2025",
+      "name": "Top 5 Mexican Gulf Ports",
+      "authority": "FreightAmigo",
+      "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+    },
+    {
+      "id": "freightamigo-ensenada-2025",
+      "name": "Ensenada Port Profile",
+      "authority": "Hutchison Ports / FreightAmigo",
+      "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-ports-in-mexico-gateways-to-global-trade/",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Ensenada TEU capacity, Asia services, Baja deepwater port"
+    },
+    {
+      "id": "icontainers-mexico-2025",
+      "name": "Mexico Ocean Freight Routes",
+      "authority": "iContainers",
+      "url": "https://www.icontainers.com/ocean-freight/mexico/",
+      "accessDate": "2026-03-19",
+      "dataYear": 2025,
+      "coverage": "Gulf-Europe and Gulf-US East Coast shipping routes"
+    }
+  ]
+}
