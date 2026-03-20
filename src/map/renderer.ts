@@ -1,23 +1,8 @@
 import * as d3 from "d3";
 import type { Station, Corridor, MaritimeRoute } from "../types/index.ts";
-import {
-  CORRIDOR_COLORS,
-  MARITIME_COLORS,
-  STATION_RADIUS,
-  LINE_THICKNESS,
-  DASH_PATTERN,
-  DOT_DASH_PATTERN,
-  GRID_UNIT,
-  FONT_FAMILY,
-  LABEL_SIZE,
-  TITLE_SIZE,
-  SUBTITLE_SIZE,
-  MAP_PADDING,
-  MAP_BG,
-  STATION_FILL,
-  STATION_STROKE_WIDTH,
-  LABEL_COLOR,
-} from "./styles.ts";
+import { TOKENS } from "./styles.ts";
+import { computeLabelPlacements } from "./labels.ts";
+import { renderGeoSilhouette } from "./geo-silhouette.ts";
 
 export interface MapData {
   stations: Station[];
@@ -26,11 +11,11 @@ export interface MapData {
 }
 
 function stationX(s: Station, minX: number): number {
-  return MAP_PADDING.left + (s.x - minX) * GRID_UNIT;
+  return TOKENS.spacing.padding.left + (s.x - minX) * TOKENS.spacing.gridUnit;
 }
 
 function stationY(s: Station): number {
-  return MAP_PADDING.top + s.y * GRID_UNIT;
+  return TOKENS.spacing.padding.top + s.y * TOKENS.spacing.gridUnit;
 }
 
 export function renderMap(
@@ -44,8 +29,8 @@ export function renderMap(
   const maxX = Math.max(...data.stations.map((s) => s.x));
   const maxY = Math.max(...data.stations.map((s) => s.y));
   const width =
-    MAP_PADDING.left + (maxX - minX + 1) * GRID_UNIT + MAP_PADDING.right;
-  const height = MAP_PADDING.top + (maxY + 1) * GRID_UNIT + MAP_PADDING.bottom;
+    TOKENS.spacing.padding.left + (maxX - minX + 1) * TOKENS.spacing.gridUnit + TOKENS.spacing.padding.right;
+  const height = TOKENS.spacing.padding.top + (maxY + 1) * TOKENS.spacing.gridUnit + TOKENS.spacing.padding.bottom;
 
   d3.select(container).selectAll("svg").remove();
 
@@ -56,32 +41,38 @@ export function renderMap(
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("width", width)
     .attr("height", height)
-    .style("font-family", FONT_FAMILY);
+    .style("font-family", TOKENS.typography.fontFamily);
 
+  // Background — warm cream
   svg
     .append("rect")
     .attr("width", width)
     .attr("height", height)
-    .attr("fill", MAP_BG);
+    .attr("fill", TOKENS.colors.background);
 
-  // Title
+  // Geographic silhouette — faint Mexico outline for spatial context
+  renderGeoSilhouette(svg);
+
+  // Title — Inter bold, centered
   svg
     .append("text")
     .attr("x", width / 2)
     .attr("y", 32)
     .attr("text-anchor", "middle")
-    .attr("font-size", TITLE_SIZE)
-    .attr("font-weight", "bold")
-    .attr("fill", LABEL_COLOR)
+    .attr("font-size", TOKENS.typography.sizes.title)
+    .attr("font-weight", TOKENS.typography.weights.bold)
+    .attr("fill", TOKENS.colors.labelColor)
     .text("Mapa Metropolitano de Comercio de México");
 
+  // Subtitle
   svg
     .append("text")
     .attr("x", width / 2)
-    .attr("y", 54)
+    .attr("y", 56)
     .attr("text-anchor", "middle")
-    .attr("font-size", SUBTITLE_SIZE)
-    .attr("fill", "#666")
+    .attr("font-size", TOKENS.typography.sizes.subtitle)
+    .attr("font-weight", TOKENS.typography.weights.regular)
+    .attr("fill", TOKENS.colors.labelSecondary)
     .text("Mexico Trade Metro Map");
 
   // Draw corridor lines
@@ -99,23 +90,24 @@ export function renderMap(
       .x((s) => stationX(s, minX))
       .y((s) => stationY(s));
 
+    const color = TOKENS.colors.corridors[corridor.id] || corridor.color;
     const path = linesGroup
       .append("path")
       .datum(points)
       .attr("d", lineGen)
       .attr("fill", "none")
-      .attr("stroke", CORRIDOR_COLORS[corridor.id] || corridor.color)
-      .attr("stroke-width", LINE_THICKNESS[corridor.lineWeight])
+      .attr("stroke", color)
+      .attr("stroke-width", TOKENS.spacing.lineThickness[corridor.lineWeight])
       .attr("stroke-linecap", "round")
       .attr("stroke-linejoin", "round")
       .attr("data-corridor-id", corridor.id);
 
     if (corridor.lineStyle === "dashed") {
-      path.attr("stroke-dasharray", DASH_PATTERN);
+      path.attr("stroke-dasharray", TOKENS.patterns.dashed);
     }
   }
 
-  // Draw maritime routes
+  // Draw maritime routes — dot-dash pattern
   const maritimeGroup = svg.append("g").attr("class", "maritime-routes");
 
   for (const route of maritime) {
@@ -135,11 +127,11 @@ export function renderMap(
       .datum(points)
       .attr("d", lineGen)
       .attr("fill", "none")
-      .attr("stroke", MARITIME_COLORS[route.id] || route.color)
-      .attr("stroke-width", LINE_THICKNESS[route.lineWeight])
+      .attr("stroke", TOKENS.colors.maritime[route.id] || route.color)
+      .attr("stroke-width", TOKENS.spacing.lineThickness[route.lineWeight])
       .attr("stroke-linecap", "round")
       .attr("stroke-linejoin", "round")
-      .attr("stroke-dasharray", DOT_DASH_PATTERN)
+      .attr("stroke-dasharray", TOKENS.patterns.dotDash)
       .attr("data-corridor-id", route.id);
   }
 
@@ -162,9 +154,10 @@ export function renderMap(
   for (const station of data.stations) {
     const cx = stationX(station, minX);
     const cy = stationY(station);
-    const r = STATION_RADIUS[station.tier];
+    const r = TOKENS.spacing.stationRadius[station.tier] || 6;
     const routeCount = routeCountPerStation.get(station.id) || 0;
 
+    // Determine primary color from first corridor
     const corridorsForStation = data.corridors.filter((c) =>
       c.stationIds.includes(station.id),
     );
@@ -174,87 +167,115 @@ export function renderMap(
     const allRoutes = [...corridorsForStation, ...maritimeForStation];
     const primaryColor =
       allRoutes.length > 0
-        ? CORRIDOR_COLORS[allRoutes[0].id] ||
-          MARITIME_COLORS[allRoutes[0].id] ||
+        ? TOKENS.colors.corridors[allRoutes[0].id] ||
+          TOKENS.colors.maritime[allRoutes[0].id] ||
           allRoutes[0].color
-        : "#999";
+        : TOKENS.colors.stationStroke;
 
     const g = stationsGroup
       .append("g")
       .attr("class", "station")
       .attr("data-station-id", station.id);
 
-    // Interchange ring for multi-route stations
+    // Interchange ring for multi-route stations — visually prominent
     if (routeCount > 1) {
-      const ringR = routeCount >= 3 ? r + 4 : r + 3;
-      const ringStroke = routeCount >= 3 ? 2 : 1.5;
+      const ringGap = TOKENS.spacing.interchangeRingGap;
+      const ringR = routeCount >= 3 ? r + ringGap + 2 : r + ringGap;
+      const ringStroke = routeCount >= 3 ? 2.5 : 2;
       g.append("circle")
         .attr("cx", cx)
         .attr("cy", cy)
         .attr("r", ringR)
         .attr("fill", "none")
-        .attr("stroke", "#333")
+        .attr("stroke", "#222")
         .attr("stroke-width", ringStroke);
     }
 
-    // Terminal region: arrow-style marker
+    // Station symbol rendering.
+    // r is already tier-specific from TOKENS.spacing.stationRadius (mega=14, major=9, standard=6).
+    // Multi-element symbols rendered inline for visual detail beyond single token paths.
+    const sw = TOKENS.spacing.stationStrokeWidth;
+
     if (station.type === "terminal-region") {
+      // Terminal region: rounded rectangle with arrow indicator
+      const s = r * 1.2;
       g.append("rect")
-        .attr("x", cx - r - 2)
-        .attr("y", cy - r)
-        .attr("width", r * 2 + 4)
-        .attr("height", r * 2)
-        .attr("rx", 3)
-        .attr("fill", STATION_FILL)
+        .attr("x", cx - s - 2)
+        .attr("y", cy - s)
+        .attr("width", s * 2 + 4)
+        .attr("height", s * 2)
+        .attr("rx", 4)
+        .attr("fill", TOKENS.colors.stationFill)
         .attr("stroke", primaryColor)
-        .attr("stroke-width", STATION_STROKE_WIDTH);
+        .attr("stroke-width", sw);
+      g.append("path")
+        .attr("d", `M${cx + s * 0.2},${cy - s * 0.4} L${cx + s * 0.7},${cy} L${cx + s * 0.2},${cy + s * 0.4}`)
+        .attr("fill", "none")
+        .attr("stroke", primaryColor)
+        .attr("stroke-width", sw * 0.6)
+        .attr("stroke-linecap", "round")
+        .attr("stroke-linejoin", "round");
+    } else if (station.type === "port") {
+      // Port: diamond shape with wave indicator (Aicher-inspired)
+      const s = r * 1.1;
+      g.append("path")
+        .attr("d", `M${cx},${cy - s} L${cx + s},${cy} L${cx},${cy + s} L${cx - s},${cy} Z`)
+        .attr("fill", TOKENS.colors.stationFill)
+        .attr("stroke", primaryColor)
+        .attr("stroke-width", sw)
+        .attr("stroke-linejoin", "round");
+      g.append("path")
+        .attr("d", `M${cx - s * 0.4},${cy} Q${cx - s * 0.2},${cy - s * 0.25} ${cx},${cy} Q${cx + s * 0.2},${cy + s * 0.25} ${cx + s * 0.4},${cy}`)
+        .attr("fill", "none")
+        .attr("stroke", primaryColor)
+        .attr("stroke-width", sw * 0.48)
+        .attr("stroke-linecap", "round");
+    } else if (station.type === "border-crossing") {
+      // Border crossing: diamond with gate line (customs gate)
+      const s = r;
+      g.append("path")
+        .attr("d", `M${cx},${cy - s} L${cx + s},${cy} L${cx},${cy + s} L${cx - s},${cy} Z`)
+        .attr("fill", TOKENS.colors.stationFill)
+        .attr("stroke", primaryColor)
+        .attr("stroke-width", sw)
+        .attr("stroke-linejoin", "miter");
+      g.append("line")
+        .attr("x1", cx - s * 0.5)
+        .attr("y1", cy)
+        .attr("x2", cx + s * 0.5)
+        .attr("y2", cy)
+        .attr("stroke", primaryColor)
+        .attr("stroke-width", sw * 0.6);
     } else {
+      // City: filled circle (universal metro convention)
       g.append("circle")
         .attr("cx", cx)
         .attr("cy", cy)
         .attr("r", r)
-        .attr("fill", STATION_FILL)
+        .attr("fill", TOKENS.colors.stationFill)
         .attr("stroke", primaryColor)
-        .attr("stroke-width", STATION_STROKE_WIDTH);
+        .attr("stroke-width", sw);
     }
 
-    // Label
-    const fontSize = LABEL_SIZE[station.tier];
-    const labelOffset = r + 6;
+  }
 
-    let textAnchor: string = "start";
-    let lx = cx + labelOffset;
-    let ly = cy + fontSize / 3;
+  // Label placement using collision-avoidance engine
+  const labelPlacements = computeLabelPlacements(data.stations, TOKENS, TOKENS.spacing.gridUnit, minX);
+  const labelMap = new Map(labelPlacements.map((lp) => [lp.stationId, lp]));
 
-    // Terminal regions at edges: label adjacent
-    if (station.type === "terminal-region") {
-      if (station.x < 0) {
-        textAnchor = "start";
-        lx = cx + r + 10;
-      } else {
-        textAnchor = "end";
-        lx = cx - r - 10;
-      }
-    } else if (station.x >= maxX - 1) {
-      textAnchor = "end";
-      lx = cx - labelOffset;
-    }
-
-    // Border crossings along top: label below
-    if (station.y <= 2 && station.type === "border-crossing") {
-      textAnchor = "middle";
-      lx = cx;
-      ly = cy + r + fontSize + 2;
-    }
+  for (const station of data.stations) {
+    const g = stationsGroup.select(`g[data-station-id="${station.id}"]`);
+    const placement = labelMap.get(station.id);
+    if (!placement) continue;
 
     g.append("text")
-      .attr("x", lx)
-      .attr("y", ly)
-      .attr("text-anchor", textAnchor)
-      .attr("font-size", fontSize)
-      .attr("font-weight", station.tier === "mega" ? "bold" : "normal")
-      .attr("fill", LABEL_COLOR)
-      .text(station.nameEs);
+      .attr("x", placement.x)
+      .attr("y", placement.y)
+      .attr("text-anchor", placement.anchor)
+      .attr("font-size", placement.fontSize)
+      .attr("font-weight", placement.fontWeight)
+      .attr("fill", TOKENS.colors.labelColor)
+      .text(placement.labelText);
   }
 
   return svg.node() as SVGSVGElement;

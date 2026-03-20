@@ -67,3 +67,68 @@ export interface HeadlineStat {
   value: string;
   sourceId: string;
 }
+
+export interface DesignTokens {
+  colors: {
+    corridors: Record<string, string>;
+    maritime: Record<string, string>;
+    background: string;
+    stationFill: string;
+    stationStroke: string;
+    labelColor: string;
+    labelSecondary: string;
+    legendBackground: string;
+    geoMexico: string;
+    geoUsBorder: string;
+    geoBorderLine: string;
+  };
+  typography: {
+    fontFamily: string;
+    sizes: {
+      title: number;
+      subtitle: number;
+      corridorLabel: number;
+      mega: number;
+      major: number;
+      standard: number;
+      legend: number;
+    };
+    weights: {
+      bold: number;
+      semibold: number;
+      regular: number;
+    };
+  };
+  spacing: {
+    gridUnit: number;
+    padding: { top: number; right: number; bottom: number; left: number };
+    stationRadius: Record<string, number>;
+    lineThickness: Record<string, number>;
+    labelOffset: number;
+    interchangeRingGap: number;
+    stationStrokeWidth: number;
+  };
+  symbols: {
+    city: string;
+    port: string;
+    borderCrossing: string;
+    terminalRegion: string;
+  };
+  patterns: {
+    solid: null;
+    dashed: string;
+    dotDash: string;
+  };
+}
+
+export interface LabelPlacement {
+  stationId: string;
+  x: number;
+  y: number;
+  rotation: 0;
+  anchor: "start" | "middle" | "end";
+  fontSize: number;
+  fontWeight: number;
+  labelText: string;
+  bbox: { x: number; y: number; width: number; height: number };
+}
