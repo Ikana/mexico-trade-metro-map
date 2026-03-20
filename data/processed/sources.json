@@ -97,5 +97,77 @@
     "accessDate": "2026-03-19",
     "dataYear": 2024,
     "coverage": "Rail network maps and intermodal terminal locations"
+  },
+  {
+    "id": "freightwaves-asia-mexico-2025",
+    "name": "Asia-to-Mexico Shipping Routes",
+    "authority": "CMA CGM / FreightWaves",
+    "url": "https://www.freightwaves.com/news/new-shipping-routes-highlight-growing-asia-to-mexico-trade",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "CMA CGM M2X service, Asia-Mexico Pacific shipping routes and carriers"
+  },
+  {
+    "id": "ladingcargo-cosco-2025",
+    "name": "Cosco TLP5 Asia-Mexico Route",
+    "authority": "Cosco / Lading Cargo",
+    "url": "https://ladingcargo.com/blog/shipping-giants-unveil-express-routes-linking-asia-and-mexico/",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Cosco TLP5 transit times, MSC loops, Asia-Mexico carriers"
+  },
+  {
+    "id": "promexicoindustry-lazaro-2025",
+    "name": "Lázaro Cárdenas Container Growth",
+    "authority": "Pro Mexico Industry",
+    "url": "https://www.promexicoindustry.com/en/article/port-of-lzaro-crdenas-grows-13-in-container-traffic-through-may-2025",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Lázaro Cárdenas container volumes and growth rates"
+  },
+  {
+    "id": "pacificports-lazaro-2025",
+    "name": "Lázaro Cárdenas Tonnage Leadership",
+    "authority": "Pacific Ports",
+    "url": "https://pacificports.org/lazaro-cardenas-port-exceeds-24-6-million-tons-and-consolidates-its-logistics-leadership-in-2025/",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Annual tonnage, logistics leadership, 27% of Mexico container cargo"
+  },
+  {
+    "id": "unisco-altamira-2025",
+    "name": "Altamira Port Profile",
+    "authority": "Unisco",
+    "url": "https://www.unisco.com/international-ports/altamira-mexico",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Altamira Gulf container traffic share, energy/petrochem focus"
+  },
+  {
+    "id": "freightamigo-gulf-2025",
+    "name": "Top 5 Mexican Gulf Ports",
+    "authority": "FreightAmigo",
+    "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-mexican-ports-gateways-to-global-trade-in-the-gulf-of-mexico/",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Gulf port trade routes, Veracruz-Europe automotive exports"
+  },
+  {
+    "id": "freightamigo-ensenada-2025",
+    "name": "Ensenada Port Profile",
+    "authority": "Hutchison Ports / FreightAmigo",
+    "url": "https://www.freightamigo.com/en/blog/global-trade/top-5-ports-in-mexico-gateways-to-global-trade/",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Ensenada TEU capacity, Asia services, Baja deepwater port"
+  },
+  {
+    "id": "icontainers-mexico-2025",
+    "name": "Mexico Ocean Freight Routes",
+    "authority": "iContainers",
+    "url": "https://www.icontainers.com/ocean-freight/mexico/",
+    "accessDate": "2026-03-19",
+    "dataYear": 2025,
+    "coverage": "Gulf-Europe and Gulf-US East Coast shipping routes"
   }
 ]

@@ -13,7 +13,9 @@
       "laredo-nuevo-laredo",
       "monterrey",
       "saltillo",
-      "san-luis-potosi"
+      "san-luis-potosi",
+      "queretaro",
+      "cdmx"
     ],
     "totalTradeValue": "$339B (Laredo, 2024)",
     "primaryCommodities": [
@@ -39,10 +41,11 @@
     "lineWeight": "medium",
     "primaryMode": "both",
     "stationIds": [
-      "queretaro",
-      "celaya",
-      "irapuato",
+      "guadalajara",
       "leon",
+      "irapuato",
+      "celaya",
+      "queretaro",
       "aguascalientes"
     ],
     "totalTradeValue": null,
@@ -68,8 +71,10 @@
     "lineWeight": "high",
     "primaryMode": "both",
     "stationIds": [
+      "cdmx",
       "guadalajara",
-      "manzanillo"
+      "manzanillo",
+      "lazaro-cardenas"
     ],
     "totalTradeValue": "~3.9M TEU (Manzanillo, 2025)",
     "primaryCommodities": [
@@ -93,8 +98,10 @@
     "lineWeight": "medium",
     "primaryMode": "truck",
     "stationIds": [
+      "monterrey",
       "reynosa-mcallen",
-      "matamoros-brownsville"
+      "matamoros-brownsville",
+      "altamira"
     ],
     "totalTradeValue": null,
     "primaryCommodities": [
@@ -118,6 +125,7 @@
     "lineWeight": "low",
     "primaryMode": "rail",
     "stationIds": [
+      "veracruz",
       "coatzacoalcos",
       "salina-cruz"
     ],
@@ -143,10 +151,12 @@
     "lineWeight": "medium",
     "primaryMode": "truck",
     "stationIds": [
+      "ensenada",
       "tijuana",
       "tecate",
       "mexicali",
-      "nogales"
+      "nogales",
+      "guadalajara"
     ],
     "totalTradeValue": null,
     "primaryCommodities": [
@@ -171,7 +181,8 @@
     "primaryMode": "truck",
     "stationIds": [
       "el-paso-juarez",
-      "chihuahua"
+      "chihuahua",
+      "aguascalientes"
     ],
     "totalTradeValue": "$105.6B (2024)",
     "primaryCommodities": [

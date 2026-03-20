@@ -2,8 +2,8 @@ export interface Station {
   id: string;
   nameEs: string;
   nameEn: string;
-  country: "MX" | "US" | "MX/US";
-  type: "city" | "port" | "border-crossing";
+  country: "MX" | "US" | "MX/US" | "INTL";
+  type: "city" | "port" | "border-crossing" | "terminal-region";
   tier: "mega" | "major" | "standard";
   x: number;
   y: number;
@@ -14,6 +14,7 @@ export interface Station {
   primaryCommodities: string[];
   corridorIds: string[];
   sourceIds: string[];
+  destinationPorts?: string[];
 }
 
 export interface Corridor {
@@ -28,6 +29,23 @@ export interface Corridor {
   primaryMode: "truck" | "rail" | "both";
   stationIds: string[];
   totalTradeValue: string | null;
+  primaryCommodities: string[];
+  evidence: string;
+  sourceIds: string[];
+}
+
+export interface MaritimeRoute {
+  id: string;
+  nameEs: string;
+  nameEn: string;
+  color: string;
+  lineNumber: number;
+  ocean: "pacific" | "gulf-atlantic";
+  lineStyle: "dot-dash";
+  lineWeight: "medium";
+  stationIds: string[];
+  carriers: string[];
+  transitTimeDays: string;
   primaryCommodities: string[];
   evidence: string;
   sourceIds: string[];

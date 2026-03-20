@@ -23,10 +23,13 @@ const corridors = JSON.parse(
 const headlines = JSON.parse(
   readFileSync(resolve(root, "data/processed/headlines.json"), "utf-8"),
 );
+const maritime = JSON.parse(
+  readFileSync(resolve(root, "data/processed/maritime.json"), "utf-8"),
+);
 
 // Import style constants
 const GRID = 60;
-const PAD = { top: 80, right: 40, bottom: 160, left: 40 };
+const PAD = { top: 80, right: 40, bottom: 240, left: 40 };
 const COLORS: Record<string, string> = {
   "linea-roja": "#E63946",
   "linea-azul": "#457B9D",
@@ -38,18 +41,26 @@ const COLORS: Record<string, string> = {
   "linea-cafe": "#6B4226",
   "corredor-verde": "#457B9D",
 };
+const MARITIME_COLORS: Record<string, string> = {
+  "pacific-asia-express": "#00BCD4",
+  "transpacific-gateway": "#009688",
+  "gulf-europe": "#1A237E",
+  "gulf-us-east": "#546E7A",
+};
+const DOT_DASH = "2 4 8 4";
 const RADIUS: Record<string, number> = { mega: 12, major: 8, standard: 5 };
 const THICKNESS: Record<string, number> = { high: 8, medium: 5, low: 3 };
 const FONT_SIZE: Record<string, number> = { mega: 13, major: 11, standard: 10 };
 
 const stationMap = new Map(stations.map((s: any) => [s.id, s]));
+const minX = Math.min(...stations.map((s: any) => s.x));
 const maxX = Math.max(...stations.map((s: any) => s.x));
 const maxY = Math.max(...stations.map((s: any) => s.y));
-const width = PAD.left + (maxX + 1) * GRID + PAD.right;
+const width = PAD.left + (maxX - minX + 1) * GRID + PAD.right;
 const height = PAD.top + (maxY + 1) * GRID + PAD.bottom;
 
 function sx(s: any): number {
-  return PAD.left + s.x * GRID;
+  return PAD.left + (s.x - minX) * GRID;
 }
 function sy(s: any): number {
   return PAD.top + s.y * GRID;
@@ -74,6 +85,17 @@ for (const c of corridors) {
   const d = points.map((s: any, i: number) => `${i === 0 ? "M" : "L"}${sx(s)},${sy(s)}`).join(" ");
   const dash = c.lineStyle === "dashed" ? ` stroke-dasharray="8 4"` : "";
   svgContent += `<path d="${d}" fill="none" stroke="${COLORS[c.id] || c.color}" stroke-width="${THICKNESS[c.lineWeight]}" stroke-linecap="round" stroke-linejoin="round"${dash}/>`;
+}
+
+// Maritime routes
+for (const m of maritime) {
+  const points = m.stationIds
+    .map((id: string) => stationMap.get(id))
+    .filter(Boolean);
+  if (points.length < 2) continue;
+
+  const d = points.map((s: any, i: number) => `${i === 0 ? "M" : "L"}${sx(s)},${sy(s)}`).join(" ");
+  svgContent += `<path d="${d}" fill="none" stroke="${MARITIME_COLORS[m.id] || m.color}" stroke-width="${THICKNESS[m.lineWeight]}" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${DOT_DASH}"/>`;
 }
 
 // Stations

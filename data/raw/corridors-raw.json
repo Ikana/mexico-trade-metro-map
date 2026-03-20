@@ -13,7 +13,9 @@
       "laredo-nuevo-laredo",
       "monterrey",
       "saltillo",
-      "san-luis-potosi"
+      "san-luis-potosi",
+      "queretaro",
+      "cdmx"
     ],
     "totalTradeValue": "$339B (Laredo, 2024)",
     "primaryCommodities": ["automotive", "electronics", "machinery", "produce"],
@@ -31,10 +33,11 @@
     "lineWeight": "medium",
     "primaryMode": "both",
     "stationIds": [
-      "queretaro",
-      "celaya",
-      "irapuato",
+      "guadalajara",
       "leon",
+      "irapuato",
+      "celaya",
+      "queretaro",
       "aguascalientes"
     ],
     "totalTradeValue": null,
@@ -52,7 +55,7 @@
     "lineStyle": "solid",
     "lineWeight": "high",
     "primaryMode": "both",
-    "stationIds": ["guadalajara", "manzanillo"],
+    "stationIds": ["cdmx", "guadalajara", "manzanillo", "lazaro-cardenas"],
     "totalTradeValue": "~3.9M TEU (Manzanillo, 2025)",
     "primaryCommodities": ["electronics", "auto parts", "consumer goods"],
     "evidence": "Manzanillo = ~3.9M TEU (2025), Mexico's #1 container port 20+ yrs, handles 66% of import cargo. $3B expansion to 10M TEU by 2030. Source: Contecon, Mexico Business News",
@@ -69,8 +72,10 @@
     "lineWeight": "medium",
     "primaryMode": "truck",
     "stationIds": [
+      "monterrey",
       "reynosa-mcallen",
-      "matamoros-brownsville"
+      "matamoros-brownsville",
+      "altamira"
     ],
     "totalTradeValue": null,
     "primaryCommodities": ["textiles", "electronics", "medical devices"],
@@ -87,7 +92,7 @@
     "lineStyle": "solid",
     "lineWeight": "low",
     "primaryMode": "rail",
-    "stationIds": ["coatzacoalcos", "salina-cruz"],
+    "stationIds": ["veracruz", "coatzacoalcos", "salina-cruz"],
     "totalTradeValue": null,
     "primaryCommodities": ["breakbulk", "automotive", "containers"],
     "evidence": "Isthmus of Tehuantepec, 87.7% complete, full ops expected June 2026. Hyundai Glovis pilot: 900 vehicles crossed in ~9 hrs by rail. Source: BNamericas, Automotive Logistics",
@@ -103,7 +108,7 @@
     "lineStyle": "solid",
     "lineWeight": "medium",
     "primaryMode": "truck",
-    "stationIds": ["tijuana", "tecate", "mexicali", "nogales"],
+    "stationIds": ["ensenada", "tijuana", "tecate", "mexicali", "nogales", "guadalajara"],
     "totalTradeValue": null,
     "primaryCommodities": ["agriculture", "electronics", "maquiladora goods"],
     "evidence": "CA/AZ maquiladora belt. Nogales = seasonal agriculture powerhouse. Source: BTS Border Crossing Data 2025",
@@ -121,7 +126,8 @@
     "primaryMode": "truck",
     "stationIds": [
       "el-paso-juarez",
-      "chihuahua"
+      "chihuahua",
+      "aguascalientes"
     ],
     "totalTradeValue": "$105.6B (2024)",
     "primaryCommodities": ["automotive", "electronics", "machinery"],

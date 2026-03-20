@@ -23,6 +23,14 @@ export const LINE_THICKNESS = {
 } as const;
 
 export const DASH_PATTERN = "8 4";
+export const DOT_DASH_PATTERN = "2 4 8 4";
+
+export const MARITIME_COLORS: Record<string, string> = {
+  "pacific-asia-express": "#00BCD4",
+  "transpacific-gateway": "#009688",
+  "gulf-europe": "#1A237E",
+  "gulf-us-east": "#546E7A",
+};
 
 export const GRID_UNIT = 60;
 
@@ -43,7 +51,7 @@ export const HEADLINE_SIZE = 12;
 export const MAP_PADDING = {
   top: 80,
   right: 40,
-  bottom: 160,
+  bottom: 240,
   left: 40,
 };
 

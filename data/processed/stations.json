@@ -6,7 +6,7 @@
     "country": "MX/US",
     "type": "border-crossing",
     "tier": "mega",
-    "x": 8,
+    "x": 9,
     "y": 1,
     "tradeValueUsd": 339000000000,
     "tradeValueYear": 2024,
@@ -46,7 +46,9 @@
       "distribution"
     ],
     "corridorIds": [
-      "linea-cafe"
+      "linea-cafe",
+      "linea-roja",
+      "linea-verde"
     ],
     "sourceIds": [
       "cpkc-ferromex-2024"
@@ -59,7 +61,7 @@
     "country": "MX",
     "type": "city",
     "tier": "mega",
-    "x": 8,
+    "x": 9,
     "y": 4,
     "tradeValueUsd": null,
     "tradeValueYear": null,
@@ -73,6 +75,7 @@
     ],
     "corridorIds": [
       "linea-roja",
+      "linea-amarilla",
       "corredor-verde"
     ],
     "sourceIds": [
@@ -123,7 +126,9 @@
       "software"
     ],
     "corridorIds": [
-      "linea-verde"
+      "linea-verde",
+      "linea-azul",
+      "linea-naranja"
     ],
     "sourceIds": [
       "amia-auto-2024"
@@ -147,7 +152,8 @@
       "automotive"
     ],
     "corridorIds": [
-      "linea-azul"
+      "linea-azul",
+      "linea-roja"
     ],
     "sourceIds": [
       "coproduction-bajio-2025"
@@ -269,7 +275,8 @@
       "auto parts"
     ],
     "corridorIds": [
-      "linea-azul"
+      "linea-azul",
+      "linea-blanca"
     ],
     "sourceIds": [
       "coproduction-bajio-2025"
@@ -535,7 +542,8 @@
       "steel"
     ],
     "corridorIds": [
-      "linea-cafe"
+      "linea-cafe",
+      "linea-morada"
     ],
     "sourceIds": [
       "cpkc-ferromex-2024"
@@ -612,6 +620,142 @@
     ],
     "sourceIds": [
       "pdn-uno-elpaso-2024"
+    ]
+  },
+  {
+    "id": "lazaro-cardenas",
+    "nameEs": "Lázaro Cárdenas",
+    "nameEn": "Lázaro Cárdenas",
+    "country": "MX",
+    "type": "port",
+    "tier": "major",
+    "x": 1,
+    "y": 12,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": 2200000,
+    "primaryCommodities": [],
+    "corridorIds": [
+      "linea-verde"
+    ],
+    "sourceIds": [
+      "promexicoindustry-lazaro-2025",
+      "pacificports-lazaro-2025"
+    ]
+  },
+  {
+    "id": "altamira",
+    "nameEs": "Altamira",
+    "nameEn": "Altamira",
+    "country": "MX",
+    "type": "port",
+    "tier": "standard",
+    "x": 12,
+    "y": 4,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": 880000,
+    "primaryCommodities": [],
+    "corridorIds": [
+      "linea-amarilla"
+    ],
+    "sourceIds": [
+      "unisco-altamira-2025"
+    ]
+  },
+  {
+    "id": "ensenada",
+    "nameEs": "Ensenada",
+    "nameEn": "Ensenada",
+    "country": "MX",
+    "type": "port",
+    "tier": "standard",
+    "x": 0,
+    "y": 0,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": 300000,
+    "primaryCommodities": [],
+    "corridorIds": [
+      "linea-naranja"
+    ],
+    "sourceIds": [
+      "freightamigo-ensenada-2025"
+    ]
+  },
+  {
+    "id": "terminal-asia",
+    "nameEs": "→ Asia",
+    "nameEn": "→ Asia",
+    "country": "INTL",
+    "type": "terminal-region",
+    "tier": "standard",
+    "x": -2,
+    "y": 10,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": null,
+    "primaryCommodities": [],
+    "corridorIds": [],
+    "sourceIds": [
+      "freightwaves-asia-mexico-2025"
+    ],
+    "destinationPorts": [
+      "Shanghai",
+      "Busan",
+      "Yokohama",
+      "Qingdao",
+      "Ningbo"
+    ]
+  },
+  {
+    "id": "terminal-europe",
+    "nameEs": "→ Europa",
+    "nameEn": "→ Europe",
+    "country": "INTL",
+    "type": "terminal-region",
+    "tier": "standard",
+    "x": 14,
+    "y": 12,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": null,
+    "primaryCommodities": [],
+    "corridorIds": [],
+    "sourceIds": [
+      "icontainers-mexico-2025"
+    ],
+    "destinationPorts": [
+      "Rotterdam",
+      "Hamburg"
+    ]
+  },
+  {
+    "id": "terminal-us-east",
+    "nameEs": "→ Costa Este EEUU",
+    "nameEn": "→ US East Coast",
+    "country": "INTL",
+    "type": "terminal-region",
+    "tier": "standard",
+    "x": 14,
+    "y": 6,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": null,
+    "primaryCommodities": [],
+    "corridorIds": [],
+    "sourceIds": [
+      "freightamigo-gulf-2025"
+    ],
+    "destinationPorts": [
+      "Houston",
+      "New Orleans"
     ]
   }
 ]

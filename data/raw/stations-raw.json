@@ -6,15 +6,26 @@
     "country": "MX/US",
     "type": "border-crossing",
     "tier": "mega",
-    "x": 8,
+    "x": 9,
     "y": 1,
     "tradeValueUsd": 339000000000,
     "tradeValueYear": 2024,
     "truckCrossingsPerYear": 5800000,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive", "electronics", "machinery", "produce"],
-    "corridorIds": ["linea-roja", "corredor-verde"],
-    "sourceIds": ["laredo-edc-2024", "bts-transborder-2025"]
+    "primaryCommodities": [
+      "automotive",
+      "electronics",
+      "machinery",
+      "produce"
+    ],
+    "corridorIds": [
+      "linea-roja",
+      "corredor-verde"
+    ],
+    "sourceIds": [
+      "laredo-edc-2024",
+      "bts-transborder-2025"
+    ]
   },
   {
     "id": "cdmx",
@@ -29,9 +40,19 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["consumer goods", "automotive", "distribution"],
-    "corridorIds": ["linea-cafe"],
-    "sourceIds": ["cpkc-ferromex-2024"]
+    "primaryCommodities": [
+      "consumer goods",
+      "automotive",
+      "distribution"
+    ],
+    "corridorIds": [
+      "linea-cafe",
+      "linea-roja",
+      "linea-verde"
+    ],
+    "sourceIds": [
+      "cpkc-ferromex-2024"
+    ]
   },
   {
     "id": "monterrey",
@@ -40,15 +61,26 @@
     "country": "MX",
     "type": "city",
     "tier": "mega",
-    "x": 8,
+    "x": 9,
     "y": 4,
     "tradeValueUsd": null,
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["steel", "automotive", "appliances", "glass"],
-    "corridorIds": ["linea-roja", "corredor-verde"],
-    "sourceIds": ["bts-transborder-2025"]
+    "primaryCommodities": [
+      "steel",
+      "automotive",
+      "appliances",
+      "glass"
+    ],
+    "corridorIds": [
+      "linea-roja",
+      "linea-amarilla",
+      "corredor-verde"
+    ],
+    "sourceIds": [
+      "bts-transborder-2025"
+    ]
   },
   {
     "id": "el-paso-juarez",
@@ -63,9 +95,17 @@
     "tradeValueYear": 2024,
     "truckCrossingsPerYear": 994594,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive", "electronics", "machinery"],
-    "corridorIds": ["linea-blanca"],
-    "sourceIds": ["pdn-uno-elpaso-2024"]
+    "primaryCommodities": [
+      "automotive",
+      "electronics",
+      "machinery"
+    ],
+    "corridorIds": [
+      "linea-blanca"
+    ],
+    "sourceIds": [
+      "pdn-uno-elpaso-2024"
+    ]
   },
   {
     "id": "guadalajara",
@@ -80,9 +120,19 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["electronics", "tech", "software"],
-    "corridorIds": ["linea-verde"],
-    "sourceIds": ["amia-auto-2024"]
+    "primaryCommodities": [
+      "electronics",
+      "tech",
+      "software"
+    ],
+    "corridorIds": [
+      "linea-verde",
+      "linea-azul",
+      "linea-naranja"
+    ],
+    "sourceIds": [
+      "amia-auto-2024"
+    ]
   },
   {
     "id": "queretaro",
@@ -97,9 +147,17 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["aerospace", "automotive"],
-    "corridorIds": ["linea-azul"],
-    "sourceIds": ["coproduction-bajio-2025"]
+    "primaryCommodities": [
+      "aerospace",
+      "automotive"
+    ],
+    "corridorIds": [
+      "linea-azul",
+      "linea-roja"
+    ],
+    "sourceIds": [
+      "coproduction-bajio-2025"
+    ]
   },
   {
     "id": "manzanillo",
@@ -114,9 +172,17 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": 3900000,
-    "primaryCommodities": ["electronics", "auto parts", "consumer goods"],
-    "corridorIds": ["linea-verde"],
-    "sourceIds": ["contecon-manzanillo-2025"]
+    "primaryCommodities": [
+      "electronics",
+      "auto parts",
+      "consumer goods"
+    ],
+    "corridorIds": [
+      "linea-verde"
+    ],
+    "sourceIds": [
+      "contecon-manzanillo-2025"
+    ]
   },
   {
     "id": "matamoros-brownsville",
@@ -131,9 +197,17 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["textiles", "electronics", "medical devices"],
-    "corridorIds": ["linea-amarilla"],
-    "sourceIds": ["bts-border-crossing-2025"]
+    "primaryCommodities": [
+      "textiles",
+      "electronics",
+      "medical devices"
+    ],
+    "corridorIds": [
+      "linea-amarilla"
+    ],
+    "sourceIds": [
+      "bts-border-crossing-2025"
+    ]
   },
   {
     "id": "saltillo",
@@ -148,9 +222,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive", "steel"],
-    "corridorIds": ["linea-roja"],
-    "sourceIds": ["amia-auto-2024"]
+    "primaryCommodities": [
+      "automotive",
+      "steel"
+    ],
+    "corridorIds": [
+      "linea-roja"
+    ],
+    "sourceIds": [
+      "amia-auto-2024"
+    ]
   },
   {
     "id": "san-luis-potosi",
@@ -165,9 +246,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive", "mining"],
-    "corridorIds": ["linea-roja"],
-    "sourceIds": ["amia-auto-2024"]
+    "primaryCommodities": [
+      "automotive",
+      "mining"
+    ],
+    "corridorIds": [
+      "linea-roja"
+    ],
+    "sourceIds": [
+      "amia-auto-2024"
+    ]
   },
   {
     "id": "aguascalientes",
@@ -182,9 +270,17 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive assembly", "auto parts"],
-    "corridorIds": ["linea-azul"],
-    "sourceIds": ["coproduction-bajio-2025"]
+    "primaryCommodities": [
+      "automotive assembly",
+      "auto parts"
+    ],
+    "corridorIds": [
+      "linea-azul",
+      "linea-blanca"
+    ],
+    "sourceIds": [
+      "coproduction-bajio-2025"
+    ]
   },
   {
     "id": "leon",
@@ -199,9 +295,17 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive", "leather", "footwear"],
-    "corridorIds": ["linea-azul"],
-    "sourceIds": ["coproduction-bajio-2025"]
+    "primaryCommodities": [
+      "automotive",
+      "leather",
+      "footwear"
+    ],
+    "corridorIds": [
+      "linea-azul"
+    ],
+    "sourceIds": [
+      "coproduction-bajio-2025"
+    ]
   },
   {
     "id": "celaya",
@@ -216,9 +320,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive", "agribusiness"],
-    "corridorIds": ["linea-azul"],
-    "sourceIds": ["coproduction-bajio-2025"]
+    "primaryCommodities": [
+      "automotive",
+      "agribusiness"
+    ],
+    "corridorIds": [
+      "linea-azul"
+    ],
+    "sourceIds": [
+      "coproduction-bajio-2025"
+    ]
   },
   {
     "id": "irapuato",
@@ -233,9 +344,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive", "agriculture"],
-    "corridorIds": ["linea-azul"],
-    "sourceIds": ["coproduction-bajio-2025"]
+    "primaryCommodities": [
+      "automotive",
+      "agriculture"
+    ],
+    "corridorIds": [
+      "linea-azul"
+    ],
+    "sourceIds": [
+      "coproduction-bajio-2025"
+    ]
   },
   {
     "id": "nogales",
@@ -250,9 +368,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["agriculture", "produce"],
-    "corridorIds": ["linea-naranja"],
-    "sourceIds": ["bts-border-crossing-2025"]
+    "primaryCommodities": [
+      "agriculture",
+      "produce"
+    ],
+    "corridorIds": [
+      "linea-naranja"
+    ],
+    "sourceIds": [
+      "bts-border-crossing-2025"
+    ]
   },
   {
     "id": "tijuana",
@@ -267,9 +392,17 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["electronics", "medical devices", "maquiladora"],
-    "corridorIds": ["linea-naranja"],
-    "sourceIds": ["bts-border-crossing-2025"]
+    "primaryCommodities": [
+      "electronics",
+      "medical devices",
+      "maquiladora"
+    ],
+    "corridorIds": [
+      "linea-naranja"
+    ],
+    "sourceIds": [
+      "bts-border-crossing-2025"
+    ]
   },
   {
     "id": "mexicali",
@@ -284,9 +417,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["electronics", "aerospace"],
-    "corridorIds": ["linea-naranja"],
-    "sourceIds": ["bts-border-crossing-2025"]
+    "primaryCommodities": [
+      "electronics",
+      "aerospace"
+    ],
+    "corridorIds": [
+      "linea-naranja"
+    ],
+    "sourceIds": [
+      "bts-border-crossing-2025"
+    ]
   },
   {
     "id": "tecate",
@@ -301,9 +441,15 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["maquiladora"],
-    "corridorIds": ["linea-naranja"],
-    "sourceIds": ["bts-border-crossing-2025"]
+    "primaryCommodities": [
+      "maquiladora"
+    ],
+    "corridorIds": [
+      "linea-naranja"
+    ],
+    "sourceIds": [
+      "bts-border-crossing-2025"
+    ]
   },
   {
     "id": "reynosa-mcallen",
@@ -318,9 +464,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["electronics", "medical devices"],
-    "corridorIds": ["linea-amarilla"],
-    "sourceIds": ["bts-border-crossing-2025"]
+    "primaryCommodities": [
+      "electronics",
+      "medical devices"
+    ],
+    "corridorIds": [
+      "linea-amarilla"
+    ],
+    "sourceIds": [
+      "bts-border-crossing-2025"
+    ]
   },
   {
     "id": "puebla",
@@ -335,9 +488,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["automotive", "textiles"],
-    "corridorIds": ["linea-cafe"],
-    "sourceIds": ["amia-auto-2024"]
+    "primaryCommodities": [
+      "automotive",
+      "textiles"
+    ],
+    "corridorIds": [
+      "linea-cafe"
+    ],
+    "sourceIds": [
+      "amia-auto-2024"
+    ]
   },
   {
     "id": "toluca",
@@ -352,9 +512,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["intermodal", "logistics"],
-    "corridorIds": ["linea-cafe"],
-    "sourceIds": ["cpkc-ferromex-2024"]
+    "primaryCommodities": [
+      "intermodal",
+      "logistics"
+    ],
+    "corridorIds": [
+      "linea-cafe"
+    ],
+    "sourceIds": [
+      "cpkc-ferromex-2024"
+    ]
   },
   {
     "id": "veracruz",
@@ -369,9 +536,18 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["petrochemicals", "automotive", "steel"],
-    "corridorIds": ["linea-cafe"],
-    "sourceIds": ["cpkc-ferromex-2024"]
+    "primaryCommodities": [
+      "petrochemicals",
+      "automotive",
+      "steel"
+    ],
+    "corridorIds": [
+      "linea-cafe",
+      "linea-morada"
+    ],
+    "sourceIds": [
+      "cpkc-ferromex-2024"
+    ]
   },
   {
     "id": "coatzacoalcos",
@@ -386,9 +562,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["petrochemicals", "containers"],
-    "corridorIds": ["linea-morada"],
-    "sourceIds": ["ciit-status-2026"]
+    "primaryCommodities": [
+      "petrochemicals",
+      "containers"
+    ],
+    "corridorIds": [
+      "linea-morada"
+    ],
+    "sourceIds": [
+      "ciit-status-2026"
+    ]
   },
   {
     "id": "salina-cruz",
@@ -403,9 +586,16 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["breakbulk", "containers"],
-    "corridorIds": ["linea-morada"],
-    "sourceIds": ["ciit-status-2026"]
+    "primaryCommodities": [
+      "breakbulk",
+      "containers"
+    ],
+    "corridorIds": [
+      "linea-morada"
+    ],
+    "sourceIds": [
+      "ciit-status-2026"
+    ]
   },
   {
     "id": "chihuahua",
@@ -420,8 +610,152 @@
     "tradeValueYear": null,
     "truckCrossingsPerYear": null,
     "containerVolumeTeu": null,
-    "primaryCommodities": ["mining", "aerospace", "automotive"],
-    "corridorIds": ["linea-blanca"],
-    "sourceIds": ["pdn-uno-elpaso-2024"]
+    "primaryCommodities": [
+      "mining",
+      "aerospace",
+      "automotive"
+    ],
+    "corridorIds": [
+      "linea-blanca"
+    ],
+    "sourceIds": [
+      "pdn-uno-elpaso-2024"
+    ]
+  },
+  {
+    "id": "lazaro-cardenas",
+    "nameEs": "Lázaro Cárdenas",
+    "nameEn": "Lázaro Cárdenas",
+    "country": "MX",
+    "type": "port",
+    "tier": "major",
+    "x": 1,
+    "y": 12,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": 2200000,
+    "primaryCommodities": [],
+    "corridorIds": [
+      "linea-verde"
+    ],
+    "sourceIds": [
+      "promexicoindustry-lazaro-2025",
+      "pacificports-lazaro-2025"
+    ]
+  },
+  {
+    "id": "altamira",
+    "nameEs": "Altamira",
+    "nameEn": "Altamira",
+    "country": "MX",
+    "type": "port",
+    "tier": "standard",
+    "x": 12,
+    "y": 4,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": 880000,
+    "primaryCommodities": [],
+    "corridorIds": [
+      "linea-amarilla"
+    ],
+    "sourceIds": [
+      "unisco-altamira-2025"
+    ]
+  },
+  {
+    "id": "ensenada",
+    "nameEs": "Ensenada",
+    "nameEn": "Ensenada",
+    "country": "MX",
+    "type": "port",
+    "tier": "standard",
+    "x": 0,
+    "y": 0,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": 300000,
+    "primaryCommodities": [],
+    "corridorIds": [
+      "linea-naranja"
+    ],
+    "sourceIds": [
+      "freightamigo-ensenada-2025"
+    ]
+  },
+  {
+    "id": "terminal-asia",
+    "nameEs": "→ Asia",
+    "nameEn": "→ Asia",
+    "country": "INTL",
+    "type": "terminal-region",
+    "tier": "standard",
+    "x": -2,
+    "y": 10,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": null,
+    "primaryCommodities": [],
+    "corridorIds": [],
+    "sourceIds": [
+      "freightwaves-asia-mexico-2025"
+    ],
+    "destinationPorts": [
+      "Shanghai",
+      "Busan",
+      "Yokohama",
+      "Qingdao",
+      "Ningbo"
+    ]
+  },
+  {
+    "id": "terminal-europe",
+    "nameEs": "→ Europa",
+    "nameEn": "→ Europe",
+    "country": "INTL",
+    "type": "terminal-region",
+    "tier": "standard",
+    "x": 14,
+    "y": 12,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": null,
+    "primaryCommodities": [],
+    "corridorIds": [],
+    "sourceIds": [
+      "icontainers-mexico-2025"
+    ],
+    "destinationPorts": [
+      "Rotterdam",
+      "Hamburg"
+    ]
+  },
+  {
+    "id": "terminal-us-east",
+    "nameEs": "→ Costa Este EEUU",
+    "nameEn": "→ US East Coast",
+    "country": "INTL",
+    "type": "terminal-region",
+    "tier": "standard",
+    "x": 14,
+    "y": 6,
+    "tradeValueUsd": null,
+    "tradeValueYear": null,
+    "truckCrossingsPerYear": null,
+    "containerVolumeTeu": null,
+    "primaryCommodities": [],
+    "corridorIds": [],
+    "sourceIds": [
+      "freightamigo-gulf-2025"
+    ],
+    "destinationPorts": [
+      "Houston",
+      "New Orleans"
+    ]
   }
 ]
