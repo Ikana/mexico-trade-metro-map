@@ -2,11 +2,14 @@
  * SVG Export: Renders the map to a standalone SVG file.
  * Run with: npm run export:svg
  *
- * Uses the same design tokens as the interactive renderer for visual consistency.
+ * Imports design tokens from src/map/styles.ts for visual consistency
+ * with the interactive renderer.
  */
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
+import { TOKENS, getStationSymbol } from "../map/styles.ts";
+import { computeLabelPlacements } from "../map/labels.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "../..");
@@ -24,46 +27,9 @@ const maritime = JSON.parse(
   readFileSync(resolve(root, "data/processed/maritime.json"), "utf-8"),
 );
 
-// ── Design tokens (mirroring src/map/styles.ts TOKENS) ──
-const GRID = 60;
-const PAD = { top: 80, right: 40, bottom: 240, left: 40 };
-
-const COLORS: Record<string, string> = {
-  "linea-roja": "#C62828",
-  "linea-azul": "#1565C0",
-  "linea-verde": "#2E7D32",
-  "linea-amarilla": "#8B5E00",
-  "linea-morada": "#6A1B9A",
-  "linea-naranja": "#BF360C",
-  "linea-blanca": "#546E7A",
-  "linea-cafe": "#4E342E",
-  "corredor-verde": "#00695C",
-};
-
-const MARITIME_COLORS: Record<string, string> = {
-  "pacific-asia-express": "#006D75",
-  "transpacific-gateway": "#00695C",
-  "gulf-europe": "#1A237E",
-  "gulf-us-east": "#37474F",
-};
-
-const BG_COLOR = "#FAF8F5";
-const STATION_FILL = "#FFFFFF";
-const LABEL_COLOR = "#1A1A1A";
-const LABEL_SECONDARY = "#666666";
-const LEGEND_BG = "#F5F2ED";
-const STATION_STROKE = "#333333";
-
-const DOT_DASH = "2 4 8 4";
-const DASHED = "8 4";
-
-const RADIUS: Record<string, number> = { mega: 14, major: 9, standard: 6 };
-const THICKNESS: Record<string, number> = { high: 8, medium: 5, low: 3 };
-const FONT_SIZE: Record<string, number> = { mega: 13, major: 11, standard: 10 };
-const FONT_WEIGHT: Record<string, string> = { mega: "700", major: "600", standard: "400" };
-const INTERCHANGE_RING_GAP = 4;
-
-const FONT_FAMILY = '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+// ── Layout derived from tokens ──
+const GRID = TOKENS.spacing.gridUnit;
+const PAD = TOKENS.spacing.padding;
 
 const stationMap = new Map(stations.map((s: any) => [s.id, s]));
 const minX = Math.min(...stations.map((s: any) => s.x));
@@ -95,14 +61,14 @@ for (const m of maritime) {
 let svgContent = "";
 
 // Background — warm cream
-svgContent += `<rect width="${width}" height="${height}" fill="${BG_COLOR}"/>`;
+svgContent += `<rect width="${width}" height="${height}" fill="${TOKENS.colors.background}"/>`;
 
 // Geographic silhouette — faint Mexico outline for spatial context
 svgContent += renderGeoSilhouetteSvg();
 
 // Title — Inter bold, centered
-svgContent += `<text x="${width / 2}" y="32" text-anchor="middle" font-size="24" font-weight="700" fill="${LABEL_COLOR}">Mapa Metropolitano de Comercio de México</text>`;
-svgContent += `<text x="${width / 2}" y="56" text-anchor="middle" font-size="14" font-weight="400" fill="${LABEL_SECONDARY}">Mexico Trade Metro Map</text>`;
+svgContent += `<text x="${width / 2}" y="32" text-anchor="middle" font-size="24" font-weight="${TOKENS.typography.weights.bold}" fill="${TOKENS.colors.labelColor}">Mapa Metropolitano de Comercio de México</text>`;
+svgContent += `<text x="${width / 2}" y="56" text-anchor="middle" font-size="14" font-weight="${TOKENS.typography.weights.regular}" fill="${TOKENS.colors.labelSecondary}">Mexico Trade Metro Map</text>`;
 
 // Corridor lines
 for (const c of corridors) {
@@ -112,10 +78,11 @@ for (const c of corridors) {
   if (points.length < 2) continue;
 
   const d = points.map((s: any, i: number) => `${i === 0 ? "M" : "L"}${sx(s)},${sy(s)}`).join(" ");
-  const color = COLORS[c.id] || c.color;
+  const color = TOKENS.colors.corridors[c.id] || c.color;
+  const thickness = TOKENS.spacing.lineThickness[c.lineWeight] || 5;
   let dashAttr = "";
-  if (c.lineStyle === "dashed") dashAttr = ` stroke-dasharray="${DASHED}"`;
-  svgContent += `<path d="${d}" fill="none" stroke="${color}" stroke-width="${THICKNESS[c.lineWeight]}" stroke-linecap="round" stroke-linejoin="round"${dashAttr}/>`;
+  if (c.lineStyle === "dashed") dashAttr = ` stroke-dasharray="${TOKENS.patterns.dashed}"`;
+  svgContent += `<path d="${d}" fill="none" stroke="${color}" stroke-width="${thickness}" stroke-linecap="round" stroke-linejoin="round"${dashAttr}/>`;
 }
 
 // Maritime routes — dot-dash pattern
@@ -126,15 +93,16 @@ for (const m of maritime) {
   if (points.length < 2) continue;
 
   const d = points.map((s: any, i: number) => `${i === 0 ? "M" : "L"}${sx(s)},${sy(s)}`).join(" ");
-  const color = MARITIME_COLORS[m.id] || m.color;
-  svgContent += `<path d="${d}" fill="none" stroke="${color}" stroke-width="${THICKNESS[m.lineWeight]}" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${DOT_DASH}"/>`;
+  const color = TOKENS.colors.maritime[m.id] || m.color;
+  const thickness = TOKENS.spacing.lineThickness[m.lineWeight] || 3;
+  svgContent += `<path d="${d}" fill="none" stroke="${color}" stroke-width="${thickness}" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${TOKENS.patterns.dotDash}"/>`;
 }
 
 // Stations — pictogram rendering
 for (const s of stations) {
   const cx = sx(s);
   const cy = sy(s);
-  const r = RADIUS[s.tier] || 6;
+  const r = TOKENS.spacing.stationRadius[s.tier] || 6;
   const routeCount = routeCountPerStation.get(s.id) || 0;
 
   // Determine primary color from first corridor/maritime route
@@ -142,64 +110,54 @@ for (const s of stations) {
   const maritimeForStation = maritime.filter((m: any) => m.stationIds.includes(s.id));
   const allRoutes = [...corridorsForStation, ...maritimeForStation];
   const primaryColor = allRoutes.length > 0
-    ? (COLORS[allRoutes[0].id] || MARITIME_COLORS[allRoutes[0].id] || allRoutes[0].color)
-    : STATION_STROKE;
+    ? (TOKENS.colors.corridors[allRoutes[0].id] || TOKENS.colors.maritime[allRoutes[0].id] || allRoutes[0].color)
+    : "#333333";
 
   // Interchange ring for multi-route stations
   if (routeCount > 1) {
-    const ringR = routeCount >= 3 ? r + INTERCHANGE_RING_GAP + 2 : r + INTERCHANGE_RING_GAP;
+    const ringR = routeCount >= 3 ? r + TOKENS.spacing.interchangeRingGap + 2 : r + TOKENS.spacing.interchangeRingGap;
     const ringStroke = routeCount >= 3 ? 2.5 : 2;
     svgContent += `<circle cx="${cx}" cy="${cy}" r="${ringR}" fill="none" stroke="#222" stroke-width="${ringStroke}"/>`;
   }
 
-  // Station symbol by type
+  // Station symbol by type — uses getStationSymbol for tier-based scaling
+  const symbol = getStationSymbol(s.type, s.tier);
+
   if (s.type === "terminal-region") {
-    // Rounded rectangle with arrow indicator
-    const sc = r * 1.2;
-    svgContent += `<rect x="${cx - sc - 2}" y="${cy - sc}" width="${sc * 2 + 4}" height="${sc * 2}" rx="4" fill="${STATION_FILL}" stroke="${primaryColor}" stroke-width="2.5"/>`;
+    const sc = symbol.scale * r * 1.2;
+    svgContent += `<rect x="${cx - sc - 2}" y="${cy - sc}" width="${sc * 2 + 4}" height="${sc * 2}" rx="4" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="2.5"/>`;
     svgContent += `<path d="M${cx + sc * 0.2},${cy - sc * 0.4} L${cx + sc * 0.7},${cy} L${cx + sc * 0.2},${cy + sc * 0.4}" fill="none" stroke="${primaryColor}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
   } else if (s.type === "port") {
-    // Diamond shape with wave indicator
-    const sc = r * 1.1;
-    svgContent += `<path d="M${cx},${cy - sc} L${cx + sc},${cy} L${cx},${cy + sc} L${cx - sc},${cy} Z" fill="${STATION_FILL}" stroke="${primaryColor}" stroke-width="2.5" stroke-linejoin="round"/>`;
+    const sc = symbol.scale * r * 1.1;
+    svgContent += `<path d="M${cx},${cy - sc} L${cx + sc},${cy} L${cx},${cy + sc} L${cx - sc},${cy} Z" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="2.5" stroke-linejoin="round"/>`;
     svgContent += `<path d="M${cx - sc * 0.4},${cy} Q${cx - sc * 0.2},${cy - sc * 0.25} ${cx},${cy} Q${cx + sc * 0.2},${cy + sc * 0.25} ${cx + sc * 0.4},${cy}" fill="none" stroke="${primaryColor}" stroke-width="1.2" stroke-linecap="round"/>`;
   } else if (s.type === "border-crossing") {
-    // Diamond with horizontal gate line
-    const sc = r * 1.0;
-    svgContent += `<path d="M${cx},${cy - sc} L${cx + sc},${cy} L${cx},${cy + sc} L${cx - sc},${cy} Z" fill="${STATION_FILL}" stroke="${primaryColor}" stroke-width="2.5" stroke-linejoin="miter"/>`;
+    const sc = symbol.scale * r * 1.0;
+    svgContent += `<path d="M${cx},${cy - sc} L${cx + sc},${cy} L${cx},${cy + sc} L${cx - sc},${cy} Z" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="2.5" stroke-linejoin="miter"/>`;
     svgContent += `<line x1="${cx - sc * 0.5}" y1="${cy}" x2="${cx + sc * 0.5}" y2="${cy}" stroke="${primaryColor}" stroke-width="1.5"/>`;
   } else {
-    // City: filled circle
-    svgContent += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${STATION_FILL}" stroke="${primaryColor}" stroke-width="2.5"/>`;
+    svgContent += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${TOKENS.colors.stationFill}" stroke="${primaryColor}" stroke-width="2.5"/>`;
   }
+}
 
-  // Label — simple placement (E or W based on position)
-  const fs = FONT_SIZE[s.tier] || 10;
-  const fw = FONT_WEIGHT[s.tier] || "400";
-  let anchor = "start";
-  let lx = cx + r + 8;
-  let ly = cy + fs / 3;
+// Labels — use the same collision-avoidance engine as the interactive renderer
+const labelPlacements = computeLabelPlacements(stations, TOKENS, GRID, minX);
+const labelMap = new Map(labelPlacements.map((lp) => [lp.stationId, lp]));
 
-  if (s.x >= maxX - 1) {
-    anchor = "end";
-    lx = cx - r - 8;
-  }
-  if (s.y <= 2 && s.type === "border-crossing") {
-    anchor = "middle";
-    lx = cx;
-    ly = cy + r + fs + 2;
-  }
+for (const s of stations) {
+  const placement = labelMap.get(s.id);
+  if (!placement) continue;
 
-  svgContent += `<text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="${fs}" font-weight="${fw}" fill="${LABEL_COLOR}">${escapeXml(s.nameEs)}</text>`;
+  svgContent += `<text x="${placement.x}" y="${placement.y}" text-anchor="${placement.anchor}" font-size="${placement.fontSize}" font-weight="${placement.fontWeight}" fill="${TOKENS.colors.labelColor}">${escapeXml(placement.labelText)}</text>`;
 }
 
 // ── Legend ──
 const legendY = height - 220;
-svgContent += `<rect x="20" y="${legendY}" width="${width - 40}" height="210" rx="6" fill="${LEGEND_BG}" stroke="#DDD" stroke-width="1"/>`;
+svgContent += `<rect x="20" y="${legendY}" width="${width - 40}" height="210" rx="6" fill="${TOKENS.colors.legendBackground}" stroke="#DDD" stroke-width="1"/>`;
 
 // Legend column 1: Corridor lines
 let legendContent = `<g transform="translate(40, ${legendY + 16})">`;
-legendContent += `<text font-size="12" font-weight="700" fill="${LABEL_COLOR}">Líneas / Lines</text>`;
+legendContent += `<text font-size="12" font-weight="${TOKENS.typography.weights.bold}" fill="${TOKENS.colors.labelColor}">Líneas / Lines</text>`;
 
 const activeCols = corridors.filter((c: any) => c.status === "active");
 const colW = 180;
@@ -208,30 +166,30 @@ activeCols.forEach((c: any, i: number) => {
   const row = Math.floor(i / 3);
   const x = col * colW;
   const y = 14 + row * 16;
-  const color = COLORS[c.id] || c.color;
+  const color = TOKENS.colors.corridors[c.id] || c.color;
   legendContent += `<line x1="${x}" y1="${y + 4}" x2="${x + 20}" y2="${y + 4}" stroke="${color}" stroke-width="3" stroke-linecap="round"/>`;
-  legendContent += `<text x="${x + 26}" y="${y + 8}" font-size="10" fill="${LABEL_COLOR}">${escapeXml(c.nameEs)} / ${escapeXml(c.nameEn)}</text>`;
+  legendContent += `<text x="${x + 26}" y="${y + 8}" font-size="10" fill="${TOKENS.colors.labelColor}">${escapeXml(c.nameEs)} / ${escapeXml(c.nameEn)}</text>`;
 });
 
 const plannedCols = corridors.filter((c: any) => c.status === "planned");
 plannedCols.forEach((c: any, i: number) => {
   const row = Math.ceil(activeCols.length / 3) + i;
   const y = 14 + row * 16;
-  const color = COLORS[c.id] || c.color;
-  legendContent += `<line x1="0" y1="${y + 4}" x2="20" y2="${y + 4}" stroke="${color}" stroke-width="3" stroke-dasharray="${DASHED}" stroke-linecap="round"/>`;
-  legendContent += `<text x="26" y="${y + 8}" font-size="10" fill="${LABEL_COLOR}">${escapeXml(c.nameEs)} / ${escapeXml(c.nameEn)} (planificado / planned)</text>`;
+  const color = TOKENS.colors.corridors[c.id] || c.color;
+  legendContent += `<line x1="0" y1="${y + 4}" x2="20" y2="${y + 4}" stroke="${color}" stroke-width="3" stroke-dasharray="${TOKENS.patterns.dashed}" stroke-linecap="round"/>`;
+  legendContent += `<text x="26" y="${y + 8}" font-size="10" fill="${TOKENS.colors.labelColor}">${escapeXml(c.nameEs)} / ${escapeXml(c.nameEn)} (planificado / planned)</text>`;
 });
 
 // Maritime routes in legend
 if (maritime.length > 0) {
   const mStartRow = Math.ceil(activeCols.length / 3) + plannedCols.length;
   const mLabelY = 14 + mStartRow * 16 + 4;
-  legendContent += `<text y="${mLabelY}" font-size="11" font-weight="700" fill="${LABEL_COLOR}">Rutas Marítimas / Maritime Routes</text>`;
+  legendContent += `<text y="${mLabelY}" font-size="11" font-weight="${TOKENS.typography.weights.bold}" fill="${TOKENS.colors.labelColor}">Rutas Marítimas / Maritime Routes</text>`;
   maritime.forEach((m: any, i: number) => {
     const y = mLabelY + 10 + i * 16;
-    const color = MARITIME_COLORS[m.id] || m.color;
-    legendContent += `<line x1="0" y1="${y + 4}" x2="20" y2="${y + 4}" stroke="${color}" stroke-width="3" stroke-dasharray="${DOT_DASH}" stroke-linecap="round"/>`;
-    legendContent += `<text x="26" y="${y + 8}" font-size="10" fill="${LABEL_COLOR}">${escapeXml(m.nameEs)} / ${escapeXml(m.nameEn)}</text>`;
+    const color = TOKENS.colors.maritime[m.id] || m.color;
+    legendContent += `<line x1="0" y1="${y + 4}" x2="20" y2="${y + 4}" stroke="${color}" stroke-width="3" stroke-dasharray="${TOKENS.patterns.dotDash}" stroke-linecap="round"/>`;
+    legendContent += `<text x="26" y="${y + 8}" font-size="10" fill="${TOKENS.colors.labelColor}">${escapeXml(m.nameEs)} / ${escapeXml(m.nameEn)}</text>`;
   });
 }
 legendContent += `</g>`;
@@ -240,14 +198,14 @@ svgContent += legendContent;
 // Legend column 2: Station types + tiers
 const tierX = width - 340;
 let tierContent = `<g transform="translate(${tierX}, ${legendY + 16})">`;
-tierContent += `<text font-size="12" font-weight="700" fill="${LABEL_COLOR}">Estaciones / Stations</text>`;
+tierContent += `<text font-size="12" font-weight="${TOKENS.typography.weights.bold}" fill="${TOKENS.colors.labelColor}">Estaciones / Stations</text>`;
 
 // Station type symbols
 const stationTypes = [
   { label: "Ciudad / City", type: "city" },
   { label: "Puerto / Port", type: "port" },
   { label: "Cruce fronterizo / Border", type: "border-crossing" },
-  { label: "Destino / Terminal", type: "terminal" },
+  { label: "Destino / Terminal", type: "terminal-region" },
 ];
 
 stationTypes.forEach((st, i) => {
@@ -258,32 +216,32 @@ stationTypes.forEach((st, i) => {
   const strokeColor = "#666";
 
   if (st.type === "city") {
-    tierContent += `<circle cx="${cxL}" cy="${cyL}" r="${r}" fill="${STATION_FILL}" stroke="${strokeColor}" stroke-width="2"/>`;
+    tierContent += `<circle cx="${cxL}" cy="${cyL}" r="${r}" fill="${TOKENS.colors.stationFill}" stroke="${strokeColor}" stroke-width="2"/>`;
   } else if (st.type === "port") {
-    tierContent += `<path d="M${cxL},${cyL - r} L${cxL + r},${cyL} L${cxL},${cyL + r} L${cxL - r},${cyL} Z" fill="${STATION_FILL}" stroke="${strokeColor}" stroke-width="2" stroke-linejoin="round"/>`;
+    tierContent += `<path d="M${cxL},${cyL - r} L${cxL + r},${cyL} L${cxL},${cyL + r} L${cxL - r},${cyL} Z" fill="${TOKENS.colors.stationFill}" stroke="${strokeColor}" stroke-width="2" stroke-linejoin="round"/>`;
   } else if (st.type === "border-crossing") {
-    tierContent += `<path d="M${cxL},${cyL - r} L${cxL + r},${cyL} L${cxL},${cyL + r} L${cxL - r},${cyL} Z" fill="${STATION_FILL}" stroke="${strokeColor}" stroke-width="2" stroke-linejoin="miter"/>`;
+    tierContent += `<path d="M${cxL},${cyL - r} L${cxL + r},${cyL} L${cxL},${cyL + r} L${cxL - r},${cyL} Z" fill="${TOKENS.colors.stationFill}" stroke="${strokeColor}" stroke-width="2" stroke-linejoin="miter"/>`;
     tierContent += `<line x1="${cxL - r * 0.5}" y1="${cyL}" x2="${cxL + r * 0.5}" y2="${cyL}" stroke="${strokeColor}" stroke-width="1.5"/>`;
   } else {
-    tierContent += `<rect x="${cxL - r - 1}" y="${cyL - r + 1}" width="${r * 2 + 2}" height="${r * 2 - 2}" rx="3" fill="${STATION_FILL}" stroke="${strokeColor}" stroke-width="2"/>`;
+    tierContent += `<rect x="${cxL - r - 1}" y="${cyL - r + 1}" width="${r * 2 + 2}" height="${r * 2 - 2}" rx="3" fill="${TOKENS.colors.stationFill}" stroke="${strokeColor}" stroke-width="2"/>`;
   }
 
-  tierContent += `<text x="20" y="${y + 12}" font-size="10" fill="${LABEL_COLOR}">${st.label}</text>`;
+  tierContent += `<text x="20" y="${y + 12}" font-size="10" fill="${TOKENS.colors.labelColor}">${st.label}</text>`;
 });
 
 // Tier sizes
 const tierStartY = 20 + stationTypes.length * 22 + 8;
-tierContent += `<text y="${tierStartY}" font-size="11" font-weight="600" fill="${LABEL_COLOR}">Tamaño / Size</text>`;
+tierContent += `<text y="${tierStartY}" font-size="11" font-weight="${TOKENS.typography.weights.semibold}" fill="${TOKENS.colors.labelColor}">Tamaño / Size</text>`;
 
 const tiers = [
-  { label: "Centro principal / Mega Hub", r: RADIUS.mega },
-  { label: "Centro mayor / Major Hub", r: RADIUS.major },
-  { label: "Estación / Standard", r: RADIUS.standard },
+  { label: "Centro principal / Mega Hub", r: TOKENS.spacing.stationRadius.mega },
+  { label: "Centro mayor / Major Hub", r: TOKENS.spacing.stationRadius.major },
+  { label: "Estación / Standard", r: TOKENS.spacing.stationRadius.standard },
 ];
 tiers.forEach((t, i) => {
   const y = tierStartY + 8 + i * 20;
-  tierContent += `<circle cx="${RADIUS.mega + 2}" cy="${y + 8}" r="${t.r}" fill="${STATION_FILL}" stroke="#666" stroke-width="2"/>`;
-  tierContent += `<text x="${RADIUS.mega + 18}" y="${y + 12}" font-size="10" fill="${LABEL_COLOR}">${t.label}</text>`;
+  tierContent += `<circle cx="${TOKENS.spacing.stationRadius.mega + 2}" cy="${y + 8}" r="${t.r}" fill="${TOKENS.colors.stationFill}" stroke="#666" stroke-width="2"/>`;
+  tierContent += `<text x="${TOKENS.spacing.stationRadius.mega + 18}" y="${y + 12}" font-size="10" fill="${TOKENS.colors.labelColor}">${t.label}</text>`;
 });
 tierContent += `</g>`;
 svgContent += tierContent;
@@ -291,12 +249,13 @@ svgContent += tierContent;
 // Headlines + data vintage
 const headlineY = legendY + 175;
 const hlText = headlines.map((h: any) => h.text).join("  \u2022  ");
-svgContent += `<text x="40" y="${headlineY}" font-size="12" fill="${LABEL_SECONDARY}">${escapeXml(hlText)}</text>`;
+svgContent += `<text x="40" y="${headlineY}" font-size="12" fill="${TOKENS.colors.labelSecondary}">${escapeXml(hlText)}</text>`;
 svgContent += `<text x="40" y="${headlineY + 18}" font-size="10" fill="#888">Data: BTS 2025, ARTF 2024, Laredo EDC 2024, Contecon 2025, TxDOT 2024, AMIA 2024</text>`;
 
 // Wrap in SVG document with Inter font
+const fontFamily = TOKENS.typography.fontFamily;
 const svgDoc = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" font-family='${FONT_FAMILY}'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" font-family='${fontFamily}'>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
 </style>

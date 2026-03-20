@@ -159,7 +159,7 @@ export function renderLegend(
     { label: "Ciudad / City", type: "city" as const },
     { label: "Puerto / Port", type: "port" as const },
     { label: "Cruce fronterizo / Border", type: "border-crossing" as const },
-    { label: "Destino / Terminal", type: "terminal" as const },
+    { label: "Destino / Terminal", type: "terminal-region" as const },
   ];
 
   stationTypes.forEach((st, i) => {

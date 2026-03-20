@@ -124,7 +124,7 @@ function corridorTooltipHtml(corridor: Corridor, sources: DataSource[]): string 
     html += `<div>Commodities: ${corridor.primaryCommodities.join(", ")}</div>`;
   }
   if (corridor.status === "planned") {
-    html += `<div style="color:${TOKENS.colors.corridors["linea-morada"]};font-weight:${TOKENS.typography.weights.semibold}">Under construction</div>`;
+    html += `<div style="color:${color};font-weight:${TOKENS.typography.weights.semibold}">Under construction</div>`;
   }
 
   html += sourceLabel(corridor.sourceIds, sources);
