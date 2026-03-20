@@ -84,26 +84,18 @@ export const TOKENS: DesignTokens = {
   },
 };
 
-// Station symbol helper: returns path + scale for a (type, tier) combination
+/** Returns the tier-based scale multiplier for station symbol sizing. */
 export function getStationSymbol(
-  type: string,
-  tier: string,
-): { path: string; scale: number } {
+  type: "city" | "port" | "border-crossing" | "terminal-region",
+  tier: "mega" | "major" | "standard",
+): { scale: number } {
   const tierScale: Record<string, number> = {
     mega: 1.0,
     major: 0.7,
     standard: 0.5,
   };
 
-  const symbolMap: Record<string, string> = {
-    city: TOKENS.symbols.city,
-    port: TOKENS.symbols.port,
-    "border-crossing": TOKENS.symbols.borderCrossing,
-    "terminal-region": TOKENS.symbols.terminalRegion,
-  };
-
   return {
-    path: symbolMap[type] || TOKENS.symbols.city,
     scale: tierScale[tier] || 0.5,
   };
 }

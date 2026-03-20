@@ -4,6 +4,16 @@ import { TOKENS } from "../map/styles.ts";
 
 const TOOLTIP_CLASS = "trade-tooltip";
 
+/** Escape HTML entities to prevent XSS when interpolating into innerHTML */
+function esc(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function createTooltipElement(): HTMLDivElement {
   let el = document.querySelector(`.${TOOLTIP_CLASS}`) as HTMLDivElement;
   if (el) return el;
@@ -73,7 +83,7 @@ function sourceLabel(sourceIds: string[], sources: DataSource[]): string {
   const names = sourceIds
     .map((id) => sources.find((s) => s.id === id))
     .filter(Boolean)
-    .map((s) => `${s!.authority} (${s!.dataYear})`);
+    .map((s) => `${esc(s!.authority)} (${esc(String(s!.dataYear))})`);
   return names.length > 0
     ? `<div style="color:${TOKENS.colors.labelSecondary};font-size:11px;margin-top:4px">Source: ${names.join(", ")}</div>`
     : "";
@@ -81,10 +91,10 @@ function sourceLabel(sourceIds: string[], sources: DataSource[]): string {
 
 function stationTooltipHtml(station: Station, sources: DataSource[]): string {
   // English name as primary heading in tooltips
-  let html = `<div style="font-weight:${TOKENS.typography.weights.bold};font-size:14px;margin-bottom:2px">${station.nameEn}</div>`;
+  let html = `<div style="font-weight:${TOKENS.typography.weights.bold};font-size:14px;margin-bottom:2px">${esc(station.nameEn)}</div>`;
   // Spanish subheading if different
   if (station.nameEn !== station.nameEs) {
-    html += `<div style="color:${TOKENS.colors.labelSecondary};font-size:12px;margin-bottom:6px">${station.nameEs}</div>`;
+    html += `<div style="color:${TOKENS.colors.labelSecondary};font-size:12px;margin-bottom:6px">${esc(station.nameEs)}</div>`;
   } else {
     html += `<div style="margin-bottom:4px"></div>`;
   }
@@ -100,10 +110,10 @@ function stationTooltipHtml(station: Station, sources: DataSource[]): string {
     details.push(`Container volume: ${formatCount(station.containerVolumeTeu)} TEU`);
   }
   if (station.primaryCommodities.length > 0) {
-    details.push(`Commodities: ${station.primaryCommodities.join(", ")}`);
+    details.push(`Commodities: ${station.primaryCommodities.map(esc).join(", ")}`);
   }
   if (station.destinationPorts && station.destinationPorts.length > 0) {
-    details.push(`Destinations: ${station.destinationPorts.join(", ")}`);
+    details.push(`Destinations: ${station.destinationPorts.map(esc).join(", ")}`);
   }
 
   html += details.map((d) => `<div>${d}</div>`).join("");
@@ -115,13 +125,13 @@ function corridorTooltipHtml(corridor: Corridor, sources: DataSource[]): string 
   const color = TOKENS.colors.corridors[corridor.id] || corridor.color;
   let html = `<div style="font-weight:${TOKENS.typography.weights.bold};font-size:14px;margin-bottom:4px">`;
   html += `<span style="display:inline-block;width:12px;height:12px;background:${color};border-radius:2px;margin-right:6px;vertical-align:middle"></span>`;
-  html += `${corridor.nameEs} / ${corridor.nameEn}</div>`;
+  html += `${esc(corridor.nameEs)} / ${esc(corridor.nameEn)}</div>`;
 
   if (corridor.totalTradeValue) {
-    html += `<div>Trade: ${corridor.totalTradeValue}</div>`;
+    html += `<div>Trade: ${esc(corridor.totalTradeValue)}</div>`;
   }
   if (corridor.primaryCommodities.length > 0) {
-    html += `<div>Commodities: ${corridor.primaryCommodities.join(", ")}</div>`;
+    html += `<div>Commodities: ${corridor.primaryCommodities.map(esc).join(", ")}</div>`;
   }
   if (corridor.status === "planned") {
     html += `<div style="color:${color};font-weight:${TOKENS.typography.weights.semibold}">Under construction</div>`;
@@ -135,11 +145,11 @@ function maritimeTooltipHtml(route: MaritimeRoute, sources: DataSource[]): strin
   const color = TOKENS.colors.maritime[route.id] || route.color;
   let html = `<div style="font-weight:${TOKENS.typography.weights.bold};font-size:14px;margin-bottom:4px">`;
   html += `<span style="display:inline-block;width:16px;height:3px;background:${color};margin-right:6px;vertical-align:middle;border-top:1px dashed ${color};border-bottom:1px dashed ${color}"></span>`;
-  html += `${route.nameEs} / ${route.nameEn}</div>`;
-  html += `<div>Carriers: ${route.carriers.join(", ")}</div>`;
+  html += `${esc(route.nameEs)} / ${esc(route.nameEn)}</div>`;
+  html += `<div>Carriers: ${route.carriers.map(esc).join(", ")}</div>`;
   html += `<div>Transit: ${route.transitTimeDays} days</div>`;
   if (route.primaryCommodities.length > 0) {
-    html += `<div>Cargo: ${route.primaryCommodities.join(", ")}</div>`;
+    html += `<div>Cargo: ${route.primaryCommodities.map(esc).join(", ")}</div>`;
   }
   html += sourceLabel(route.sourceIds, sources);
   return html;
