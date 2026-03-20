@@ -147,7 +147,7 @@ function maritimeTooltipHtml(route: MaritimeRoute, sources: DataSource[]): strin
   html += `<span style="display:inline-block;width:16px;height:3px;background:${color};margin-right:6px;vertical-align:middle;border-top:1px dashed ${color};border-bottom:1px dashed ${color}"></span>`;
   html += `${esc(route.nameEs)} / ${esc(route.nameEn)}</div>`;
   html += `<div>Carriers: ${route.carriers.map(esc).join(", ")}</div>`;
-  html += `<div>Transit: ${route.transitTimeDays} days</div>`;
+  html += `<div>Transit: ${esc(String(route.transitTimeDays))} days</div>`;
   if (route.primaryCommodities.length > 0) {
     html += `<div>Cargo: ${route.primaryCommodities.map(esc).join(", ")}</div>`;
   }
