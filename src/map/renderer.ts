@@ -1,10 +1,12 @@
 import * as d3 from "d3";
-import type { Station, Corridor } from "../types/index.ts";
+import type { Station, Corridor, MaritimeRoute } from "../types/index.ts";
 import {
   CORRIDOR_COLORS,
+  MARITIME_COLORS,
   STATION_RADIUS,
   LINE_THICKNESS,
   DASH_PATTERN,
+  DOT_DASH_PATTERN,
   GRID_UNIT,
   FONT_FAMILY,
   LABEL_SIZE,
@@ -20,10 +22,11 @@ import {
 export interface MapData {
   stations: Station[];
   corridors: Corridor[];
+  maritime?: MaritimeRoute[];
 }
 
-function stationX(s: Station): number {
-  return MAP_PADDING.left + s.x * GRID_UNIT;
+function stationX(s: Station, minX: number): number {
+  return MAP_PADDING.left + (s.x - minX) * GRID_UNIT;
 }
 
 function stationY(s: Station): number {
@@ -35,10 +38,13 @@ export function renderMap(
   data: MapData,
 ): SVGSVGElement {
   const stationMap = new Map(data.stations.map((s) => [s.id, s]));
+  const maritime = data.maritime || [];
 
+  const minX = Math.min(...data.stations.map((s) => s.x));
   const maxX = Math.max(...data.stations.map((s) => s.x));
   const maxY = Math.max(...data.stations.map((s) => s.y));
-  const width = MAP_PADDING.left + (maxX + 1) * GRID_UNIT + MAP_PADDING.right;
+  const width =
+    MAP_PADDING.left + (maxX - minX + 1) * GRID_UNIT + MAP_PADDING.right;
   const height = MAP_PADDING.top + (maxY + 1) * GRID_UNIT + MAP_PADDING.bottom;
 
   d3.select(container).selectAll("svg").remove();
@@ -90,7 +96,7 @@ export function renderMap(
 
     const lineGen = d3
       .line<Station>()
-      .x((s) => stationX(s))
+      .x((s) => stationX(s, minX))
       .y((s) => stationY(s));
 
     const path = linesGroup
@@ -109,21 +115,68 @@ export function renderMap(
     }
   }
 
+  // Draw maritime routes
+  const maritimeGroup = svg.append("g").attr("class", "maritime-routes");
+
+  for (const route of maritime) {
+    const points = route.stationIds
+      .map((id) => stationMap.get(id))
+      .filter((s): s is Station => s !== undefined);
+
+    if (points.length < 2) continue;
+
+    const lineGen = d3
+      .line<Station>()
+      .x((s) => stationX(s, minX))
+      .y((s) => stationY(s));
+
+    maritimeGroup
+      .append("path")
+      .datum(points)
+      .attr("d", lineGen)
+      .attr("fill", "none")
+      .attr("stroke", MARITIME_COLORS[route.id] || route.color)
+      .attr("stroke-width", LINE_THICKNESS[route.lineWeight])
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-dasharray", DOT_DASH_PATTERN)
+      .attr("data-corridor-id", route.id);
+  }
+
+  // Count corridors + maritime per station for interchange detection
+  const routeCountPerStation = new Map<string, number>();
+  for (const c of data.corridors) {
+    for (const sid of c.stationIds) {
+      routeCountPerStation.set(sid, (routeCountPerStation.get(sid) || 0) + 1);
+    }
+  }
+  for (const r of maritime) {
+    for (const sid of r.stationIds) {
+      routeCountPerStation.set(sid, (routeCountPerStation.get(sid) || 0) + 1);
+    }
+  }
+
   // Draw stations
   const stationsGroup = svg.append("g").attr("class", "stations");
 
   for (const station of data.stations) {
-    const cx = stationX(station);
+    const cx = stationX(station, minX);
     const cy = stationY(station);
     const r = STATION_RADIUS[station.tier];
+    const routeCount = routeCountPerStation.get(station.id) || 0;
 
     const corridorsForStation = data.corridors.filter((c) =>
       c.stationIds.includes(station.id),
     );
+    const maritimeForStation = maritime.filter((m) =>
+      m.stationIds.includes(station.id),
+    );
+    const allRoutes = [...corridorsForStation, ...maritimeForStation];
     const primaryColor =
-      corridorsForStation.length > 0
-        ? CORRIDOR_COLORS[corridorsForStation[0].id] ||
-          corridorsForStation[0].color
+      allRoutes.length > 0
+        ? CORRIDOR_COLORS[allRoutes[0].id] ||
+          MARITIME_COLORS[allRoutes[0].id] ||
+          allRoutes[0].color
         : "#999";
 
     const g = stationsGroup
@@ -131,37 +184,58 @@ export function renderMap(
       .attr("class", "station")
       .attr("data-station-id", station.id);
 
-    // Interchange ring for multi-corridor stations
-    if (corridorsForStation.length > 1) {
+    // Interchange ring for multi-route stations
+    if (routeCount > 1) {
+      const ringR = routeCount >= 3 ? r + 4 : r + 3;
+      const ringStroke = routeCount >= 3 ? 2 : 1.5;
       g.append("circle")
         .attr("cx", cx)
         .attr("cy", cy)
-        .attr("r", r + 3)
+        .attr("r", ringR)
         .attr("fill", "none")
         .attr("stroke", "#333")
-        .attr("stroke-width", 1.5);
+        .attr("stroke-width", ringStroke);
     }
 
-    g.append("circle")
-      .attr("cx", cx)
-      .attr("cy", cy)
-      .attr("r", r)
-      .attr("fill", STATION_FILL)
-      .attr("stroke", primaryColor)
-      .attr("stroke-width", STATION_STROKE_WIDTH);
+    // Terminal region: arrow-style marker
+    if (station.type === "terminal-region") {
+      g.append("rect")
+        .attr("x", cx - r - 2)
+        .attr("y", cy - r)
+        .attr("width", r * 2 + 4)
+        .attr("height", r * 2)
+        .attr("rx", 3)
+        .attr("fill", STATION_FILL)
+        .attr("stroke", primaryColor)
+        .attr("stroke-width", STATION_STROKE_WIDTH);
+    } else {
+      g.append("circle")
+        .attr("cx", cx)
+        .attr("cy", cy)
+        .attr("r", r)
+        .attr("fill", STATION_FILL)
+        .attr("stroke", primaryColor)
+        .attr("stroke-width", STATION_STROKE_WIDTH);
+    }
 
     // Label
     const fontSize = LABEL_SIZE[station.tier];
     const labelOffset = r + 6;
 
-    // Simple label placement: right side by default, left for stations
-    // at the right edge, above for dense areas
     let textAnchor: string = "start";
     let lx = cx + labelOffset;
     let ly = cy + fontSize / 3;
 
-    // Stations on the right edge: place label to the left
-    if (station.x >= maxX - 1) {
+    // Terminal regions at edges: label adjacent
+    if (station.type === "terminal-region") {
+      if (station.x < 0) {
+        textAnchor = "start";
+        lx = cx + r + 10;
+      } else {
+        textAnchor = "end";
+        lx = cx - r - 10;
+      }
+    } else if (station.x >= maxX - 1) {
       textAnchor = "end";
       lx = cx - labelOffset;
     }

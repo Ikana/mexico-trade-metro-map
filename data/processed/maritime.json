@@ -1,0 +1,128 @@
+[
+  {
+    "id": "pacific-asia-express",
+    "nameEs": "Ruta Pacífico-Asia",
+    "nameEn": "Pacific-Asia Express",
+    "color": "#00BCD4",
+    "lineNumber": 10,
+    "ocean": "pacific",
+    "lineStyle": "dot-dash",
+    "lineWeight": "medium",
+    "stationIds": [
+      "ensenada",
+      "manzanillo",
+      "lazaro-cardenas",
+      "terminal-asia"
+    ],
+    "carriers": [
+      "CMA CGM (M2X)",
+      "MSC",
+      "Cosco (TLP5)"
+    ],
+    "transitTimeDays": "15-20",
+    "primaryCommodities": [
+      "electronics",
+      "auto parts",
+      "consumer goods",
+      "containers"
+    ],
+    "evidence": "CMA CGM M2X service: Tianjin → Qingdao → Busan → Ensenada → Manzanillo → Lázaro Cárdenas. MSC loop: Qingdao → Shanghai → Busan → Manzanillo. Cosco TLP5: 15-20 day transit. Source: FreightWaves, Lading Cargo",
+    "sourceIds": [
+      "freightwaves-asia-mexico-2025",
+      "ladingcargo-cosco-2025"
+    ]
+  },
+  {
+    "id": "transpacific-gateway",
+    "nameEs": "Ruta Transpacífica",
+    "nameEn": "Transpacific Gateway",
+    "color": "#009688",
+    "lineNumber": 11,
+    "ocean": "pacific",
+    "lineStyle": "dot-dash",
+    "lineWeight": "medium",
+    "stationIds": [
+      "lazaro-cardenas",
+      "manzanillo",
+      "terminal-asia"
+    ],
+    "carriers": [
+      "MSC",
+      "Cosco",
+      "Hapag-Lloyd"
+    ],
+    "transitTimeDays": "18-25",
+    "primaryCommodities": [
+      "automotive",
+      "machinery",
+      "raw materials"
+    ],
+    "evidence": "Direct China-Mexico route. Import bookings from China skyrocketed 2023-2025. Chinese FDI in Mexico up 11% YoY. Source: FreightWaves",
+    "sourceIds": [
+      "freightwaves-asia-mexico-2025"
+    ]
+  },
+  {
+    "id": "gulf-europe",
+    "nameEs": "Ruta Golfo-Europa",
+    "nameEn": "Gulf-Europe Line",
+    "color": "#1A237E",
+    "lineNumber": 12,
+    "ocean": "gulf-atlantic",
+    "lineStyle": "dot-dash",
+    "lineWeight": "medium",
+    "stationIds": [
+      "veracruz",
+      "altamira",
+      "terminal-europe"
+    ],
+    "carriers": [
+      "Maersk",
+      "MSC",
+      "Hapag-Lloyd"
+    ],
+    "transitTimeDays": "12-16",
+    "primaryCommodities": [
+      "automotive",
+      "auto parts",
+      "finished vehicles"
+    ],
+    "evidence": "Veracruz = primary automotive export gateway to Europe. Auto parts + finished vehicles via Hwy 150D from Puebla. Source: iContainers, FreightAmigo",
+    "sourceIds": [
+      "icontainers-mexico-2025",
+      "freightamigo-gulf-2025"
+    ]
+  },
+  {
+    "id": "gulf-us-east",
+    "nameEs": "Ruta Golfo-EEUU",
+    "nameEn": "Gulf-US East Coast",
+    "color": "#546E7A",
+    "lineNumber": 13,
+    "ocean": "gulf-atlantic",
+    "lineStyle": "dot-dash",
+    "lineWeight": "medium",
+    "stationIds": [
+      "coatzacoalcos",
+      "veracruz",
+      "altamira",
+      "terminal-us-east"
+    ],
+    "carriers": [
+      "Maersk",
+      "CMA CGM",
+      "ZIM"
+    ],
+    "transitTimeDays": "3-7",
+    "primaryCommodities": [
+      "petrochemicals",
+      "energy products",
+      "containers"
+    ],
+    "evidence": "Gulf Coast energy corridor. Altamira = 37% of Mexico's Gulf container traffic. Petrochemicals and energy products. Source: Unisco, Mexico Business News",
+    "sourceIds": [
+      "unisco-altamira-2025",
+      "freightamigo-gulf-2025"
+    ]
+  }
+]

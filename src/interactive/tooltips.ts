@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import type { Station, Corridor, DataSource } from "../types/index.ts";
+import type { Station, Corridor, MaritimeRoute, DataSource } from "../types/index.ts";
 
 const TOOLTIP_CLASS = "trade-tooltip";
 
@@ -98,6 +98,9 @@ function stationTooltipHtml(station: Station, sources: DataSource[]): string {
   if (station.primaryCommodities.length > 0) {
     details.push(`Commodities: ${station.primaryCommodities.join(", ")}`);
   }
+  if (station.destinationPorts && station.destinationPorts.length > 0) {
+    details.push(`Destinations: ${station.destinationPorts.join(", ")}`);
+  }
 
   html += details.map((d) => `<div>${d}</div>`).join("");
   html += sourceLabel(station.sourceIds, sources);
@@ -123,15 +126,30 @@ function corridorTooltipHtml(corridor: Corridor, sources: DataSource[]): string 
   return html;
 }
 
+function maritimeTooltipHtml(route: MaritimeRoute, sources: DataSource[]): string {
+  let html = `<div style="font-weight:bold;font-size:14px;margin-bottom:4px">`;
+  html += `<span style="display:inline-block;width:12px;height:4px;background:${route.color};margin-right:6px;vertical-align:middle;border:1px dashed ${route.color}"></span>`;
+  html += `${route.nameEs} / ${route.nameEn}</div>`;
+  html += `<div>🚢 ${route.carriers.join(", ")}</div>`;
+  html += `<div>Transit: ${route.transitTimeDays} days</div>`;
+  if (route.primaryCommodities.length > 0) {
+    html += `<div>Cargo: ${route.primaryCommodities.join(", ")}</div>`;
+  }
+  html += sourceLabel(route.sourceIds, sources);
+  return html;
+}
+
 export function bindTooltips(
   svg: SVGSVGElement,
   stations: Station[],
   corridors: Corridor[],
   sources: DataSource[],
+  maritime: MaritimeRoute[] = [],
 ): void {
   const tooltip = createTooltipElement();
   const stationMap = new Map(stations.map((s) => [s.id, s]));
   const corridorMap = new Map(corridors.map((c) => [c.id, c]));
+  const maritimeMap = new Map(maritime.map((m) => [m.id, m]));
 
   // Station tooltips
   d3.select(svg)
@@ -190,6 +208,38 @@ export function bindTooltips(
       const corridor = corridorMap.get(id);
       if (!corridor) return;
       showTooltip(tooltip, corridorTooltipHtml(corridor, sources), event);
+    })
+    .on("touchend", () => hideTooltip(tooltip));
+
+  // Maritime route tooltips
+  d3.select(svg)
+    .selectAll<SVGPathElement, unknown>("g.maritime-routes path")
+    .on("mouseenter", function (event: MouseEvent) {
+      const id = this.getAttribute("data-corridor-id");
+      if (!id) return;
+      const route = maritimeMap.get(id);
+      if (!route) return;
+      showTooltip(tooltip, maritimeTooltipHtml(route, sources), event);
+      d3.select(this).attr("opacity", 0.7);
+    })
+    .on("mousemove", function (event: MouseEvent) {
+      const id = this.getAttribute("data-corridor-id");
+      if (!id) return;
+      const route = maritimeMap.get(id);
+      if (!route) return;
+      showTooltip(tooltip, maritimeTooltipHtml(route, sources), event);
+    })
+    .on("mouseleave", function () {
+      hideTooltip(tooltip);
+      d3.select(this).attr("opacity", 1);
+    })
+    .on("touchstart", function (event: TouchEvent) {
+      event.preventDefault();
+      const id = this.getAttribute("data-corridor-id");
+      if (!id) return;
+      const route = maritimeMap.get(id);
+      if (!route) return;
+      showTooltip(tooltip, maritimeTooltipHtml(route, sources), event);
     })
     .on("touchend", () => hideTooltip(tooltip));
 }

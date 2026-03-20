@@ -1,10 +1,12 @@
 import * as d3 from "d3";
-import type { Corridor, HeadlineStat } from "../types/index.ts";
+import type { Corridor, MaritimeRoute, HeadlineStat } from "../types/index.ts";
 import {
   CORRIDOR_COLORS,
+  MARITIME_COLORS,
   STATION_RADIUS,
   LINE_THICKNESS,
   DASH_PATTERN,
+  DOT_DASH_PATTERN,
   FONT_FAMILY,
   LEGEND_LABEL_SIZE,
   HEADLINE_SIZE,
@@ -18,13 +20,14 @@ export function renderLegend(
   svg: d3.Selection<SVGSVGElement, unknown, null, undefined>,
   corridors: Corridor[],
   headlines: HeadlineStat[],
+  maritime: MaritimeRoute[] = [],
 ): void {
   const svgNode = svg.node();
   if (!svgNode) return;
   const width = svgNode.viewBox.baseVal.width || 800;
   const height = svgNode.viewBox.baseVal.height || 600;
 
-  const legendY = height - 140;
+  const legendY = height - 220;
   const legendG = svg
     .append("g")
     .attr("class", "legend")
@@ -36,7 +39,7 @@ export function renderLegend(
     .attr("x", 20)
     .attr("y", 0)
     .attr("width", width - 40)
-    .attr("height", 130)
+    .attr("height", 210)
     .attr("rx", 6)
     .attr("fill", LEGEND_BG)
     .attr("stroke", "#DDD")
@@ -111,6 +114,43 @@ export function renderLegend(
       .text(`${c.nameEs} / ${c.nameEn} (en construcción / planned)`);
   });
 
+  // Maritime routes
+  if (maritime.length > 0) {
+    const maritimeStartRow =
+      Math.ceil(activeCols.length / colsPerRow) + plannedCols.length;
+    const mLabelY = 14 + maritimeStartRow * rowHeight + 4;
+
+    corridorLegend
+      .append("text")
+      .attr("y", mLabelY)
+      .attr("font-size", LEGEND_LABEL_SIZE)
+      .attr("font-weight", "bold")
+      .attr("fill", LABEL_COLOR)
+      .text("Rutas Marítimas / Maritime Routes");
+
+    maritime.forEach((m, i) => {
+      const y = mLabelY + 10 + i * rowHeight;
+      corridorLegend
+        .append("line")
+        .attr("x1", 0)
+        .attr("y1", y + 4)
+        .attr("x2", 20)
+        .attr("y2", y + 4)
+        .attr("stroke", MARITIME_COLORS[m.id] || m.color)
+        .attr("stroke-width", 3)
+        .attr("stroke-dasharray", DOT_DASH_PATTERN)
+        .attr("stroke-linecap", "round");
+
+      corridorLegend
+        .append("text")
+        .attr("x", 26)
+        .attr("y", y + 8)
+        .attr("font-size", LEGEND_LABEL_SIZE - 1)
+        .attr("fill", LABEL_COLOR)
+        .text(`${m.nameEs} / ${m.nameEn}`);
+    });
+  }
+
   // Station tier legend (right side)
   const tierX = width - 260;
   const tierLegend = legendG
@@ -153,7 +193,7 @@ export function renderLegend(
   });
 
   // Headlines + data vintage (bottom)
-  const headlineY = 95;
+  const headlineY = 175;
   const headlineG = legendG
     .append("g")
     .attr("transform", `translate(40, ${headlineY})`);

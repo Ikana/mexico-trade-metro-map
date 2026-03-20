@@ -25,10 +25,12 @@ const sources = readJson("sources.json");
 const corridors = readJson("corridors-raw.json");
 const stations = readJson("stations-raw.json");
 const headlines = readJson("headlines-raw.json");
+const maritime = readJson("maritime-raw.json");
 
 writeJson("sources.json", sources);
 writeJson("corridors.json", corridors);
 writeJson("stations.json", stations);
 writeJson("headlines.json", headlines);
+writeJson("maritime.json", maritime);
 
 console.log("\nDone. Output in data/processed/");
