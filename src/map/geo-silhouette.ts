@@ -157,5 +157,5 @@ export function renderGeoSilhouette(
     .attr("stroke", "#8B7355")
     .attr("stroke-width", 1.5)
     .attr("stroke-dasharray", "4 3")
-    .attr("opacity", 2);
+    .attr("opacity", 1);
 }

@@ -191,10 +191,13 @@ export function renderMap(
         .attr("stroke-width", ringStroke);
     }
 
-    // Station symbol rendering
+    // Station symbol rendering — uses getStationSymbol() for tier-based scaling.
+    // Multi-element symbols (port wave, border gate line, terminal arrow) are rendered
+    // inline rather than from single token paths to preserve visual detail.
+    const symbol = getStationSymbol(station.type, station.tier);
+
     if (station.type === "terminal-region") {
       // Terminal region: rounded rectangle with arrow indicator
-      const symbol = getStationSymbol(station.type, station.tier);
       const s = symbol.scale * r * 1.2;
       g.append("rect")
         .attr("x", cx - s - 2)
@@ -205,7 +208,6 @@ export function renderMap(
         .attr("fill", TOKENS.colors.stationFill)
         .attr("stroke", primaryColor)
         .attr("stroke-width", 2.5);
-      // Arrow indicator
       g.append("path")
         .attr("d", `M${cx + s * 0.2},${cy - s * 0.4} L${cx + s * 0.7},${cy} L${cx + s * 0.2},${cy + s * 0.4}`)
         .attr("fill", "none")
@@ -214,15 +216,14 @@ export function renderMap(
         .attr("stroke-linecap", "round")
         .attr("stroke-linejoin", "round");
     } else if (station.type === "port") {
-      // Port: diamond shape (Aicher-inspired)
-      const s = r * 1.1;
+      // Port: diamond shape with wave indicator (Aicher-inspired)
+      const s = symbol.scale * r * 1.1;
       g.append("path")
         .attr("d", `M${cx},${cy - s} L${cx + s},${cy} L${cx},${cy + s} L${cx - s},${cy} Z`)
         .attr("fill", TOKENS.colors.stationFill)
         .attr("stroke", primaryColor)
         .attr("stroke-width", 2.5)
         .attr("stroke-linejoin", "round");
-      // Small wave indicator inside
       g.append("path")
         .attr("d", `M${cx - s * 0.4},${cy} Q${cx - s * 0.2},${cy - s * 0.25} ${cx},${cy} Q${cx + s * 0.2},${cy + s * 0.25} ${cx + s * 0.4},${cy}`)
         .attr("fill", "none")
@@ -230,15 +231,14 @@ export function renderMap(
         .attr("stroke-width", 1.2)
         .attr("stroke-linecap", "round");
     } else if (station.type === "border-crossing") {
-      // Border crossing: diamond/chevron (customs gate)
-      const s = r * 1.0;
+      // Border crossing: diamond with gate line (customs gate)
+      const s = symbol.scale * r * 1.0;
       g.append("path")
         .attr("d", `M${cx},${cy - s} L${cx + s},${cy} L${cx},${cy + s} L${cx - s},${cy} Z`)
         .attr("fill", TOKENS.colors.stationFill)
         .attr("stroke", primaryColor)
         .attr("stroke-width", 2.5)
         .attr("stroke-linejoin", "miter");
-      // Inner horizontal line (gate/barrier indicator)
       g.append("line")
         .attr("x1", cx - s * 0.5)
         .attr("y1", cy)
@@ -248,6 +248,7 @@ export function renderMap(
         .attr("stroke-width", 1.5);
     } else {
       // City: filled circle (universal metro convention)
+      // r already encodes tier-based sizing from TOKENS.spacing.stationRadius
       g.append("circle")
         .attr("cx", cx)
         .attr("cy", cy)
@@ -268,18 +269,14 @@ export function renderMap(
     const placement = labelMap.get(station.id);
     if (!placement) continue;
 
-    const textEl = g.append("text")
+    g.append("text")
       .attr("x", placement.x)
       .attr("y", placement.y)
       .attr("text-anchor", placement.anchor)
       .attr("font-size", placement.fontSize)
       .attr("font-weight", placement.fontWeight)
       .attr("fill", TOKENS.colors.labelColor)
-      .text(station.nameEs);
-
-    if (placement.rotation !== 0) {
-      textEl.attr("transform", `rotate(${placement.rotation}, ${placement.x}, ${placement.y})`);
-    }
+      .text(placement.labelText);
   }
 
   return svg.node() as SVGSVGElement;

@@ -7,7 +7,6 @@ import type { Station, DesignTokens, LabelPlacement } from "../types/index.ts";
  * Priority order: E → W → NE → SE → NW → SW → N → S.
  * Processes stations in tier-descending order (mega first).
  * Collision detection via bounding box intersection.
- * Supports 0° and -45° rotation for octolinear alignment.
  */
 
 type Direction = "E" | "W" | "NE" | "SE" | "NW" | "SW" | "N" | "S";
@@ -50,7 +49,7 @@ function getCandidatePosition(
   textWidth: number,
   textHeight: number,
   direction: Direction,
-): { x: number; y: number; rotation: 0 | -45; anchor: "start" | "middle" | "end"; bbox: BBox } {
+): { x: number; y: number; rotation: 0; anchor: "start" | "middle" | "end"; bbox: BBox } {
   const halfH = textHeight / 2;
 
   switch (direction) {
@@ -155,13 +154,22 @@ export function computeLabelPlacements(
   const placements: LabelPlacement[] = [];
   const placedBBoxes: BBox[] = [];
 
-  // Also add station positions as obstacles (so labels don't overlap stations)
-  const stationBBoxes: BBox[] = stations.map((s) => {
+  // Build station bboxes indexed by station ID for efficient exclusion
+  const stationBBoxMap = new Map<string, BBox>();
+  for (const s of stations) {
     const cx = tokens.spacing.padding.left + (s.x - minX) * gridUnit;
     const cy = tokens.spacing.padding.top + s.y * gridUnit;
     const r = tokens.spacing.stationRadius[s.tier] || 6;
-    return { x: cx - r, y: cy - r, width: r * 2, height: r * 2 };
-  });
+    stationBBoxMap.set(s.id, { x: cx - r, y: cy - r, width: r * 2, height: r * 2 });
+  }
+  const stationBBoxEntries = Array.from(stationBBoxMap.entries());
+
+  /** Check if candidate bbox collides with any station symbol (excluding own) */
+  function collidesWithStations(candidate: BBox, ownId: string): boolean {
+    return stationBBoxEntries.some(
+      ([id, b]) => id !== ownId && bboxesOverlap(candidate, b, 1),
+    );
+  }
 
   for (const station of sorted) {
     const cx = tokens.spacing.padding.left + (station.x - minX) * gridUnit;
@@ -180,14 +188,10 @@ export function computeLabelPlacements(
       const textHeight = estimateTextHeight(fontSize);
       const candidate = getCandidatePosition(cx, cy, offset, textWidth, textHeight, dir);
 
-      // Check collision with all placed labels
       const collidesWithLabels = placedBBoxes.some((b) => bboxesOverlap(candidate.bbox, b));
-      // Check collision with station symbols (except own)
-      const collidesWithStations = stationBBoxes.some(
-        (b, i) => sorted.indexOf(station) !== i && bboxesOverlap(candidate.bbox, b, 1),
-      );
+      const hitsStation = collidesWithStations(candidate.bbox, station.id);
 
-      if (!collidesWithLabels && !collidesWithStations) {
+      if (!collidesWithLabels && !hitsStation) {
         placements.push({
           stationId: station.id,
           x: candidate.x,
@@ -196,6 +200,7 @@ export function computeLabelPlacements(
           anchor: candidate.anchor,
           fontSize,
           fontWeight,
+          labelText,
           bbox: candidate.bbox,
         });
         placedBBoxes.push(candidate.bbox);
@@ -204,16 +209,18 @@ export function computeLabelPlacements(
       }
     }
 
-    // Fallback: abbreviate and retry
+    // Fallback: abbreviate and retry (with full collision checks)
     if (!placed) {
       labelText = abbreviate(station.nameEs);
       for (const dir of PRIORITY_ORDER) {
         const textWidth = estimateTextWidth(labelText, fontSize);
         const textHeight = estimateTextHeight(fontSize);
         const candidate = getCandidatePosition(cx, cy, offset, textWidth, textHeight, dir);
-        const collides = placedBBoxes.some((b) => bboxesOverlap(candidate.bbox, b));
 
-        if (!collides) {
+        const collidesWithLabels = placedBBoxes.some((b) => bboxesOverlap(candidate.bbox, b));
+        const hitsStation = collidesWithStations(candidate.bbox, station.id);
+
+        if (!collidesWithLabels && !hitsStation) {
           placements.push({
             stationId: station.id,
             x: candidate.x,
@@ -222,6 +229,7 @@ export function computeLabelPlacements(
             anchor: candidate.anchor,
             fontSize,
             fontWeight,
+            labelText,
             bbox: candidate.bbox,
           });
           placedBBoxes.push(candidate.bbox);
@@ -244,6 +252,7 @@ export function computeLabelPlacements(
         anchor: candidate.anchor,
         fontSize,
         fontWeight,
+        labelText,
         bbox: candidate.bbox,
       });
       placedBBoxes.push(candidate.bbox);

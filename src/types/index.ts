@@ -121,9 +121,10 @@ export interface LabelPlacement {
   stationId: string;
   x: number;
   y: number;
-  rotation: 0 | -45;
+  rotation: 0;
   anchor: "start" | "middle" | "end";
   fontSize: number;
   fontWeight: number;
+  labelText: string;
   bbox: { x: number; y: number; width: number; height: number };
 }

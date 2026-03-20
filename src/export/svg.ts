@@ -328,7 +328,7 @@ function renderGeoSilhouetteSvg(): string {
   svg += `<polygon points="${usBorder}" fill="#C8B8A8" stroke="none"/>`;
   svg += `<polygon points="${mainland}" fill="#A89070" stroke="none"/>`;
   svg += `<polygon points="${baja}" fill="#A89070" stroke="none"/>`;
-  svg += `<polyline points="${borderLine}" fill="none" stroke="#8B7355" stroke-width="1.5" stroke-dasharray="4 3" opacity="2"/>`;
+  svg += `<polyline points="${borderLine}" fill="none" stroke="#8B7355" stroke-width="1.5" stroke-dasharray="4 3" opacity="1"/>`;
   svg += `</g>`;
   return svg;
 }
